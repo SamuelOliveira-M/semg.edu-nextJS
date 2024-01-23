@@ -7,9 +7,9 @@
 
 export type User = {
   id: string;
-  name: string;
+  nome: string;
   email: string;
-  password: string;
+  senha: string;
 };
 
 export type Customer = {

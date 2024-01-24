@@ -1,6 +1,12 @@
-'use client';
 
 import { Card, Metric, Text, Title, BarList, Flex, Grid } from '@tremor/react';
+
+import Search from '@/app/ui/search';
+import { CreateInvoice } from '@/app/ui/teacher/buttons';
+import { Suspense } from 'react';
+import { InvoicesTableSkeleton } from '@/app/ui/skeletons';
+import { fetchInvoicesPages } from '@/app/lib/data';
+import Cart from '@/app/ui/class/cards';
 
 const website = [
   { name: '/home', value: 1230 },
@@ -43,31 +49,33 @@ const data = [
   }
 ];
 
-export default function PlaygroundPage() {
+export default async function PlaygroundPage({
+  searchParams,
+}: {
+  searchParams?: {
+    query?: string;
+    page?: string;
+  };
+}) {
+  const query = searchParams?.query || '';
+  const currentPage = Number(searchParams?.page) || 1;
+
+  const totalPages = await fetchInvoicesPages(query);
+
+
   return (
-    <main className="p-4 md:p-10 mx-auto max-w-7xl">
-      <Grid numItemsSm={2} numItemsLg={3} className="gap-6">
-        {data.map((item) => (
-          <Card key={item.category} className="bg-white shadow-lg p-6 rounded-md">
-            <Title className="text-xl font-bold mb-4">{item.category}</Title>
-            <Flex justifyContent="start" alignItems="baseline" className="space-x-2">
-              <Metric className="text-lg">{item.stat}</Metric>
-              <Text className="text-gray-500">Total views</Text>
-            </Flex>
-            <Flex className="mt-6">
-              <Text className="text-gray-500">Pages</Text>
-              <Text className="text-right text-gray-500">Views</Text>
-            </Flex>
-            <BarList
-              data={item.data}
-              valueFormatter={(number: number) =>
-                Intl.NumberFormat('us').format(number).toString()
-              }
-              className="mt-2"
-            />
-          </Card>
-        ))}
-      </Grid>
-    </main>
+    <>
+      <div className="w-full">
+        <div className="mt-4 flex items-center justify-between gap-2 md:mt-8 mb-4">
+          <Search placeholder="Search invoices..." />
+          <CreateInvoice />
+        </div>
+        <div>
+          <Suspense key={query + currentPage} fallback={<InvoicesTableSkeleton />}>
+            <Cart query={query} currentPage={currentPage} />
+          </Suspense>
+        </div>  
+      </div>
+    </>
   );
 }

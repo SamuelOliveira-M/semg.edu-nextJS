@@ -4,7 +4,7 @@ import { authConfig } from './auth.config';
 import { z } from 'zod';
 import type { User } from '@/app/lib/definitions';
 import bcrypt from 'bcrypt';
-import {POST} from '@/app/lib/reqLogin'
+import {POST} from '@/app/lib/api'
  
 async function getUser(email: string): Promise<User | undefined> {
   try {

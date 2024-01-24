@@ -7,11 +7,10 @@ export async function POST(email:string) {
     headers: {
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify(email),
+    body: JSON.stringify({email}),
   });
 
   const data = await res.json();
-	console.log(data)
 
   return data;
 }

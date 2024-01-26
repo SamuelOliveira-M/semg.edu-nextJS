@@ -55,6 +55,21 @@ export type InvoicesTable = {
   amount: number;
   status: 'pending' | 'paid';
 };
+export type SchollClassTable = {
+  id: string;
+  nome: string;
+  serie: number;
+  status:string;
+  turno: string;
+  ano_letivo: SchollClassYear;
+};
+
+export type SchollClassYear = {
+  data_inicio:string
+}
+
+
+
 
 export type CustomersTableType = {
   id: string;

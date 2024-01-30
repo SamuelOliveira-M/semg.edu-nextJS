@@ -72,7 +72,7 @@ export default async function PlaygroundPage({
         </div>
         <div>
           <Suspense key={query + currentPage} fallback={<InvoicesTableSkeleton />}>
-            <Cart query={query} currentPage={currentPage} />
+            <Cart currentPage={currentPage} />
           </Suspense>
         </div>  
       </div>

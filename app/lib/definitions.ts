@@ -62,11 +62,36 @@ export type SchollClassTable = {
   status:string;
   turno: string;
   ano_letivo: SchollClassYear;
+  matriculas:RegistrationTable[];
+   
 };
 
 export type SchollClassYear = {
   data_inicio:string
 }
+
+export type RegistrationTable = {
+  id: string;
+  numero_matricula: string;
+  status: string;
+  escolaId:string;
+  turmaId: string;
+  alunoId: studant;
+  aluno:studant
+};
+
+export type studant = {
+  nome : string
+	data_nascimento: Date
+	municipio_nascimento: string
+  uf_nascimento: string
+	cpf: string
+  url_image:string
+  responsavelId:string
+  addressId:string
+}
+
+
 
 
 

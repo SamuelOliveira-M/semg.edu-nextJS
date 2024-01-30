@@ -14,7 +14,7 @@ export function CreateInvoice() {
   );
 }
 
-export function UpdateInvoice({ id }: { id: string }) {
+export function UpdateClass({ id }: { id: string }) {
   return (
     <Link
       href={`/dashboard/teacher/${id}/edit`}
@@ -25,7 +25,7 @@ export function UpdateInvoice({ id }: { id: string }) {
   );
 }
 
-export function DeleteInvoice({ id }: { id: string }) {
+export function DeleteClass({ id }: { id: string }) {
   const deleteInvoiceWithId = deleteInvoice.bind(null, id);
   return (
     <form action={deleteInvoiceWithId}>
@@ -36,3 +36,5 @@ export function DeleteInvoice({ id }: { id: string }) {
     </form>
   );
 }
+
+

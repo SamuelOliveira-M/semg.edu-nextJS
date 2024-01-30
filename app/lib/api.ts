@@ -10,7 +10,7 @@ import {
 } from './definitions';
 import { formatCurrency } from './utils';
 import { unstable_noStore as noStore } from 'next/cache';
-import { SchollClassTable } from './definitions';
+import { SchollClassTable, RegistrationTable} from './definitions';
 
 
 
@@ -44,6 +44,22 @@ export async function fetchFilteredClass(
     const data:SchollClassTable[] = await schoolClass.json();
     return (data);
   } catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch invoices.');
+  }
+}
+
+export async function fetchRegistrationById(id:string){
+  try{
+    const res = await fetch(`http://localhost:3333/studant/${id}`, {
+      method: 'GET',
+    });
+  
+    const data:RegistrationTable[]= await res.json();
+    console.log(data)
+    return data;
+  
+  }catch (error) {
     console.error('Database Error:', error);
     throw new Error('Failed to fetch invoices.');
   }

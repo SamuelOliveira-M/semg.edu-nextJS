@@ -8,12 +8,14 @@ export const formatCurrency = (amount: number) => {
 };
 
 export const formatDateToLocal = (
-  dateStr: string,
-  locale: string = 'en-US',
+  dateStr: Date,
+  locale: string = 'pt-BR',
 ) => {
   const date = new Date(dateStr);
   const options: Intl.DateTimeFormatOptions = {
     year: 'numeric',
+    month: 'long',
+    
   };
   const formatter = new Intl.DateTimeFormat(locale, options);
   return formatter.format(date);

@@ -1,9 +1,10 @@
 import Image from 'next/image';
 import { UpdateClass, DeleteClass } from '@/app/ui/teacher/buttons';
+import { UpdateMatricula } from '../class/buttons';
 import InvoiceStatus from '@/app/ui/teacher/status';
-import { formatDateToLocal, formatCurrency } from '@/app/lib/utils';
-// import { fetchFilteredInvoices } from '@/app/lib/data';
+import { formatDateToLocal, formatDateToBirth } from '@/app/lib/utils';
 import { fetchRegistrationById } from '@/app/lib/api';
+import Link from 'next/link';
 
 export default async function InvoicesTable({
   id,
@@ -43,7 +44,7 @@ export default async function InvoicesTable({
                     {/* <p className="text-xl font-medium">
                       {(invoice.amount)}
                     </p> */}
-                    <p>{formatDateToLocal(matricula.aluno.data_nascimento)}</p>
+                    <p>{formatDateToBirth(matricula.aluno.data_nascimento)}</p>
                   </div>
                   <div className="flex justify-end gap-2">
                     <UpdateClass id={matricula.id} />
@@ -82,6 +83,7 @@ export default async function InvoicesTable({
                   key={matricula.id}
                   className="w-full border-b py-3 text-sm last-of-type:border-none [&:first-child>td:first-child]:rounded-tl-lg [&:first-child>td:last-child]:rounded-tr-lg [&:last-child>td:first-child]:rounded-bl-lg [&:last-child>td:last-child]:rounded-br-lg"
                 >
+                  
                   <td className="whitespace-nowrap py-3 pl-6 pr-3">
                     <div className="flex items-center gap-3">
                       <Image
@@ -101,16 +103,16 @@ export default async function InvoicesTable({
                     {matricula.aluno.municipio_nascimento}
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
-                    {formatDateToLocal(matricula.aluno.data_nascimento)}
+                    {formatDateToBirth(matricula.aluno.data_nascimento)}
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
-                    <InvoiceStatus status={matricula.status} />
+                    {matricula.status}
                   </td>
                   <td className="whitespace-nowrap py-3 pl-6 pr-3">
                     <div className="flex justify-end gap-3">
-                      <UpdateClass id={matricula.id} />
+                      <UpdateMatricula matriculaId={matricula.id} turmaId ={id} />
                       <DeleteClass id={matricula.id} />
-                    </div>
+                    </div>            
                   </td>
                 </tr>
               ))}

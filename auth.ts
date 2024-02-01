@@ -9,6 +9,7 @@ import {POST} from '@/app/lib/api'
 async function getUser(email: string): Promise<User | undefined> {
   try {
     const user = await POST(email)
+    console.log(user)
     return user
 
   } catch (error) {

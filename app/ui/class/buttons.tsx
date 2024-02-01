@@ -14,10 +14,14 @@ export function CreateInvoice() {
   );
 }
 
-export function UpdateClass({ id }: { id: string }) {
-  return (
+export function UpdateMatricula(
+  { turmaId,
+    matriculaId
+  }: { matriculaId: string, turmaId:string}) {
+  
+    return (
     <Link
-      href={`/dashboard/teacher/${id}/edit`}
+      href={`/dashboard/class/${matriculaId}/registration/${turmaId}`}
       className="rounded-md border p-2 hover:bg-gray-50"
     >
       <PencilIcon className="w-5" />
@@ -25,9 +29,14 @@ export function UpdateClass({ id }: { id: string }) {
   );
 }
 
-export function DeleteClass({ id }: { id: string }) {
-  const deleteInvoiceWithId = deleteInvoice.bind(null, id);
-  return (
+export function DeleteMatricula(
+  { turmaId,
+    matriculaId 
+  }: { matriculaId: string, turmaId:string}) {
+  
+    const deleteInvoiceWithId = deleteInvoice.bind(null, matriculaId);
+  
+    return (
     <form action={deleteInvoiceWithId}>
       <button className="rounded-md border p-2 hover:bg-gray-50">
         <span className="sr-only">Delete</span>

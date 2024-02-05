@@ -28,7 +28,7 @@ export default async function Page({ params }: { params: { id: string } }) {
         <CreateInvoice />
       </div>
       <Suspense fallback={<InvoicesTableSkeleton />}>
-        <Table id = {id} />
+        <Table id = {id}/>
       </Suspense>
       <div className="mt-5 flex w-full justify-center">
         {/* <Pagination totalPages={totalPages} />   */}

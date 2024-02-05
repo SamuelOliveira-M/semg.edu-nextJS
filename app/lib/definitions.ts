@@ -3,6 +3,8 @@
 // For simplicity of teaching, we're manually defining these types.
 // However, these types are generated automatically if you're using an ORM such as Prisma.
 
+import { number } from "prop-types";
+
 
 
 export type User = {
@@ -55,46 +57,6 @@ export type InvoicesTable = {
   amount: number;
   status: 'pending' | 'paid';
 };
-export type SchollClassTable = {
-  id: string;
-  nome: string;
-  serie: number;
-  status:string;
-  turno: string;
-  ano_letivo: SchollClassYear;
-  matriculas:RegistrationTable[];
-   
-};
-
-export type SchollClassYear = {
-  data_inicio:string
-}
-
-export type RegistrationTable = {
-  id: string;
-  numero_matricula: string;
-  status: string;
-  escolaId:string;
-  turmaId: string;
-  alunoId: studant;
-  aluno:studant
-};
-
-export type studant = {
-  nome : string
-	data_nascimento: Date
-	municipio_nascimento: string
-  uf_nascimento: string
-	cpf: string
-  url_image:string
-  responsavelId:string
-  addressId:string
-}
-
-
-
-
-
 
 export type CustomersTableType = {
   id: string;
@@ -127,3 +89,95 @@ export type InvoiceForm = {
   amount: number;
   status: 'pending' | 'paid';
 };
+
+
+
+
+
+
+export type SchollClass = {
+  nome: string
+  serie: number
+  turno: string
+  status:string
+  escolaId: string
+  ano_letivoId: string
+  ano_letivo: SchollClassYear;
+}
+
+
+export type SchollClassTable = {
+  id: string;
+  nome: string;
+  serie: number;
+  status:string;
+  turno: string;
+  ano_letivo: SchollClassYear;
+  matriculas:RegistrationTable[];
+   
+};
+
+export type SchollClassYear = {
+  id:string
+  data_inicio:string
+}
+
+export type RegistrationTable = {
+  id: string;
+  numero_matricula: string;
+  status: string;
+  escolaId:string;
+  turmaId: string;
+  alunoId: string;
+  aluno:Studant
+  turma: SchollClass
+};
+
+export type Studant = {
+  nome : string
+	data_nascimento: Date
+	municipio_nascimento: string
+  uf_nascimento: string
+	cpf: string
+  url_image:string
+  responsavelId:string
+  addressId:string
+  responsavel:Responsible
+  address:Address
+  
+}
+
+export type RegistrationList = {
+  id: string;
+  numero_matricula: string;
+  status: string;
+  escolaId:string;
+  turmaId: string;
+  alunoId: string;
+  aluno:Studant
+}
+
+export type Responsible = {
+  id:string,
+  nome_pai: string,
+	nome_mae: string,
+	telefone: number,
+	telefone_secundario: void
+}
+
+export type Address = {
+  id:string,
+  rua:string ,
+  cidade:string,
+  estado:string,
+  cep: string
+}
+export type Notes = {
+
+  
+}
+
+export type profileStudant = {
+  aluno:Studant,
+  turma:SchollClass ,
+}

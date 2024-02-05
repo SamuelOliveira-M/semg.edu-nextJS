@@ -35,6 +35,36 @@ export const formatDateToBirth = (
   return formatter.format(date);
 };
 
+export const formatlocality = (
+  city: string,
+  state: string,
+) => {
+  city = city.charAt(0).toUpperCase() + city.slice(1);
+  state = state.toUpperCase()
+
+  const formatter = city+"-"+state;
+  return formatter;
+};
+
+export const formatCpf = (
+  cpf: string,
+) => {
+  cpf = cpf.replace(/\D/g, '');
+
+  cpf = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+
+  return cpf;
+};
+
+export const formatText = (
+  text:string
+) =>{
+  text = text.charAt(0).toUpperCase() + text.slice(1);
+  return text
+}
+
+
+
 
 export const generateYAxis = (revenue: Revenue[]) => {
   // Calculate what labels we need to display on the y-axis

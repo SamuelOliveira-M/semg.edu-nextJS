@@ -96,3 +96,33 @@ export async function uniqueFetchRegistrationById(id:string){
     throw new Error('Failed to fetch invoices.');
   }
 }
+
+export async function studantProfile(id:string){
+  try{
+    const res = await fetch(`http://localhost:3333/profile/${id}`, {
+      method: 'GET',
+    });
+  
+    const data:RegistrationTable = await res.json();
+    return data;
+  
+  }catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch invoices.');
+  }
+}
+
+export async function studantProfileNotes(id:string){
+  try{
+    const res = await fetch(`http://localhost:3333/profile/notes/${id}`, {
+      method: 'GET',
+    });
+  
+    const data:RegistrationTable = await res.json();
+    return data;
+  
+  }catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch invoices.');
+  }
+}

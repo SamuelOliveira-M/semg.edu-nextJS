@@ -172,12 +172,29 @@ export type Address = {
   estado:string,
   cep: string
 }
-export type Notes = {
-
-  
+export type Note = {
+  id:string
+	nota:number
+	mes:number
+  recuperacao:boolean
+	disciplinaId: string
+	matriculaId: string
+	disciplina: Disciplina
 }
 
-export type profileStudant = {
-  aluno:Studant,
-  turma:SchollClass ,
+export type DisciplinaNotas ={
+  materia: string;
+  [mes: number]: { nota: number; recuperacao: boolean };
+}
+export type Media = {
+  media:number
+  quantidadeNotas:number
+}
+
+
+
+export type Disciplina = {
+  id:string,
+  nome:string ,
+  carga_horaria:number
 }

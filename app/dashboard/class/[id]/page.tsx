@@ -17,6 +17,7 @@ export default async function Page({ params }: { params: { id: string } }) {
   if (!schoolClass) {
     notFound();
   }
+  console.log(schoolClass)
 
   return (
     <div className="w-full">
@@ -30,9 +31,6 @@ export default async function Page({ params }: { params: { id: string } }) {
       <Suspense fallback={<InvoicesTableSkeleton />}>
         <Table id = {id}/>
       </Suspense>
-      <div className="mt-5 flex w-full justify-center">
-        {/* <Pagination totalPages={totalPages} />   */}
-      </div>
     </div>
   );
 }

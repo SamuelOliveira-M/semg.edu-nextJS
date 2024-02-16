@@ -2,9 +2,9 @@ import Image from 'next/image';
 import { UpdateClass, DeleteClass } from '@/app/ui/teacher/buttons';
 import { UpdateMatricula } from '../class/buttons';
 import InvoiceStatus from '@/app/ui/teacher/status';
-import { formatDateToLocal, formatDateToBirth } from '@/app/lib/utils';
+import { formatDateToBirth } from '@/app/lib/utils';
 import { fetchRegistrationById } from '@/app/lib/api';
-import Link from 'next/link';
+import { RegistrationTable } from '@/app/lib/definitions';
 
 export default async function InvoicesTable({
   id,

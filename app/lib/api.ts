@@ -1,16 +1,9 @@
-import { sql } from '@vercel/postgres';
-import {
-  CustomerField,
-  CustomersTableType,
-  InvoiceForm,
-  InvoicesTable,
-  LatestInvoiceRaw,
-  User,
-  Revenue,
-} from './definitions';
-import { formatCurrency } from './utils';
 import { unstable_noStore as noStore } from 'next/cache';
-import { SchollClassTable, RegistrationTable} from './definitions';
+import {
+  RegistrationTable,
+  SchollClassTable,
+  Note,
+} from './definitions';
 
 export async function login(email:string) {
 
@@ -67,7 +60,7 @@ export async function fetchFilteredClass(
 
 export async function fetchRegistrationById(id:string){
   try{
-    const res = await fetch(`http://localhost:3333/studant/${id}`, {
+    const res = await fetch(`http://localhost:3333/studante/${id}`, {
       method: 'GET',
     });
   
@@ -82,7 +75,7 @@ export async function fetchRegistrationById(id:string){
 
 export async function uniqueFetchRegistrationById(id:string){
   try{
-    const res = await fetch(`http://localhost:3333/registration/${id}`, {
+    const res = await fetch(`http://localhost:3333/profile/${id}`, {
       method: 'GET',
     });
     
@@ -114,11 +107,12 @@ export async function studantProfile(id:string){
 
 export async function studantProfileNotes(id:string){
   try{
-    const res = await fetch(`http://localhost:3333/profile/notes/${id}`, {
+    const res = await fetch(`http://localhost:3333/grade/${id}`, {
       method: 'GET',
     });
   
-    const data:RegistrationTable = await res.json();
+    const data:Note[] = await res.json();
+    
     return data;
   
   }catch (error) {

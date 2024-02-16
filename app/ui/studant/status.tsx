@@ -1,23 +1,31 @@
 import clsx from 'clsx';
+import { string } from 'prop-types';
 
-export function StudantStatus({ status }: { status: string }) {
+export function StudantStatus({ media }: { media: number }) {
+  console.log(media)
   return (
     <span
       className={clsx(
         {
-          'border-l-2  border-green-600 bg bg-green-200 p-1 rounded-r-md': status === 'Aprovado',
-          'border-l-2  border-read-600 bg bg-read-200 p-1 rounded-r-sm': status === 'Reprovado',
+          'border-l-2  border-green-600 bg bg-green-200 p-1 rounded-r-md': media > 5,
+          'border-l-2  border-read-600 bg bg-read-200 p-1 rounded-r-sm': media <6,
+          'border-l-2  border-gray-600 bg bg-gray-200 p-1 rounded-r-sm': media===0,
         },
       )}
     >
-      {status === 'Reprovado' ? (
+      {media < 6 && media>0 ? (
         <>
           Reprovado
         </>
       ) : null}
-      {status === 'Aprovado' ? (
+      {media > 5 ? (
         <>
           Aprovado
+        </>
+      ) : null}
+      {media === 0 ? (
+        <>
+          Cursando
         </>
       ) : null}
     </span>
@@ -26,14 +34,18 @@ export function StudantStatus({ status }: { status: string }) {
 
 export function CheckPassingGrade({ nota }: { nota: number }) {
 
-	const checkGrade: () => "Reprovado" | "Aprovado" = () => {
+	const checkGrade: () => "Reprovado" | "Aprovado" | "Vazio" = () => {
+    
+    if(nota===0){
+      return 'Vazio'
+    }
 		if(nota>=6){
 			return 'Aprovado'
 		}
 		return 'Reprovado'
 	}
 
-	const status: "Reprovado" | "Aprovado" = checkGrade()
+	const status: "Reprovado" | "Aprovado" | "Vazio"= checkGrade()
 
   return (
     <span
@@ -47,12 +59,17 @@ export function CheckPassingGrade({ nota }: { nota: number }) {
     >
       {status === 'Reprovado' ? (
         <>
-          {nota}
+          {nota.toFixed(1)}
         </>
       ) : null}
       {status === 'Aprovado' ? (
         <>
-          {nota}
+          {nota.toFixed(1)}
+        </>
+      ) : null}
+      {status === 'Vazio' ? (
+        <>
+          
         </>
       ) : null}
     </span>

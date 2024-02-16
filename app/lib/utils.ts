@@ -1,4 +1,7 @@
+import { number } from 'prop-types';
 import { Revenue } from './definitions';
+import { DisciplinaNotas,Note} from "@/app/lib/definitions";
+
 
 export const formatCurrency = (amount: number) => {
   return (amount / 100).toLocaleString('en-US', {
@@ -62,6 +65,75 @@ export const formatText = (
   text = text.charAt(0).toUpperCase() + text.slice(1);
   return text
 }
+
+export const formatMonthName = (
+  monthNumber: number,
+  locale: string = 'pt-BR',
+): string => {
+  const date = new Date();
+  date.setMonth(monthNumber - 1); // Os meses começam em 0 no JavaScript
+
+  const options: Intl.DateTimeFormatOptions = {
+    month: 'short', // Abreviação do mês
+  };
+
+  const formatter = new Intl.DateTimeFormat(locale, options);
+  const monthName = formatter.format(date);
+  console.log(monthName)
+
+  return monthName.toUpperCase();
+};
+
+export const mediaGeral = (disciplina:DisciplinaNotas):number=>{
+  let notas:number[] = []
+
+  for (const key in disciplina) {
+    if (Object.prototype.hasOwnProperty.call(disciplina, key)) {
+      const value = disciplina[key];
+      if(typeof(value.nota) === 'number'){
+        notas.push(value.nota)
+      }
+    }
+  }
+
+  if(notas.length>7){
+    const media = notas.length > 0 ? notas.reduce((acc, val) => acc + val, 0) / 8 : 0;
+    return media
+  }
+  return 0
+}
+
+
+export const organizarNotasPorDisciplina = (notas: Note[]): DisciplinaNotas[] => {
+  const notasPorDisciplina: DisciplinaNotas[] = [];
+
+  notas.forEach(nota => {
+    const nomeDisciplina = nota.disciplina.nome;
+
+    const disciplinaExistente = notasPorDisciplina.find(disciplina => disciplina.materia === nomeDisciplina);
+
+    if (disciplinaExistente) {
+      disciplinaExistente[nota.mes] = {
+        nota: nota.nota,
+        recuperacao: nota.recuperacao,
+      };
+    } else {
+      const novaDisciplina: DisciplinaNotas = {
+        materia: nomeDisciplina,
+        [nota.mes]: {
+          nota: nota.nota,
+          recuperacao: nota.recuperacao,
+        },
+      };
+      notasPorDisciplina.push(novaDisciplina);
+    }
+  });
+
+  return notasPorDisciplina;
+};
+
+
+
 
 
 

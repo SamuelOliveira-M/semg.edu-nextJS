@@ -1,4 +1,3 @@
-import { Note,DisciplinaNotas } from "@/app/lib/definitions";
 import { CheckPassingGrade,StudantStatus } from "./status";
 import { formatText,mediaGeral,organizarNotasPorDisciplina } from "@/app/lib/utils";
 
@@ -9,9 +8,7 @@ export default async function LinhaGrade({ id }: {id:string}) {
   
   
   const dataGrade =  await studantProfileNotes(id)
-  
-  const notasOrganizadas = organizarNotasPorDisciplina(dataGrade);
-  
+  console.log(dataGrade)
   const headers = [
     'Matéria', 'MAR', 'ABR', 'MAI', 'JUN', '1ºRS', 'AGO', 'SET', 'OUT', 'NOV', '2ºRS', 'PF', 'MF', 'Resultado'
   ];
@@ -28,88 +25,49 @@ export default async function LinhaGrade({ id }: {id:string}) {
         </thead>
 
         <tbody className="bg-white text-center">
-          {notasOrganizadas.map((disciplina) => (
+          {dataGrade.map((disciplina) => (
             <tr key={3} className="w-full border-b py-3 text-sm last-of-type:border-none">
               <td className="whitespace-nowrap p-2 border">
                 {formatText(disciplina.materia ? disciplina.materia : '')}
               </td>
               <td className="whitespace-nowrap p-2 border">
-                <CheckPassingGrade
-                  nota= {disciplina[3] ? disciplina[3].nota : 0}
-                >
-                </CheckPassingGrade>
+                {CheckPassingGrade(disciplina.marco ? disciplina.marco :0)}
               </td>
               <td className="whitespace-nowrap p-2 border">
-              <CheckPassingGrade
-                  nota= {disciplina[4] ? disciplina[4].nota : 0}
-                >
-                </CheckPassingGrade>
+                {CheckPassingGrade(disciplina.abril ? disciplina.abril :0)}
               </td>
               <td className="whitespace-nowrap p-2 border">
-                <CheckPassingGrade
-                  nota= {disciplina[5] ? disciplina[5].nota : 0}
-                >
-                </CheckPassingGrade>  
+                {CheckPassingGrade(disciplina.maio ? disciplina.maio :0)}
               </td>
               <td className="whitespace-nowrap p-2 border">
-                <CheckPassingGrade
-                  nota= {disciplina[6] ? disciplina[6].nota : 0}
-                >
-                </CheckPassingGrade>
+                {CheckPassingGrade(disciplina.junho ? disciplina.junho :0)}
               </td>
               <td className="whitespace-nowrap p-2 border">
-                <CheckPassingGrade
-                  nota= {disciplina[7] ? disciplina[7].nota : 0}
-                >
-                </CheckPassingGrade>
+                {CheckPassingGrade(disciplina.recup1 ? disciplina.recup1 :0)}
               </td>
               <td className="whitespace-nowrap p-2 border">
-                <CheckPassingGrade
-                  nota= {disciplina[8] ? disciplina[8].nota : 0}
-                >
-                </CheckPassingGrade>
+                {CheckPassingGrade(disciplina.agosto ? disciplina.agosto :0)}
               </td>
               <td className="whitespace-nowrap p-2 border">
-                <CheckPassingGrade
-                  nota= {disciplina[9] ? disciplina[9].nota : 0}
-                >
-                </CheckPassingGrade>
+                {CheckPassingGrade(disciplina.setembro ? disciplina.setembro :0)}
               </td>
               <td className="whitespace-nowrap p-2 border">
-                <CheckPassingGrade
-                  nota= {disciplina[10] ? disciplina[10].nota : 0}
-                >
-                </CheckPassingGrade>
+                {CheckPassingGrade(disciplina.outubro ? disciplina.outubro :0)}
               </td>
               <td className="whitespace-nowrap p-2 border">
-                <CheckPassingGrade
-                  nota= {disciplina[11] ? disciplina[11].nota : 0}
-                >
-                </CheckPassingGrade>
+                {CheckPassingGrade(disciplina.novembro ? disciplina.novembro :0)}
               </td>
               <td className="whitespace-nowrap p-2 border">
-                <CheckPassingGrade
-                  nota= {disciplina[12] ? disciplina[12].nota : 0}
-                >
-                </CheckPassingGrade>
+                {CheckPassingGrade(disciplina.recup2 ? disciplina.recup2 :0)}
               </td>
               <td className="whitespace-nowrap p-2 border">
-                <CheckPassingGrade
-                  nota= {disciplina[13] ? disciplina[13].nota : 0}
-                >
-                </CheckPassingGrade>
+                {CheckPassingGrade(disciplina.provaFinal ? disciplina.provaFinal :0)}
               </td>
               <td className="whitespace-nowrap p-2 border">
-                <CheckPassingGrade
-                  nota= {mediaGeral(disciplina)}
-                >
-                </CheckPassingGrade>
+                {CheckPassingGrade(disciplina.provaFinal ? disciplina.provaFinal :0)}
               </td>
               <td className="whitespace-nowrap p-2 border">
-              <StudantStatus 
-                media={mediaGeral(disciplina)}
-              >
-              </StudantStatus>        
+                {CheckPassingGrade(disciplina.provaFinal ? disciplina.provaFinal :0)}
               </td>
             </tr>
           ))}

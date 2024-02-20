@@ -1,9 +1,7 @@
-import { Suspense } from "react";
-import ProfilePicture from "@/app/ui/profile-picture";
-import { uniqueFetchRegistrationById } from "@/app/lib/api";
-import notFound from "@/app/dashboard/teacher/[id]/edit/not-found";
 import TableRecord from "@/app/ui/studant/table-record";
 import ListDescription from "@/app/ui/studant/list-description"; 
+
+import LinhaGrade from "@/app/ui/studant/table-records";
 
 export default async function Page({ params }: { params: { id: string } }) {
   
@@ -16,7 +14,7 @@ export default async function Page({ params }: { params: { id: string } }) {
       <ListDescription id={id}></ListDescription>
       
       <h2 className="mb-6 text-xl md:text-1xl"><strong>Redimento</strong></h2>
-      <TableRecord id={id}></TableRecord>
+      <LinhaGrade id={id}></LinhaGrade>
       
       <td className="whitespace-nowrap py-3 pl-6 pr-3">    
       </td>

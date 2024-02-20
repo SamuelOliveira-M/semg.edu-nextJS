@@ -32,7 +32,7 @@ export function StudantStatus({ media }: { media: number }) {
   );
 }
 
-export function CheckPassingGrade({ nota }: { nota: number }) {
+export function CheckPassingGrade(nota: number ) {
 
 	const checkGrade: () => "Reprovado" | "Aprovado" | "Vazio" = () => {
     

@@ -2,7 +2,7 @@ import { unstable_noStore as noStore } from 'next/cache';
 import {
   RegistrationTable,
   SchollClassTable,
-  Note,
+  SubjectOfGrade,
 } from './definitions';
 
 export async function login(email:string) {
@@ -107,11 +107,11 @@ export async function studantProfile(id:string){
 
 export async function studantProfileNotes(id:string){
   try{
-    const res = await fetch(`http://localhost:3333/grade/${id}`, {
+    const res = await fetch(`http://localhost:3333/grades/${id}`, {
       method: 'GET',
     });
   
-    const data:Note[] = await res.json();
+    const data:SubjectOfGrade[] = await res.json();
     
     return data;
   

@@ -3,6 +3,7 @@
 // For simplicity of teaching, we're manually defining these types.
 // However, these types are generated automatically if you're using an ORM such as Prisma.
 
+import { table } from "console";
 import { number } from "prop-types";
 
 
@@ -189,6 +190,30 @@ export type DisciplinaNotas ={
 export type Media = {
   media:number
   quantidadeNotas:number
+}
+
+export type SubjectOfGrade = {
+  materia: string;
+  marco: number;
+  abril: number;
+  maio: number;
+  junho: number;
+  recup1: number;
+  agosto: number;
+  setembro: number;
+  outubro: number;
+  novembro: number;
+  recup2: number;
+  media: number;
+	provaFinal: number;
+}
+
+export type Avaliacao = {
+  id: string,
+  tipo: string,
+  nota: number,
+  mes: number,
+  semestre: number
 }
 
 

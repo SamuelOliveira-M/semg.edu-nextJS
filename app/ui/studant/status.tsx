@@ -1,29 +1,28 @@
 import clsx from 'clsx';
 import { string } from 'prop-types';
 
-export function StudantStatus({ media }: { media: number }) {
-  console.log(media)
+export function StudantStatus( Resultado:string ) {
   return (
     <span
       className={clsx(
         {
-          'border-l-2  border-green-600 bg bg-green-200 p-1 rounded-r-md': media > 5,
-          'border-l-2  border-read-600 bg bg-read-200 p-1 rounded-r-sm': media <6,
-          'border-l-2  border-gray-600 bg bg-gray-200 p-1 rounded-r-sm': media===0,
+          'border-l-2  border-green-600 bg bg-green-200 p-1 rounded-r-md': Resultado === "Aprovadp",
+          'border-l-2  border-read-600 bg bg-read-200 p-1 rounded-r-sm': Resultado === "Reprovado",
+          'border-l-2  border-gray-600 bg bg-gray-200 p-1 rounded-r-sm': Resultado==="Cursando",
         },
       )}
     >
-      {media < 6 && media>0 ? (
+      {Resultado === "Reprovado" ? (
         <>
           Reprovado
         </>
       ) : null}
-      {media > 5 ? (
+      {Resultado === "Aprovado" ? (
         <>
           Aprovado
         </>
       ) : null}
-      {media === 0 ? (
+      {Resultado === "Cursando" ? (
         <>
           Cursando
         </>

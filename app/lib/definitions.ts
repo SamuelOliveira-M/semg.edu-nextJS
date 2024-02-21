@@ -194,6 +194,7 @@ export type Media = {
 
 export type SubjectOfGrade = {
   materia: string;
+  aprovacao:string;
   marco: number;
   abril: number;
   maio: number;

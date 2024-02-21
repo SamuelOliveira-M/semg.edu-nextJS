@@ -107,7 +107,7 @@ export async function studantProfile(id:string){
 
 export async function studantProfileNotes(id:string){
   try{
-    const res = await fetch(`http://localhost:3333/grades/${id}`, {
+    const res = await fetch(`http://localhost:3333/avaliacao/${id}`, {
       method: 'GET',
     });
   

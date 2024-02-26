@@ -1,10 +1,10 @@
 import Image from 'next/image';
-import { UpdateClass, DeleteClass } from '@/app/ui/teacher/buttons';
+import { UpdateClass, DeleteClass } from '@/app/ui/class/buttons';
 import { UpdateMatricula } from '../class/buttons';
 import InvoiceStatus from '@/app/ui/teacher/status';
 import { formatDateToBirth } from '@/app/lib/utils';
 import { fetchRegistrationById } from '@/app/lib/api';
-import { RegistrationTable } from '@/app/lib/definitions';
+
 
 export default async function InvoicesTable({
   id,

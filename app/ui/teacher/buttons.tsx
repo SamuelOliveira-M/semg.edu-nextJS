@@ -1,4 +1,4 @@
-import { PencilIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline';
+import { EyeIcon, PlusIcon, TrashIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { deleteInvoice } from '@/app/lib/actions';
 
@@ -14,18 +14,18 @@ export function CreateInvoice() {
   );
 }
 
-export function UpdateClass({ id }: { id: string }) {
+export function ToViewTeacher({ id }: { id: string }) {
   return (
     <Link
-      href={`/dashboard/teacher/${id}/edit`}
+      href={`/dashboard/teacher/${id}`}
       className="rounded-md border p-2 hover:bg-gray-50"
     >
-      <PencilIcon className="w-5" />
+      <EyeIcon className="w-5" />
     </Link>
   );
 }
 
-export function DeleteClass({ id }: { id: string }) {
+export function DeleteTeacher({ id }: { id: string }) {
   const deleteInvoiceWithId = deleteInvoice.bind(null, id);
   return (
     <form action={deleteInvoiceWithId}>

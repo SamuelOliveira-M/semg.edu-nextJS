@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { UpdateClass, DeleteClass } from '@/app/ui/teacher/buttons';
+import { ToViewTeacher, DeleteClass } from '@/app/ui/teacher/buttons';
 import { formatDateToBirth, formatCpf } from '@/app/lib/utils';
 import { reqTeachers } from '@/app/lib/api';
  
@@ -60,7 +60,7 @@ export default async function InvoicesTable() {
                   </td>
                   <td className="whitespace-nowrap py-3 pl-6 pr-3">
                     <div className="flex justify-end gap-3">
-                      <UpdateClass id={teacher.id} />
+                      <ToViewTeacher id={teacher.id} />
                       <DeleteClass id={teacher.id} />
                     </div>
                   </td>

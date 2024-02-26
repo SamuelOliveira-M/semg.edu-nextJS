@@ -1,10 +1,9 @@
-import { UpdateClass, DeleteClass } from '@/app/ui/teacher/buttons';
+import { UpdateClass, DeleteClass } from '@/app/ui/class/buttons';
 import InvoiceStatus from '@/app/ui/teacher/status';
-import { formatDateToLocal, formatCurrency } from '@/app/lib/utils';
-import { fetchFilteredInvoices } from '@/app/lib/data';
+import { formatDateToLocal } from '@/app/lib/utils';
 import {fetchFilteredClass} from '@/app/lib/api'
 
-import { Card, Metric, Text, Title, BarList, Flex, Grid } from '@tremor/react';
+import { Grid } from '@tremor/react';
 import Link from 'next/link';
 
 export default async function InvoicesCard() {

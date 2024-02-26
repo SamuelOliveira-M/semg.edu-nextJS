@@ -7,13 +7,10 @@ import {fetchFilteredClass} from '@/app/lib/api'
 import { Card, Metric, Text, Title, BarList, Flex, Grid } from '@tremor/react';
 import Link from 'next/link';
 
-export default async function InvoicesCard({
-  currentPage,
-}: {
-  currentPage: number;
-}) {
+export default async function InvoicesCard() {
   
-  const classrooms = await fetchFilteredClass(currentPage)
+  const classrooms = await fetchFilteredClass()
+  
   return (
     <div className="rounded-lg bg-gray-50 p-4 md:pt-0">
       <Grid numItemsSm={2} numItemsLg={30} className="gap-6">

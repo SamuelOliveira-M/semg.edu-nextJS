@@ -40,12 +40,10 @@ export async function   POST(email:string) {
 
 
 const ITEMS_PER_PAGE = 14
-export async function fetchFilteredClass(
-  currentPage: number
-) {
+export async function fetchFilteredClass() {
+  
   noStore();
-  const offset = (currentPage - 1) * ITEMS_PER_PAGE;
-
+  
   try {
     const schoolClass = await fetch('http://localhost:3333/class', {
       method: 'GET',

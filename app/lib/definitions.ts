@@ -224,3 +224,14 @@ export type Disciplina = {
   nome:string ,
   carga_horaria:number
 }
+
+
+export type Teacher = {
+  id: string      
+  nome: string
+  cpf: string 
+  email: string
+  senha: string
+  data_nascimento: Date  
+  url_image:string  
+}

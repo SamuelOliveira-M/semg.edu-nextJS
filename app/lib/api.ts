@@ -3,6 +3,7 @@ import {
   RegistrationTable,
   SchollClassTable,
   SubjectOfGrade,
+  Teacher
 } from './definitions';
 
 export async function login(email:string) {
@@ -23,7 +24,7 @@ export async function login(email:string) {
 
 
 
-export async function   POST(email:string) {
+export async function POST(email:string) {
 
   const res = await fetch('http://localhost:3333/professo', {
     method: 'POST',
@@ -39,7 +40,6 @@ export async function   POST(email:string) {
 }
 
 
-const ITEMS_PER_PAGE = 14
 export async function fetchFilteredClass() {
   
   noStore();
@@ -118,3 +118,20 @@ export async function studantProfileNotes(id:string){
     throw new Error('Failed to fetch invoices.');
   }
 }
+
+export async function reqTeachers(){
+  try{
+    const res = await fetch(`http://localhost:3333/teacherstt`, {
+      method: 'GET',
+    });
+  
+    const data:Teacher[] = await res.json();
+    
+    return data;
+  
+  }catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch invoices.');
+  }
+}
+

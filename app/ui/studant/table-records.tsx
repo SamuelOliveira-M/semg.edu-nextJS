@@ -6,7 +6,6 @@ import { studantProfileNotes } from "@/app/lib/api";
 
 export default async function LinhaGrade({ id }: {id:string}) {
   
-  
   const dataGrade =  await studantProfileNotes(id)
   
   const headers = [

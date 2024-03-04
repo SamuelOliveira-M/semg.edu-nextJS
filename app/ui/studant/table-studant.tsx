@@ -2,9 +2,8 @@ import Image from 'next/image';
 import { UpdateClass, DeleteClass } from '@/app/ui/class/buttons';
 import { UpdateMatricula } from '../class/buttons';
 import InvoiceStatus from '@/app/ui/teacher/status';
-import { formatDateToBirth } from '@/app/lib/utils';
 import { fetchRegistrationById } from '@/app/lib/api';
-
+import { Grid } from '@tremor/react';
 
 export default async function StudantTable({
   id,
@@ -14,7 +13,7 @@ export default async function StudantTable({
   const matriculas = await fetchRegistrationById(id);
 
   return (
-    <div className="mt-6 flow-root">
+    <div className="w-full md:col-span-4">
       <div className="inline-block min-w-full align-middle">
         <div className="rounded-lg bg-gray-50 p-2 md:pt-0">
           <div className="md:hidden">
@@ -35,17 +34,10 @@ export default async function StudantTable({
                       />
                       <p>{matricula.aluno.nome}</p>
                     </div>
-                    <p className="text-sm text-gray-500">{matricula.aluno.cpf}</p>
                   </div>
                   <InvoiceStatus status={matricula.status} />
                 </div>
                 <div className="flex w-full items-center justify-between pt-4">
-                  <div>
-                    {/* <p className="text-xl font-medium">
-                      {(invoice.amount)}
-                    </p> */}
-                    <p>{formatDateToBirth(matricula.aluno.data_nascimento)}</p>
-                  </div>
                   <div className="flex justify-end gap-2">
                     <UpdateClass id={matricula.id} />
                     <DeleteClass id={matricula.id} />
@@ -61,16 +53,7 @@ export default async function StudantTable({
                   Aluno
                 </th>
                 <th scope="col" className="px-3 py-5 font-medium">
-                  Cpf
-                </th>
-                <th scope="col" className="px-3 py-5 font-medium">
                   Localidade
-                </th>
-                <th scope="col" className="px-3 py-5 font-medium">
-                  Date de Nascimento
-                </th>
-                <th scope="col" className="px-3 py-5 font-medium">
-                  Status
                 </th>
                 <th scope="col" className="relative py-3 pl-6 pr-3">
                   <span className="sr-only">Edit</span>
@@ -97,16 +80,7 @@ export default async function StudantTable({
                     </div>
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
-                    {matricula.aluno.cpf}
-                  </td>
-                  <td className="whitespace-nowrap px-3 py-3">
                     {matricula.aluno.municipio_nascimento}
-                  </td>
-                  <td className="whitespace-nowrap px-3 py-3">
-                    {formatDateToBirth(matricula.aluno.data_nascimento)}
-                  </td>
-                  <td className="whitespace-nowrap px-3 py-3">
-                    {matricula.status}
                   </td>
                   <td className="whitespace-nowrap py-3 pl-6 pr-3">
                     <div className="flex justify-end gap-3">

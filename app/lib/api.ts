@@ -3,7 +3,8 @@ import {
   RegistrationTable,
   SchollClassTable,
   SubjectOfGrade,
-  Teacher
+  Teacher,
+  SubjectOfTeacher
 } from './definitions';
 
 export async function login(email:string) {
@@ -58,11 +59,11 @@ export async function fetchFilteredClass() {
 
 export async function fetchRegistrationById(id:string){
   try{
-    const res = await fetch(`http://localhost:3333/studante/${id}`, {
+    const res = await fetch(`http://localhost:3333/studantee/${id}`, {
       method: 'GET',
     });
   
-    const data:RegistrationTable= await res.json();
+    const data:RegistrationTable[]= await res.json();
     return data;
   
   }catch (error) {
@@ -135,3 +136,18 @@ export async function reqTeachers(){
   }
 }
 
+export async function reqSubjectAndTeacher(id:string){
+  try{
+    const res = await fetch(`http://localhost:3333/testtt/${id}`, {
+      method: 'GET',
+    });
+  
+    const data:SubjectOfTeacher = await res.json();
+    
+    return data;
+  
+  }catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch invoices.');
+  }
+}

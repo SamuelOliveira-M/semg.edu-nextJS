@@ -1,6 +1,6 @@
 import Pagination from '@/app/ui/teacher/pagination';
 import Search from '@/app/ui/search';
-import Table from '@/app/ui/teacher/table';
+import Table from '@/app/ui/teacher/table-teachers';
 import { CreateInvoice } from '@/app/ui/teacher/buttons';
 import { lusitana } from '@/app/ui/fonts';
 import { Suspense } from 'react';

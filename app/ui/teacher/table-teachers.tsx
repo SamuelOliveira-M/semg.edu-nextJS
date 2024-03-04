@@ -1,9 +1,9 @@
 import Image from 'next/image';
-import { ToViewTeacher, DeleteClass } from '@/app/ui/teacher/buttons';
+import { ToViewTeacher, DeleteTeacher } from '@/app/ui/teacher/buttons';
 import { formatDateToBirth, formatCpf } from '@/app/lib/utils';
 import { reqTeachers } from '@/app/lib/api';
  
-export default async function InvoicesTable() {
+export default async function TeacherTable() {
   
   const teachers = await reqTeachers();
 
@@ -61,7 +61,7 @@ export default async function InvoicesTable() {
                   <td className="whitespace-nowrap py-3 pl-6 pr-3">
                     <div className="flex justify-end gap-3">
                       <ToViewTeacher id={teacher.id} />
-                      <DeleteClass id={teacher.id} />
+                      <DeleteTeacher id={teacher.id} />
                     </div>
                   </td>
                 </tr>

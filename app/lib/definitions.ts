@@ -217,14 +217,11 @@ export type Avaliacao = {
   semestre: number
 }
 
-
-
 export type Disciplina = {
   id:string,
   nome:string ,
   carga_horaria:number
 }
-
 
 export type Teacher = {
   id: string      
@@ -234,4 +231,12 @@ export type Teacher = {
   senha: string
   data_nascimento: Date  
   url_image:string  
+}
+
+export type SubjectOfTeacher = {
+  disciplinasTurmas:[{
+    professor:Teacher,
+    disciplina: Disciplina
+  }
+  ]
 }

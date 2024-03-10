@@ -1,23 +1,24 @@
-import LatestInvoices from '@/app/ui/dashboard/latest-teacher';
-import { Suspense } from 'react';
-import Card from '@/app/ui/teacher/cards'; 
-
+import ListDescription from "@/app/ui/teacher/list-description"; 
+import InvoicesCard from "@/app/ui/class/cards";
+import SchoolClassCard from "@/app/ui/teacher/teacher-classses-cards";
 
 export default async function Page({ params }: { params: { id: string } }) {
   
-  const id = params.id;
+  const id = params.id;   
 
-	return(
-		<div className="">	
-			<Card/>
-			<div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-4 lg:grid-cols-8">
-				<Suspense>
-					<LatestInvoices />
-				</Suspense>
-				<Suspense>
-					<LatestInvoices />
-				</Suspense>
-			</div>
-    </div>
-	)
+  return (
+    <main>
+
+      <h2 className="mb-6 text-xl md:text-1xl"><strong>Perfil do Professor</strong></h2>
+      <ListDescription id={id}></ListDescription>
+      
+      <h2 className="mb-6 text-xl md:text-1xl"><strong>Turmas</strong></h2>
+      <SchoolClassCard id={id}></SchoolClassCard>
+      
+      
+      <td className="whitespace-nowrap py-3 pl-6 pr-3">    
+      </td>
+    </main>
+  )  
 }
+

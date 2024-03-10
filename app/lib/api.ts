@@ -4,7 +4,8 @@ import {
   SchollClassTable,
   SubjectOfGrade,
   Teacher,
-  SubjectOfTeacher
+  SubjectOfTeacher,
+  TeacherClasses
 } from './definitions';
 
 export async function login(email:string) {
@@ -136,14 +137,43 @@ export async function reqTeachers(){
   }
 }
 
+export async function reqTeacher(id:string){
+  try{
+    const res = await fetch(`http://localhost:3333/teacherProfile/${id}`, {
+      method: 'GET',
+    });
+  
+    const data:Teacher = await res.json();
+    return data;
+  
+  }catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch invoices.');
+  }
+}
+
 export async function reqSubjectAndTeacher(id:string){
   try{
-    const res = await fetch(`http://localhost:3333/testtt/${id}`, {
+    const res = await fetch(`http://localhost:3333/t/${id}`, {
       method: 'GET',
     });
   
     const data:SubjectOfTeacher = await res.json();
-    
+    return data;
+  
+  }catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch invoices.');
+  }
+}
+
+export async function test(id:string){
+  try{
+    const res = await fetch(`http://localhost:3333/tumasdoprofessorrr/${id}`, {
+      method: 'GET',
+    });
+  
+    const data:TeacherClasses= await res.json();
     return data;
   
   }catch (error) {

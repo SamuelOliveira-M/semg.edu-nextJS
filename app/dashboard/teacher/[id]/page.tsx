@@ -7,18 +7,9 @@ export default async function Page({ params }: { params: { id: string } }) {
   const id = params.id;   
 
   return (
-    <main>
-
-      <h2 className="mb-6 text-xl md:text-1xl"><strong>Perfil do Professor</strong></h2>
-      <ListDescription id={id}></ListDescription>
-      
-      <h2 className="mb-6 text-xl md:text-1xl"><strong>Turmas</strong></h2>
-      <SchoolClassCard id={id}></SchoolClassCard>
-      
-      
-      <td className="whitespace-nowrap py-3 pl-6 pr-3">    
-      </td>
-    </main>
+    <>
+    <h1>Tela Com todos os alunos e as disciplinas da quele profesor na quela turma </h1>
+    </>
   )  
 }
 

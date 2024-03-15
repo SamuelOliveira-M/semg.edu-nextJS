@@ -24,7 +24,7 @@ export default async function StudantTable({
             return (
               <Link 
               key={studant.id}
-              href={`/dashboard/teacher/${studant.id}`}
+              href={`/dashboard/class/${id}/registration/${studant.id}`}
               >
                 <div
                   key={studant.id}

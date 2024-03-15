@@ -1,7 +1,6 @@
-// import TableRecord from "@/app/ui/studant/table-record";
 import ListDescription from "@/app/ui/studant/list-description"; 
-
 import LinhaGrade from "@/app/ui/studant/table-records";
+
 
 export default async function Page({ params }: { params: { id: string } }) {
   

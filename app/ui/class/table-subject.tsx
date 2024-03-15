@@ -25,7 +25,7 @@ export default async function TableSubject({
             return (
               <Link 
               key={teacher.professor.id}
-              href={`/dashboard/class/${teacher.professor.id}`}
+              href={`/dashboard/teacher/${teacher.professor.id}`}
               >  
                 <div
                   key={teacher.professor.id}

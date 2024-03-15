@@ -22,7 +22,7 @@ export default async function ListDescription({ id }: {id:string}){
 
 	return(
 		<>
-			<div className="flex flex-col sm:flex-row items-center m-8 ">
+			<div className="flex flex-col sm:flex-row items-center m-8  ">
         <Suspense fallback={<p>....</p>}>
           <ProfilePicture imageUrl={img}/>
         </Suspense>

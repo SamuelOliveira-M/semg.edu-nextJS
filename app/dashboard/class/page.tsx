@@ -3,7 +3,7 @@ import Search from '@/app/ui/search';
 import { CreateInvoice } from '@/app/ui/teacher/buttons';
 import { Suspense } from 'react';
 import { InvoicesTableSkeleton } from '@/app/ui/skeletons';
-import Cart from '@/app/ui/class/cards';
+import Cart from '@/app/ui/teacher/cards';
 
 export default async function PlaygroundPage() {
   

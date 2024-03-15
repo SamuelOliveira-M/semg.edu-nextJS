@@ -3,7 +3,7 @@ import TableSubject from'@/app/ui/class/table-subject'
 import { Suspense } from 'react';
 import { fetchRegistrationById } from '@/app/lib/api';
 import { notFound } from 'next/navigation';
-import Card from '@/app/ui/teacher/cards';
+import Card from '@/app/ui/class/banner-class';
 import { RevenueChartSkeleton } from '@/app/ui/skeletons';
 import { LatestInvoicesSkeleton } from '@/app/ui/skeletons';
 

@@ -3,7 +3,7 @@ import Search from '@/app/ui/search';
 import { CreateInvoice } from '@/app/ui/teacher/buttons';
 import { Suspense } from 'react';
 import { InvoicesTableSkeleton } from '@/app/ui/skeletons';
-import Cart from '@/app/ui/teacher/cards';
+import CardClass from '@/app/ui/class/card-class';
 
 export default async function PlaygroundPage() {
   
@@ -16,7 +16,7 @@ export default async function PlaygroundPage() {
         </div>
         <div>
           <Suspense fallback={<InvoicesTableSkeleton />}>
-            <Cart/>
+            <CardClass/>
           </Suspense>
         </div>  
       </div>

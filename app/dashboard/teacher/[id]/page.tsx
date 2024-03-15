@@ -1,5 +1,5 @@
 import ListDescription from "@/app/ui/teacher/list-description"; 
-import InvoicesCard from "@/app/ui/teacher/cards";
+import InvoicesCard from "@/app/ui/class/banner-class";
 import SchoolClassCard from "@/app/ui/teacher/teacher-classses-cards";
 
 export default async function Page({ params }: { params: { id: string } }) {

@@ -6,7 +6,7 @@ import {fetchFilteredClass} from '@/app/lib/api'
 import { Grid } from '@tremor/react';
 import Link from 'next/link';
 
-export default async function InvoicesCard() {
+export default async function CardClass() {
   
   const classrooms = await fetchFilteredClass()
   

@@ -1,5 +1,4 @@
-import ListDescription from "@/app/ui/teacher/list-description"; 
-import InvoicesCard from "@/app/ui/class/banner-class";
+import BannerTeacher from "@/app/ui/teacher/banner-teacher";
 import SchoolClassCard from "@/app/ui/teacher/teacher-classses-cards";
 
 export default async function Page({ params }: { params: { id: string } }) {
@@ -8,7 +7,10 @@ export default async function Page({ params }: { params: { id: string } }) {
 
   return (
     <>
-    <h1>Tela Com todos os alunos e as disciplinas da quele profesor na quela turma </h1>
+      <div className="border-b border-gray-300 mb-4">
+        <BannerTeacher id={id}></BannerTeacher>
+      </div>
+      <SchoolClassCard id={id}></SchoolClassCard>
     </>
   )  
 }

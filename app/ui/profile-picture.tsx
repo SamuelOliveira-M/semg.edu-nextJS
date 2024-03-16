@@ -5,7 +5,7 @@ import Image from 'next/image';
 export default function ProfilePicture({ imageUrl }: { imageUrl: string }) {
   return (
     
-    <div className={`${lusitana.className} flex flex-row items-center leading-none text-white mr-10 mb-4`}>
+    <div className={`${lusitana.className} flex flex-row items-center leading-none text-white`}>
       <Image
         src={imageUrl}
         width={125}  

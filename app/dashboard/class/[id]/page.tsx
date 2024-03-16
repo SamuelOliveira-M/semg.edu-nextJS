@@ -3,7 +3,7 @@ import TableSubject from'@/app/ui/class/table-subject'
 import { Suspense } from 'react';
 import { fetchRegistrationById } from '@/app/lib/api';
 import { notFound } from 'next/navigation';
-import Card from '@/app/ui/class/banner-class';
+import BannerClass from '@/app/ui/class/banner-class';
 import { RevenueChartSkeleton } from '@/app/ui/skeletons';
 import { LatestInvoicesSkeleton } from '@/app/ui/skeletons';
 
@@ -21,7 +21,7 @@ export default async function Page({ params }: { params: { id: string } }) {
 
   return (
     <div>	
-      <Card/>
+      <BannerClass/>
       
       <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-4 lg:grid-cols-8">
         <Suspense fallback={<RevenueChartSkeleton />}>

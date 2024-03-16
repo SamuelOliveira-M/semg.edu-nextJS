@@ -13,7 +13,7 @@ export default async function BannerClass() {
   return (
 
     <div className="class-card bg-blue-900 p-8 rounded-lg shadow-md max-w mx-auto flex">
-      <div className="flex-1 mt-2">
+      <div className=" flex items-center flex-1 mt-2 ">
         <div>
         <h1 className="text-2xl mb-4 text-white font-semibold"><strong>8º ano B - Manhã - 2024</strong></h1>
         <h3 className="text-lg mb-2 text-white">Joaquim Antônio de Araújo</h3>      
@@ -23,8 +23,8 @@ export default async function BannerClass() {
         <Image 
           src="/sala3.png" 
           alt="Imagem da turma" 
-          width={170}
-          height={200}
+          width={150}
+          height={180}
         />
       </div>
     </div>

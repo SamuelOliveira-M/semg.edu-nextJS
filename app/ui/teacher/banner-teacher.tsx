@@ -4,7 +4,7 @@ import { Suspense } from "react";
 import ProfilePicture from "@/app/ui/profile-picture";
 import notFound from "@/app/dashboard/teacher/[id]/edit/not-found";
 import { EnvelopeIcon } from "@heroicons/react/24/outline";
-import { Grid } from '@tremor/react';
+import Image from "next/image";
 
 export default async function BannerTeacher({ id }: {id:string}){
 
@@ -17,8 +17,8 @@ export default async function BannerTeacher({ id }: {id:string}){
 
 	return(
 		<>
-			<div className="bg-gray-50 shadow-lg p-4 rounded-lg mb-8 flex flex-col sm:flex-row border-r-2">
-				<div className="flex flex-col sm:flex-row items-center p-4 border-r-0 sm:border-r">
+			<div className="bg-gray-50 shadow-lg p-4 rounded-lg mb-8 flex justify-center sm:justify-between">
+				<div className="flex flex-col sm:flex-row items-center p-4">
 					<Suspense fallback={<p>....</p>}>
 						<ProfilePicture imageUrl={img}/>
 					</Suspense>
@@ -28,6 +28,14 @@ export default async function BannerTeacher({ id }: {id:string}){
 						<EnvelopeIcon className="w-5 text-gray-500"></EnvelopeIcon>
 					</div>
 				</div> 
+				<div className="hidden lg:block flex-shrink-0 ml-4 ">
+        <Image 
+          src="/arvore.png" 
+          alt="Imagem da turma" 
+          width={120}
+          height={120}
+        />
+      </div>
 			</div>
 		</>
 	)

@@ -50,6 +50,7 @@ export async function fetchFilteredClass() {
     const schoolClass = await fetch('http://localhost:3333/class', {
       method: 'GET',
     });
+    
     const data:SchollClassTable[] = await schoolClass.json();
     return (data);
   } catch (error) {
@@ -112,7 +113,6 @@ export async function studantProfileNotes(id:string){
     });
   
     const data:SubjectOfGrade[] = await res.json();
-    
     return data;
   
   }catch (error) {

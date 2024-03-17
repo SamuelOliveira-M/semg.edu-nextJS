@@ -9,7 +9,6 @@ import Link from 'next/link';
 export default async function SchoolClassCard({id}:{id:string}) {
   
   const teacherClasses = await test(id)
-  console.log(teacherClasses.disciplinasTurmas[0].turma.id)
   
   return (
     <div className="rounded-lg bg-gray-50 p-4 md:pt-0">

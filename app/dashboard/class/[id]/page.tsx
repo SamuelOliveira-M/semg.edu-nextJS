@@ -13,7 +13,6 @@ export default async function Page({ params }: { params: { id: string } }) {
   const id = params.id; 
 
   const schoolClass = await fetchRegistrationById(id)
-  console.log(schoolClass)
 
   if (!schoolClass) {
     notFound();

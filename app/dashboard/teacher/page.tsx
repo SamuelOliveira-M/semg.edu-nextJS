@@ -1,4 +1,3 @@
-import Pagination from '@/app/ui/teacher/pagination';
 import Search from '@/app/ui/search';
 import Table from '@/app/ui/teacher/table-teachers';
 import { CreateInvoice } from '@/app/ui/teacher/buttons';

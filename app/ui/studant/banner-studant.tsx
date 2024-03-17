@@ -1,7 +1,6 @@
 import { formatText } from "@/app/lib/utils"
 import { Suspense } from "react";
 import ProfilePicture from "@/app/ui/profile-picture";
-import notFound from "@/app/dashboard/teacher/[id]/edit/not-found";
 import { EnvelopeIcon } from "@heroicons/react/24/outline";
 import { RegistrationTable } from "@/app/lib/definitions";
 import { formatCpf } from "@/app/lib/utils";
@@ -9,10 +8,6 @@ import { formatCpf } from "@/app/lib/utils";
 export default async function BannerStudant({ profileDate }: {profileDate:RegistrationTable}){
 
 	const img:string = profileDate.aluno.url_image
-
-	if (!profileDate) {
-    notFound();
-  }
 
 	return(
 		<>

@@ -9,17 +9,11 @@ import {
 } from "@/app/lib/utils"
 import { Suspense } from "react";
 import ProfilePicture from "@/app/ui/profile-picture";
-import notFound from "@/app/dashboard/teacher/[id]/edit/not-found";
 
 export default async function ListDescription({ id }: {id:string}){
 
 	const profileTeacher =  await reqTeacher(id)
   
-	
-	if (!profileTeacher) {
-    notFound();
-  }
-
 	return(
 		<>
 			<div className="flex justify-end items-center">

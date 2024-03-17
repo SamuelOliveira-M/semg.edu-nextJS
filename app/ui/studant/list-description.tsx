@@ -9,16 +9,11 @@ import {
 } from "@/app/lib/utils"
 import { Suspense } from "react";
 import ProfilePicture from "@/app/ui/profile-picture";
-import notFound from "@/app/dashboard/teacher/[id]/edit/not-found";
 import BannerStudant from "./banner-studant";
 
 export default async function ListDescription({ id }: {id:string}){
 
 	const profileDate =  await studantProfile(id)
-
-	if (!profileDate) {
-    notFound();
-  }
 
 	return(
 		<>

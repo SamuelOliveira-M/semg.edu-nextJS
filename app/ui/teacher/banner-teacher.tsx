@@ -2,7 +2,6 @@ import { reqTeacher } from "@/app/lib/api"
 import { formatText } from "@/app/lib/utils"
 import { Suspense } from "react";
 import ProfilePicture from "@/app/ui/profile-picture";
-import notFound from "@/app/dashboard/teacher/[id]/edit/not-found";
 import { EnvelopeIcon } from "@heroicons/react/24/outline";
 import Image from "next/image";
 
@@ -10,10 +9,6 @@ export default async function BannerTeacher({ id }: {id:string}){
 
 	const profileDate =  await reqTeacher(id)
   const img:string = profileDate.url_image
-
-	if (!profileDate) {
-    notFound();
-  }
 
 	return(
 		<>

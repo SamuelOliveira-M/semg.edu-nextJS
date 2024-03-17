@@ -10,7 +10,7 @@ import {
 
 export async function login(email:string) {
 
-  const res = await fetch(`${process.env.PORT}/login`, {
+  const res = await fetch(`${process.env.API_URL}/login`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -28,7 +28,7 @@ export async function login(email:string) {
 
 export async function POST(email:string) {
 
-  const res = await fetch(`${process.env.PORT}/professo`, {
+  const res = await fetch(`${process.env.API_URL}/professo`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
@@ -47,7 +47,7 @@ export async function fetchFilteredClass() {
   noStore();
   
   try {
-    const schoolClass = await fetch(`${process.env.PORT}/class`, {
+    const schoolClass = await fetch(`${process.env.API_URL}/class`, {
       method: 'GET',
     });
     
@@ -61,7 +61,7 @@ export async function fetchFilteredClass() {
 
 export async function fetchRegistrationById(id:string){
   try{
-    const res = await fetch(`${process.env.PORT}/studantee/${id}`, {
+    const res = await fetch(`${process.env.API_URL}/studantee/${id}`, {
       method: 'GET',
     });
   
@@ -76,7 +76,7 @@ export async function fetchRegistrationById(id:string){
 
 export async function uniqueFetchRegistrationById(id:string){
   try{
-    const res = await fetch(`${process.env.PORT}/profile/${id}`, {
+    const res = await fetch(`${process.env.API_URL}/profile/${id}`, {
       method: 'GET',
     });
     
@@ -93,7 +93,7 @@ export async function uniqueFetchRegistrationById(id:string){
 
 export async function studantProfile(id:string){
   try{
-    const res = await fetch(`${process.env.PORT}/profile/${id}`, {
+    const res = await fetch(`${process.env.API_URL}/profile/${id}`, {
       method: 'GET',
     });
   
@@ -108,7 +108,7 @@ export async function studantProfile(id:string){
 
 export async function studantProfileNotes(id:string){
   try{
-    const res = await fetch(`${process.env.PORT}/avaliacao/${id}`, {
+    const res = await fetch(`${process.env.API_URL}/avaliacao/${id}`, {
       method: 'GET',
     });
   
@@ -123,7 +123,7 @@ export async function studantProfileNotes(id:string){
 
 export async function reqTeachers(){
   try{
-    const res = await fetch(`${process.env.PORT}/teacherstt`, {
+    const res = await fetch(`${process.env.API_URL}/teacherstt`, {
       method: 'GET',
     });
   
@@ -139,7 +139,7 @@ export async function reqTeachers(){
 
 export async function reqTeacher(id:string){
   try{
-    const res = await fetch(`${process.env.PORT}/teacherProfile/${id}`, {
+    const res = await fetch(`${process.env.API_URL}/teacherProfile/${id}`, {
       method: 'GET',
     });
   
@@ -154,7 +154,7 @@ export async function reqTeacher(id:string){
 
 export async function reqSubjectAndTeacher(id:string){
   try{
-    const res = await fetch(`${process.env.PORT}/t/${id}`, {
+    const res = await fetch(`${process.env.API_URL}/t/${id}`, {
       method: 'GET',
     });
   
@@ -169,7 +169,7 @@ export async function reqSubjectAndTeacher(id:string){
 
 export async function test(id:string){
   try{
-    const res = await fetch(`${process.env.PORT}/tumasdoprofessorrr/${id}`, {
+    const res = await fetch(`${process.env.API_URL}/tumasdoprofessorrr/${id}`, {
       method: 'GET',
     });
   

@@ -28,7 +28,7 @@ export async function login(email:string) {
 
 export async function POST(email:string) {
 
-  const res = await fetch(`${process.env.API_URL}/professo`, {
+  const res = await fetch(`${process.env.API_URL}/teacherstt`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',

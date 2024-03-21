@@ -27,20 +27,26 @@ export async function login(email:string) {
 
 
 export async function POST(email:string) {
+  try{
 
-  console.log(`${process.env.API_URL}/login`)
+    
+    const res = await fetch(`https://semg-edu.onrender.com/login`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({email}),
+    });
 
-  const res = await fetch(`${process.env.API_URL}/login`, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({email}),
-  });
-
-  const data = await res.json();
-
-  return data;
+    const data = await res.json();
+    console.log(data)
+    return data;
+  }  
+  catch (error) {
+    console.log('sss')
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch invoices.');
+  }
 }
 
 

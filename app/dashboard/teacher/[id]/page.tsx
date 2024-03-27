@@ -1,5 +1,5 @@
 import BannerTeacher from "@/app/ui/teacher/banner-teacher";
-import SubjectGradeGrid from "@/app/ui/teacher/subject-grade-grid";
+import SchoolClassCard from "@/app/ui/teacher/teacher-classses-cards";
 
 export default async function Page({ params }: { params: { id: string } }) {
   
@@ -10,7 +10,7 @@ export default async function Page({ params }: { params: { id: string } }) {
       <div className="border-b border-gray-300 mb-4">
         <BannerTeacher id={id}></BannerTeacher>
       </div>
-      <SubjectGradeGrid id={id}></SubjectGradeGrid>
+      <SchoolClassCard id={id}></SchoolClassCard>
     </>
   )  
 }

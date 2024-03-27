@@ -28,7 +28,7 @@ export default async function SubjectGradeGrid({ id }: {id:string}) {
           {dataGrade.map((disciplina) => (
             <tr key={3} className="w-full border-b py-3 text-sm last-of-type:border-none">
               <td className="whitespace-nowrap p-1 border">
-                {formatText(disciplina.identification ? disciplina.identification : '')}
+                {formatText(disciplina.materia ? disciplina.materia : '')}
               </td>
               <td className="whitespace-nowrap p-1 border">
                 {CheckPassingGrade(disciplina.marco ? disciplina.marco :0)}

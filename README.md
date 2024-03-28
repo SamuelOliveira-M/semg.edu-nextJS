@@ -30,6 +30,8 @@ Mencione as ferramentas que você usou para criar seu projeto
 
 ## 📋 Acesso De Teste
 
+URL:[https://semg-edu-next.vercel.app/login](https://semg-edu-next.vercel.app/login)
+
 Você pode acessar como usuário de test !
 
 ```

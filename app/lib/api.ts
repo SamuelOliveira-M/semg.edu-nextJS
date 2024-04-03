@@ -30,7 +30,7 @@ export async function POST(email:string) {
   try{
 
     
-    const res = await fetch(`https://semg-edu.onrender.com/login`, {
+    const res = await fetch(`${process.env.API_URL}/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -39,11 +39,9 @@ export async function POST(email:string) {
     });
 
     const data = await res.json();
-    console.log(data)
     return data;
   }  
   catch (error) {
-    console.log('sss')
     console.error('Database Error:', error);
     throw new Error('Failed to fetch invoices.');
   }

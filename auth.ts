@@ -9,7 +9,7 @@ import { POST } from '@/app/lib/api';
 async function getUser(email: string): Promise<User | undefined> {
   try {
     const user = await POST(email);
-    console.log('55');
+    console.log(user);
     return user;
 
   } catch (error) {
@@ -31,8 +31,8 @@ export const { auth, signIn, signOut } = NextAuth({
           const { email, password } = parsedCredentials.data;
           const user = await getUser(email);
           if (!user) return null;
-          console.log(user.senha + '- 55');
           const passwordsMatch = await bcrypt.compare(password, user.senha);
+          console.log(passwordsMatch)
           if (passwordsMatch) return user;
         }
 
@@ -41,6 +41,5 @@ export const { auth, signIn, signOut } = NextAuth({
       },
     }),
   ],
-  secret: process.env.NEXTAUTH_SECRET, // Defina a variável de ambiente NEXTAUTH_SECRET
 });
 

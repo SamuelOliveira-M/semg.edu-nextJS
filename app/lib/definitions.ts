@@ -156,14 +156,6 @@ export type TeacherClasses = {
 
 
 
-
-
-
-import { table } from "console";
-import { number } from "prop-types";
-
-
-
 export type User = {
   id: string;
   nome: string;

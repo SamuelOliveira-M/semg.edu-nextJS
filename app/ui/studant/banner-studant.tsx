@@ -11,7 +11,7 @@ export default async function BannerStudant({ profileDate }: {profileDate:Regist
 
 	return(
 		<>
-			<div className="pt-4 pb-4 pr-10 pl-10 mb-8 bg-gray-100 rounded-lg  flex justify-between items-center ">
+			<div className="pt-4 pb-4 pr-10 pl-10 mb-8 bg-gray-100 rounded-lg flex flex-col lg:flex-row justify-between items-center">
 				<div>
 					<h1 className="text-2xl mb-1  font-bold">{ formatText(profileDate.aluno.nome) } Oliveira de Moura</h1>
 					<p className="text-sm">{formatCpf(profileDate.aluno.cpf)} </p>

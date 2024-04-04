@@ -14,11 +14,13 @@ export default async function LinhaGrade({ id }: {id:string}) {
 
   return (
     <div className="overflow-x-auto">
-      <table className=" min-w-full text-gray-900 bg bg-gray-200 rounded-t-md">
+      <table className=" min-w-full text-gray-900 bg-blue-300 rounded-t-md">
         <thead className="text-center text-sm font-normal">
-          <tr>
+          <tr >
             {headers.map((header, index) => (
-              <th key={index} scope="col" className="font-medium ">{header}</th>
+              index === 0 ? (
+                <th key={index} scope="col" className="font-medium p-1 sticky left-0 z-10 bg-blue-300">{header}</th>
+              ) : <th key={index} scope="col" className="font-medium p-1">{header}</th>
             ))}
           </tr>
         </thead>
@@ -26,7 +28,7 @@ export default async function LinhaGrade({ id }: {id:string}) {
         <tbody className="bg-white text-center">
           {dataGrade.map((disciplina) => (
             <tr key={3} className="w-full border-b py-3 text-sm last-of-type:border-none">
-              <td className="whitespace-nowrap p-1 border">
+              <td className="whitespace-nowrap p-1 border sticky left-0 z-10 bg-gray-50">
                 {formatText(disciplina.materia ? disciplina.materia : '')}
               </td>
               <td className="whitespace-nowrap p-1 border">

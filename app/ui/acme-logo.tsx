@@ -8,6 +8,8 @@ export default function AcmeLogo() {
   return (    
       <Image
         src={logoSemgEdu}
+        width={200}  
+        height={200}
         className="p-4"
         alt="SEMG.edu company logo desktop version"
       />

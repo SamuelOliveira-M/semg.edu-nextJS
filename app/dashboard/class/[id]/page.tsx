@@ -6,7 +6,7 @@ import { notFound } from 'next/navigation';
 import BannerClass from '@/app/ui/class/banner-class';
 import { RevenueChartSkeleton } from '@/app/ui/skeletons';
 import { LatestInvoicesSkeleton } from '@/app/ui/skeletons';
-
+import { Calendar } from "@/app/ui/calendar"; 
 
 export default async function Page({ params }: { params: { id: string } }) {
   
@@ -21,6 +21,10 @@ export default async function Page({ params }: { params: { id: string } }) {
   return (
     <div>	
       <BannerClass/>
+      
+      <div className='pt-8'>
+        <Calendar/>
+      </div>
       
       <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-4 lg:grid-cols-8">
         <Suspense fallback={<RevenueChartSkeleton />}>

@@ -3,7 +3,10 @@ import { Revenue } from './definitions';
 import { SubjectOfGrade } from "@/app/lib/definitions";
 
 
-
+export const formatDaysweek = (day:string)=>{
+  let myNewStr = day.slice(0, 3);
+  return(myNewStr)
+}
 
 export const formatCurrency = (amount: number) => {
   return (amount / 100).toLocaleString('en-US', {

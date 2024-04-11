@@ -139,11 +139,18 @@ export type Teacher = {
 }
 
 export type SubjectOfTeacher = {
-  disciplinasTurmas:[{
-    professor:Teacher,
-    disciplina: Disciplina
-  }
-  ]
+  professor:{
+    id: string,
+    nome: string,
+    email:string,
+    url_image:string,
+    disciplinasTurmas:[{
+      disciplina: {
+        id: string,
+        nome:string
+      }   
+    }]
+  },
 }
 
 export type TeacherClasses = {

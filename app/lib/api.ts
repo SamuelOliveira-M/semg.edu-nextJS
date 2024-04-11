@@ -28,8 +28,6 @@ export async function login(email:string) {
 
 export async function POST(email:string) {
   try{
-
-    
     const res = await fetch(`${process.env.API_URL}/login`, {
       method: 'POST',
       headers: {
@@ -160,12 +158,14 @@ export async function reqTeacher(id:string){
 
 export async function reqSubjectAndTeacher(id:string){
   try{
-    const res = await fetch(`${process.env.API_URL}/t/${id}`, {
+    const res = await fetch(`${process.env.API_URL}/teachers-subjects/${id}`, {
       method: 'GET',
     });
   
-    const data:SubjectOfTeacher = await res.json();
+    const data:SubjectOfTeacher[] = await res.json();
+    console.log(data)
     return data;
+    
   
   }catch (error) {
     console.error('Database Error:', error);

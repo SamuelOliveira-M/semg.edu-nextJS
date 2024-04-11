@@ -12,7 +12,7 @@ export default async function TableSubject({
 }) { 
   
   const SubjectAndTeacher = await reqSubjectAndTeacher(id);
-  
+  console.log(SubjectAndTeacher)
   return (
     <div className="flex w-full flex-col md:col-span-4">
       <h2 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
@@ -21,7 +21,7 @@ export default async function TableSubject({
       <div className="flex grow flex-col justify-between rounded-xl bg-gray-50 p-4">
         
         <div className="bg-white py-1">
-          {SubjectAndTeacher.disciplinasTurmas.map((teacher,i) => {
+          {SubjectAndTeacher.map((teacher,i) => {
             return (
               <Link 
               key={teacher.professor.id}
@@ -53,11 +53,18 @@ export default async function TableSubject({
                       </p>
                     </div>
                   </div>
-                  <p
-                    className={`${lusitana.className} truncate text-sm font-medium md:text-base`}
-                  >
-                    {teacher.disciplina.nome}
-                  </p>
+                  <div>
+                    {teacher.professor.disciplinasTurmas.map((disciplina) => {
+                      return (
+                        <p
+                          className={`${lusitana.className} truncate text-sm font-medium md:text-base`}
+                          key={disciplina.disciplina.id} // Lembre-se de adicionar uma chave única para cada elemento na lista
+                        >
+                          {disciplina.disciplina.nome}
+                        </p>
+                      );
+                    })}
+                  </div>
                 </div>
               </Link>
             );

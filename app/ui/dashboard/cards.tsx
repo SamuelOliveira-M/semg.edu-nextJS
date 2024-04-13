@@ -1,17 +1,17 @@
 import {
-  BanknotesIcon,
-  ClockIcon,
+  PresentationChartBarIcon,
   UserGroupIcon,
-  InboxIcon,
+  AcademicCapIcon,
+  ArrowTrendingDownIcon
 } from '@heroicons/react/24/outline';
 import { lusitana } from '@/app/ui/fonts';
 import { fetchCardData } from '@/app/lib/data';
 
 const iconMap = {
-  collected: BanknotesIcon,
-  customers: UserGroupIcon,
-  pending: ClockIcon,
-  invoices: InboxIcon,
+  studant: AcademicCapIcon,
+  studentsWithdrawn:ArrowTrendingDownIcon,
+  teacher: UserGroupIcon,
+  class: PresentationChartBarIcon,
 };
 
 export default async function CardWrapper() {
@@ -23,13 +23,13 @@ export default async function CardWrapper() {
   } = await fetchCardData();
   return (
     <>
-      <Card title="Collected" value={totalPaidInvoices} type="collected" />
-      <Card title="Pending" value={totalPendingInvoices} type="pending" />
-      <Card title="Total Invoices" value={numberOfInvoices} type="invoices" />
+      <Card title="Alunos" value={totalPaidInvoices} type="studant" />
+      <Card title="Professores" value={totalPendingInvoices} type="teacher" />
+      <Card title="Turmas" value={numberOfInvoices} type="class" />
       <Card
-        title="Total Customers"
+        title="Alunos Desligados"
         value={numberOfCustomers}
-        type="customers"
+        type="studentsWithdrawn"
       /> 
     </>
   );
@@ -42,13 +42,12 @@ export function Card({
 }: {
   title: string;
   value: number | string;
-  type: 'invoices' | 'customers' | 'pending' | 'collected';
+  type: 'class' | 'studentsWithdrawn' | 'teacher' | 'studant';
 }) {
   const Icon = iconMap[type];
-
   return (
     <div className="rounded-xl bg-gray-50 p-2 shadow-sm">
-      <div className="flex p-4">
+      <div className="flex justify-center p-4 ">
         {Icon ? <Icon className="h-5 w-5 text-gray-700" /> : null}
         <h3 className="ml-2 text-sm font-medium">{title}</h3>
       </div>

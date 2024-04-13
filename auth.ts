@@ -41,6 +41,6 @@ export const { auth, signIn, signOut } = NextAuth({
       },
     }),
   ],
-  secret: process.env.NEXTAUTH_SECRET, // Defina a variável de ambiente NEXTAUTH_SECRET
+  //secret: process.env.NEXTAUTH_SECRET, // Defina a variável de ambiente NEXTAUTH_SECRE
 });
 

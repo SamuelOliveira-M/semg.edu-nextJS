@@ -12,7 +12,7 @@ export default async function BannerClass() {
 
   return (
 
-    <div className="class-card bg-blue-900 p-8 rounded-lg shadow-md max-w mx-auto flex">
+    <div className="class-card bg-blue-700 p-8 rounded-lg shadow-lg max-w mx-auto flex">
       <div className=" flex items-center flex-1 mt-2 ">
         <div>
         <h1 className="text-2xl mb-4 text-white font-semibold"><strong>8º ano B - Manhã - 2024</strong></h1>

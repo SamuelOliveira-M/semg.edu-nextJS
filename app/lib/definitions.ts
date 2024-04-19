@@ -160,6 +160,14 @@ export type TeacherClasses = {
   }]
 }
 
+export type IDataStatistics = {
+  studantAll: number,
+	teacherAll:number,
+	schollClassAll:number,
+	dropout:number
+};
+
+
 
 
 
@@ -245,3 +253,5 @@ export type InvoiceForm = {
   amount: number;
   status: 'pending' | 'paid';
 };
+
+

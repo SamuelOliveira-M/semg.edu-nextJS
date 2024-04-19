@@ -5,7 +5,8 @@ import {
   SubjectOfGrade,
   Teacher,
   SubjectOfTeacher,
-  TeacherClasses
+  TeacherClasses,
+  IDataStatistics
 } from './definitions';
 
 export async function login(email:string) {
@@ -180,6 +181,21 @@ export async function test(id:string){
     });
   
     const data:TeacherClasses= await res.json();
+    return data;
+  
+  }catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch invoices.');
+  }
+}
+
+export async function getStatistics() {
+  try{
+    const res = await fetch(`${process.env.API_URL}/getStatistics`, {
+      method: 'GET',
+    });
+  
+    const data:IDataStatistics= await res.json();
     return data;
   
   }catch (error) {

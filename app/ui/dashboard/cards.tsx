@@ -5,7 +5,7 @@ import {
   ArrowTrendingDownIcon
 } from '@heroicons/react/24/outline';
 import { lusitana } from '@/app/ui/fonts';
-import { fetchCardData } from '@/app/lib/data';
+import { getStatistics } from '@/app/lib/api';
 
 const iconMap = {
   studant: AcademicCapIcon,
@@ -15,20 +15,22 @@ const iconMap = {
 };
 
 export default async function CardWrapper() {
-  const {
-    numberOfInvoices,
-    numberOfCustomers,
-    totalPaidInvoices,
-    totalPendingInvoices,
-  } = await fetchCardData();
+  const statistics = await getStatistics();
+  const { 
+    studantAll, 
+    teacherAll, 
+    schollClassAll,
+    dropout 
+  } = statistics;
+  
   return (
     <>
-      <Card title="Alunos" value={totalPaidInvoices} type="studant" />
-      <Card title="Professores" value={totalPendingInvoices} type="teacher" />
-      <Card title="Turmas" value={numberOfInvoices} type="class" />
+      <Card title="Alunos" value={studantAll} type="studant" />
+      <Card title="Professores" value={teacherAll} type="teacher" />
+      <Card title="Turmas" value={schollClassAll} type="class" />
       <Card
         title="Alunos Desligados"
-        value={numberOfCustomers}
+        value={dropout}
         type="studentsWithdrawn"
       /> 
     </>

@@ -158,12 +158,11 @@ export async function reqTeacher(id:string){
 
 export async function reqSubjectAndTeacher(id:string){
   try{
-    const res = await fetch(`${process.env.API_URL}/teachers-subjects/${id}`, {
+    const res = await fetch(`${process.env.API_URL}/t/${id}`, {
       method: 'GET',
     });
   
-    const data:SubjectOfTeacher[] = await res.json();
-    console.log(data)
+    const data:SubjectOfTeacher = await res.json();
     return data;
     
   

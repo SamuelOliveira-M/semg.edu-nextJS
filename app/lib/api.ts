@@ -160,11 +160,11 @@ export async function reqTeacher(id:string){
 
 export async function reqSubjectAndTeacher(id:string){
   try{
-    const res = await fetch(`${process.env.API_URL}/t/${id}`, {
+    const res = await fetch(`${process.env.API_URL}/teachers-subjects/${id}`, {
       method: 'GET',
     });
   
-    const data:SubjectOfTeacher = await res.json();
+    const data:SubjectOfTeacher[] = await res.json();
     return data;
   
   }catch (error) {

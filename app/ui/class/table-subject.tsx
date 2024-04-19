@@ -21,7 +21,7 @@ export default async function TableSubject({
       </h2>
       <div className="flex grow flex-col justify-between rounded-xl bg-gray-50 p-4">
         <div className="bg-white py-1">
-          {SubjectAndTeacher.map((teacher,i) => {
+          {SubjectAndTeacher.map((data,i) => {
             return (
               <Link 
               key={data.professor.id}
@@ -53,8 +53,8 @@ export default async function TableSubject({
                       </p>
                     </div>
                   </div>
-                  <div>
-                    {teacher.professor.disciplinasTurmas.map((disciplina) => {
+                  <div className='overflow-auto'>
+                    {data.professor.disciplinasTurmas.map((disciplina) => {
                       return (
                         <p
                           className={`${lusitana.className} truncate text-sm font-medium md:text-base`}

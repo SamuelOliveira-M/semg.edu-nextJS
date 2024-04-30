@@ -6,9 +6,9 @@ import type { User } from '@/app/lib/definitions';
 import bcrypt from 'bcrypt';
 import { POST } from '@/app/lib/api';
 
-async function getUser(email: string): Promise<User | undefined> {
+async function getUser(email: string,senha:string): Promise<User | undefined> {
   try {
-    const user = await POST(email);
+    const user = await POST(email,senha);
     console.log(user);
     return user;
 
@@ -29,7 +29,7 @@ export const { auth, signIn, signOut } = NextAuth({
 
         if (parsedCredentials.success) {
           const { email, password } = parsedCredentials.data;
-          const user = await getUser(email);
+          const user = await getUser(email,password);
           if (!user) return null;
           const passwordsMatch = await bcrypt.compare(password, user.senha);
           console.log(passwordsMatch)

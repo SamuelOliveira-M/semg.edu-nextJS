@@ -171,7 +171,7 @@ export type IDataStatistics = {
 
 
 
-export type IUser = {
+export type User = {
   id:string
 	nome: string,
 	senha: string

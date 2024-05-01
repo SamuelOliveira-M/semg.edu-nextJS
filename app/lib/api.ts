@@ -126,9 +126,12 @@ export async function studantProfileNotes(id:string){
   }
 }
 
-export async function reqTeachers(){
+export async function reqTeachers(token:string){
   try{
     const res = await fetch(`${process.env.API_URL}/teacherstt`, {
+      headers:{
+        authorization: token,
+      },
       method: 'GET',
     });
   

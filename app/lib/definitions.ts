@@ -171,11 +171,13 @@ export type IDataStatistics = {
 
 
 
-export type User = {
-  id: string;
-  nome: string;
-  email: string;
-  senha: string;
+export type IUser = {
+  id:string
+	nome: string,
+	senha: string
+	isAdmin:boolean
+	accessToken : string
+	idRefreshToken: string,
 };
 
 export type Customer = {

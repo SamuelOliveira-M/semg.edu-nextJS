@@ -1,32 +1,4 @@
-import type { NextAuthConfig,DefaultSession } from 'next-auth';
-import { JWT } from "next-auth/jwt"
- 
-declare module "next-auth/jwt" {
-  /** Returned by the `jwt` callback and `auth`, when using JWT sessions */
-  interface JWT {
-    /** OpenID ID Token */
-    tokenExterno?: string
-  }
-}
-declare module "next-auth" {
-  interface User {
-    nome: string,
-    senha: string
-    isAdmin:boolean
-    accessToken : string
-    idRefreshToken: string,
-  }
-
-
-  interface Session {
-    user: {
-      id: string
-      accessToken:string
-      
-    } & DefaultSession["user"]
-  }
-}
-
+import type { NextAuthConfig } from 'next-auth';
 
 export const authConfig = {
   pages: {
@@ -37,19 +9,11 @@ export const authConfig = {
     
     jwt({ token, user }) {
       if (user) { // User is available during sign-in
-        token.id = user.id
-        token.tokenExterno = user.accessToken
-        
+        token.id = user.id 
       }
       return token
     },
-    
-    session({ session,  token }) {
-      session.user.id = token.id
-      session.user.accessToken = token.tokenExterno
-      return session
-    },
-    
+      
     authorized({ auth, request: { nextUrl } }) {
       const isLoggedIn = !!auth?.user;
       const isOnDashboard = nextUrl.pathname.startsWith('/dashboard');

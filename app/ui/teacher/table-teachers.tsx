@@ -2,15 +2,10 @@ import Image from 'next/image';
 import { ToViewTeacher, DeleteTeacher } from '@/app/ui/teacher/buttons';
 import { formatDateToBirth, formatCpf } from '@/app/lib/utils';
 import { reqTeachers } from '@/app/lib/api';
-import { auth } from '@/auth';
  
 export default async function TeacherTable() {
-  const session = await auth()
-  const token = session?.user.accessToken
-  if(!token){
-    return <p></p>
-  }
-  const teachers = await reqTeachers(token);
+ 
+  const teachers = await reqTeachers();
 
   return (
     <div className="mt-6 flow-root">

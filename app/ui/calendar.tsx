@@ -1,10 +1,10 @@
-"use client"
-import { Grid } from '@tremor/react';
+import { getCalendar } from '../lib/api';
 import { Card } from './card';
-import { formatDaysweek } from '../lib/utils';
 import { lusitana } from './fonts';
 
-export function Calendar(){
+export async function Calendar({ id }: { id: string }){
+
+	const dados = await getCalendar(id)
 
 	return(
 		<div>
@@ -32,107 +32,19 @@ export function Calendar(){
 					</tr>
 				</thead>
 				<tbody className="bg-gray-100">
-					<tr
-						key='asdsa'
-						className=""
-					>
-						<td className="">
-							<Card materia='Português' professor='Samuel'></Card>
-						</td>
-						<td className="">
-							<Card materia='Português' professor='Samuel'></Card>
-						</td>
-						<td className="">
-							<Card materia='Português' professor='Samuel'></Card>
-						</td>
-						<td className="">
-							<Card materia='Ens. Religioso' professor='Samuel'></Card>
-						</td>
-						<td className="">
-							<Card materia='Português' professor='Samuel'></Card>
-						</td>
-					</tr>
-					<tr
-						key='asdsa'
-						className=""
-					>
-						<td className="">
-							<Card materia='Português' professor='Samuel'></Card>
-						</td>
-						<td className="">
-							<Card materia='Português' professor='Samuel'></Card>
-						</td>
-						<td className="">
-							<Card materia='Português' professor='Samuel'></Card>
-						</td>
-						<td className="">
-							<Card materia='Ens. Religioso' professor='Samuel'></Card>
-						</td>
-						<td className="">
-							<Card materia='Português' professor='Samuel'></Card>
-						</td>
-					</tr>
-					<tr
-						key='asdsa'
-						className=""
-					>
-						<td className="">
-							<Card materia='Português' professor='Samuel'></Card>
-						</td>
-						<td className="">
-							<Card materia='Português' professor='Samuel'></Card>
-						</td>
-						<td className="">
-							<Card materia='Português' professor='Samuel'></Card>
-						</td>
-						<td className="">
-							<Card materia='Ens. Religioso' professor='Samuel'></Card>
-						</td>
-						<td className="">
-							<Card materia='Português' professor='Samuel'></Card>
-						</td>
-					</tr>
-					<tr
-						key='asdsa'
-						className=""
-					>
-						<td className="">
-							<Card materia='Português' professor='Samuel'></Card>
-						</td>
-						<td className="">
-							<Card materia='Português' professor='Samuel'></Card>
-						</td>
-						<td className="">
-							<Card materia='Português' professor='Samuel'></Card>
-						</td>
-						<td className="">
-							<Card materia='Ens. Religioso' professor='Samuel'></Card>
-						</td>
-						<td className="">
-							<Card materia='Português' professor='Samuel'></Card>
-						</td>
-					</tr>
-					<tr
-						key='asdsa'
-						className=""
-					>
-						<td className="">
-							<Card materia='Português' professor='Samuel'></Card>
-						</td>
-						<td className="">
-							<Card materia='Português' professor='Samuel'></Card>
-						</td>
-						<td className="">
-							<Card materia='Português' professor='Samuel'></Card>
-						</td>
-						<td className="">
-							<Card materia='Ens. Religioso' professor='Samuel'></Card>
-						</td>
-						<td className="">
-							<Card materia='Português' professor='Samuel'></Card>
-						</td>
-					</tr>
-
+    				{dados.map((student, i) => (
+						<tr key={i} className="">
+							{student.calendario.aulas.map((aula, j) => (
+                				<td key={j}>
+                    				<Card 
+										materia={aula.lotacao.disciplina.nome} 
+										professor={aula.lotacao.professor.nome} 
+										horario={aula.horario.horarioFim}
+									/>
+               					 </td>
+           					 ))}
+						</tr>
+    				))}
 				</tbody>
 			</table>
 			</div>

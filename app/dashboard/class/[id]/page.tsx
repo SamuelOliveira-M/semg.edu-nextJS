@@ -23,7 +23,7 @@ export default async function Page({ params }: { params: { id: string } }) {
       <BannerClass/>
       
       <div className='pt-8'>
-        <Calendar/>
+        <Calendar id={id}/>
       </div>
       
       <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-4 lg:grid-cols-8">

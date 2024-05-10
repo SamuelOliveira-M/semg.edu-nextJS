@@ -6,7 +6,8 @@ import {
   Teacher,
   SubjectOfTeacher,
   TeacherClasses,
-  IDataStatistics
+  IDataStatistics,
+  ICalendar
 } from './definitions';
 
 export async function login(email:string) {
@@ -199,6 +200,21 @@ export async function getStatistics() {
     });
   
     const data:IDataStatistics= await res.json();
+    return data;
+  
+  }catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch invoices.');
+  }
+}
+
+export async function getCalendar(id:string) {
+  try{
+    const res = await fetch(`${process.env.API_URL}/calendar/${id}`, {
+      method: 'GET',
+    });
+  
+    const data:ICalendar[]= await res.json();
     return data;
   
   }catch (error) {

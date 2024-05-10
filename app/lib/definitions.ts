@@ -168,6 +168,28 @@ export type IDataStatistics = {
 };
 
 
+export type ICalendar = { 
+  calendario: {
+    diaSemana: string,
+    aulas: [
+      {
+        lotacao: {
+          professor: {
+            nome: string
+          },
+          disciplina: {
+            nome: string
+          }
+        },
+        horario: {
+          horarioInicio: string,
+          horarioFim: string
+        }
+      }
+    ]
+  }
+}
+
 
 
 
@@ -255,5 +277,6 @@ export type InvoiceForm = {
   amount: number;
   status: 'pending' | 'paid';
 };
+
 
 

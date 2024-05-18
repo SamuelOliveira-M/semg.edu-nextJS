@@ -26,49 +26,24 @@ export default async function LinhaGrade({ id }: {id:string}) {
         </thead>
 
         <tbody className="bg-white text-center">
-          {dataGrade.map((disciplina) => (
-            <tr key={3} className="w-full border-b py-3 text-sm last-of-type:border-none">
+          {dataGrade.redimento.map((disciplina, index) => (
+            <tr key={index} className="w-full border-b py-3 text-sm last-of-type:border-none">
               <td className="whitespace-nowrap p-1 border sticky left-0 z-10 bg-gray-50">
-                {formatText(disciplina.materia ? disciplina.materia : '')}
+                {formatText(disciplina.nome ? disciplina.nome : '')}
               </td>
-              <td className="whitespace-nowrap p-1 border">
-                {CheckPassingGrade(disciplina.marco ? disciplina.marco :0)}
-              </td>
-              <td className="whitespace-nowrap p-1 border">
-                {CheckPassingGrade(disciplina.abril ? disciplina.abril :0)}
-              </td>
-              <td className="whitespace-nowrap p-1 border">
-                {CheckPassingGrade(disciplina.maio ? disciplina.maio :0)}
-              </td>
-              <td className="whitespace-nowrap p-1 border">
-                {CheckPassingGrade(disciplina.junho ? disciplina.junho :0)}
-              </td>
-              <td className="whitespace-nowrap p-1 border">
-                {CheckPassingGrade(disciplina.recup1 ? disciplina.recup1 :0)}
-              </td>
-              <td className="whitespace-nowrap p-1 border">
-                {CheckPassingGrade(disciplina.agosto ? disciplina.agosto :0)}
-              </td>
-              <td className="whitespace-nowrap p-1 border">
-                {CheckPassingGrade(disciplina.setembro ? disciplina.setembro :0)}
-              </td>
-              <td className="whitespace-nowrap p-1 border">
-                {CheckPassingGrade(disciplina.outubro ? disciplina.outubro :0)}
-              </td>
-              <td className="whitespace-nowrap p-1 border">
-                {CheckPassingGrade(disciplina.novembro ? disciplina.novembro :0)}
-              </td>
-              <td className="whitespace-nowrap p-1 border">
-                {CheckPassingGrade(disciplina.recup2 ? disciplina.recup2 :0)}
-              </td>
-              <td className="whitespace-nowrap p-1 border">
-                {CheckPassingGrade(disciplina.provaFinal ? disciplina.provaFinal :0)}
-              </td>
+
+              {disciplina.avaliacao.map((avaliacao, indexDisciplina) => (
+                <td key={`${index}-${indexDisciplina}`} className="whitespace-nowrap p-1 border">
+                  {CheckPassingGrade(avaliacao.nota ? avaliacao.nota :0)}
+                </td>
+              ))}
+
               <td className="whitespace-nowrap p-1 border">
                 {CheckPassingGrade(disciplina.media ? disciplina.media :0)}
               </td>
+              
               <td className="whitespace-nowrap p-1 border">
-                {StudantStatus(disciplina.aprovacao ? disciplina.aprovacao :'')}
+                {StudantStatus(disciplina.status ? disciplina.status :'')}
               </td>
             </tr>
           ))}

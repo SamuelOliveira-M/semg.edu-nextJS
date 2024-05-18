@@ -190,6 +190,26 @@ export type ICalendar = {
   }
 }
 
+export type StudantPerformanceSheet = {
+  redimento: [
+		{
+			id: string,
+			nome: string,
+      avaliacao: [
+        {
+          id: string | null,
+          nota: number,
+          mes: number,
+          semestre: string | null,
+          tipo: string | null
+        }
+      ],
+      media: number,
+      status:string
+    }
+  ]
+};
+
 
 
 

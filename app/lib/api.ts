@@ -7,7 +7,8 @@ import {
   SubjectOfTeacher,
   TeacherClasses,
   IDataStatistics,
-  ICalendar
+  ICalendar,
+  StudantPerformanceSheet
 } from './definitions';
 
 export async function login(email:string) {
@@ -114,11 +115,11 @@ export async function studantProfile(id:string){
 
 export async function studantProfileNotes(id:string){
   try{
-    const res = await fetch(`${process.env.API_URL}/avaliacao/${id}`, {
+    const res = await fetch(`${process.env.API_URL}/avaliacaos/${id}`, {
       method: 'GET',
     });
   
-    const data:SubjectOfGrade[] = await res.json();
+    const data:StudantPerformanceSheet = await res.json();
     return data;
   
   }catch (error) {

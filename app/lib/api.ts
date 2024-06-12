@@ -8,8 +8,10 @@ import {
   TeacherClasses,
   IDataStatistics,
   ICalendar,
-  StudantPerformanceSheet
+  StudantPerformanceSheet,
+  CreateTeacherType
 } from './definitions';
+
 
 export async function login(email:string) {
 
@@ -129,6 +131,7 @@ export async function studantProfileNotes(id:string){
 }
 
 export async function reqTeachers(){
+  noStore()
   try{
     const res = await fetch(`${process.env.API_URL}/teacherstt`, {
       method: 'GET',
@@ -182,7 +185,7 @@ export async function test(id:string){
       method: 'GET',
     });
   
-    const data:TeacherClasses= await res.json();
+    const data:TeacherClasses[]= await res.json();
     return data;
   
   }catch (error) {
@@ -206,13 +209,22 @@ export async function getStatistics() {
   }
 }
 
-export async function getCalendar(id:string) {
+export async function fetchCreateTeacher(formDataToSend:CreateTeacherType, profileImage:any) {
+  var formData = new FormData();
+
+  formData.append('file', profileImage);
+  formData.append('data', JSON.stringify(formDataToSend));
+  
+  console.log(formData)
+
   try{
-    const res = await fetch(`${process.env.API_URL}/calendar/${id}`, {
-      method: 'GET',
+    const res = await fetch(`${process.env.API_URL}/create/professor`, {
+      method: 'POST',
+      body: formData
     });
   
-    const data:ICalendar[]= await res.json();
+    const data= await res.json();
+    console.log(data)
     return data;
   
   }catch (error) {

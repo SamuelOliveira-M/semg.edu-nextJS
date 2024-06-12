@@ -131,12 +131,21 @@ export type Disciplina = {
 export type Teacher = {
   id: string      
   nome: string
-  cpf: string 
+  cpf?: string 
   email: string
   senha: string
   data_nascimento: Date  
   url_image:string  
 }
+export type CreateTeacherType = {
+  nome: string
+  cpf?: string 
+  email: string
+  senha: string
+  data_nascimento: string
+  // file: object
+}
+
 
 export type SubjectOfTeacher = {
   professor:{
@@ -154,10 +163,7 @@ export type SubjectOfTeacher = {
 }
 
 export type TeacherClasses = {
-  professor:Teacher,
-  disciplinasTurmas:[{
-    turma: SchollClass
-  }]
+  turma: SchollClass
 }
 
 export type IDataStatistics = {

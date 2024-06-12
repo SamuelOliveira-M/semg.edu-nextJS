@@ -1,6 +1,6 @@
 import Search from '@/app/ui/search';
 import Table from '@/app/ui/teacher/table-teachers';
-import { CreateInvoice } from '@/app/ui/teacher/buttons';
+import { CreateTeacher } from '@/app/ui/teacher/buttons';
 import { lusitana } from '@/app/ui/fonts';
 import { Suspense } from 'react';
 import { InvoicesTableSkeleton } from '@/app/ui/skeletons';
@@ -15,7 +15,7 @@ export default async function Page() {
       </div>
       <div className="mt-4 flex items-center justify-between gap-2 md:mt-8">
         <Search placeholder="Pesquisar Professores..." />
-        <CreateInvoice />
+        <CreateTeacher />
       </div>
       <Suspense  fallback={<InvoicesTableSkeleton />}>
         <Table />

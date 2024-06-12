@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { ToViewTeacher, DeleteTeacher } from '@/app/ui/teacher/buttons';
-import { formatDateToBirth, formatCpf } from '@/app/lib/utils';
+import { formatDateToBirth } from '@/app/lib/utils';
 import { reqTeachers } from '@/app/lib/api';
  
 export default async function TeacherTable() {
@@ -58,9 +58,6 @@ export default async function TeacherTable() {
                   Email
                 </th>
                 <th scope="col" className="px-3 py-5 font-medium">
-                  Cpf
-                </th>
-                <th scope="col" className="px-3 py-5 font-medium">
                   Data de Nascimento
                 </th>
                 <th scope="col" className="relative py-3 pl-6 pr-3">
@@ -88,9 +85,6 @@ export default async function TeacherTable() {
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
                     {teacher.email}
-                  </td>
-                  <td className="whitespace-nowrap px-3 py-3">
-                    {formatCpf(teacher.cpf)}
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
                     {formatDateToBirth(teacher.data_nascimento)}

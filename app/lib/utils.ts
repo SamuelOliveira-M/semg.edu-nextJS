@@ -54,15 +54,6 @@ export const formatlocality = (
   return formatter;
 };
 
-export const formatCpf = (
-  cpf: string,
-) => {
-  cpf = cpf.replace(/\D/g, '');
-
-  cpf = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
-
-  return cpf;
-};
 
 export const formatText = (
   text:string

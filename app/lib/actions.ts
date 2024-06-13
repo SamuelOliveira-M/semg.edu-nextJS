@@ -9,6 +9,7 @@ import { AuthError } from 'next-auth';
 import { Teacher } from './definitions';
 import { CreateTeacherType } from './definitions';
 import { fetchCreateTeacher } from './api';
+import { deleteTeacherFetch } from './api';
 
 export async function authenticate(
   prevState: string | undefined,
@@ -160,12 +161,13 @@ export async function createTeacher(prevState: State, formData: FormData) {
 
 
 export async function deleteInvoice(id: string) {
-  return { message: 'Deleted Invoice.' };
-  // try {
-  //   await sql`DELETE FROM invoices WHERE id = ${id}`;
-  //   revalidatePath('/dashboard/invoices');
-  //   return { message: 'Deleted Invoice.' };
-  // } catch (error) {
-  //   return { message: 'Database Error: Failed to Delete Invoice.' };
-  // }
+  console.log(id)
+  try {
+    const teacherRemove  = await deleteTeacherFetch(id)
+    console.log(teacherRemove)
+    revalidatePath('/dashboard/teacher');
+    return { message: 'Professor removido.' };
+  } catch (error) {
+    return { message: 'Database Error: Failed to Delete teacher.' };
+  }
 }

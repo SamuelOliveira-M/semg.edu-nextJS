@@ -13,6 +13,7 @@ import {
 } from './definitions';
 
 
+
 export async function login(email:string) {
 
   const res = await fetch(`${process.env.API_URL}/login`, {
@@ -195,6 +196,7 @@ export async function test(id:string){
 }
 
 export async function getStatistics() {
+  noStore()
   try{
     const res = await fetch(`${process.env.API_URL}/getStatistics`, {
       method: 'GET',
@@ -225,6 +227,21 @@ export async function fetchCreateTeacher(formDataToSend:CreateTeacherType, profi
   
     const data= await res.json();
     console.log(data)
+    return data;
+  
+  }catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch invoices.');
+  }
+}
+
+export async function deleteTeacherFetch(id:string){
+  try{
+    const res = await fetch(`${process.env.API_URL}/remove/teacher/${id}`, {
+      method: 'DELETE',
+    });
+  
+    const data= await res.json();
     return data;
   
   }catch (error) {

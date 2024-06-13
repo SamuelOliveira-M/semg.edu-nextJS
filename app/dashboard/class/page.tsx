@@ -1,6 +1,6 @@
 
 import Search from '@/app/ui/search';
-import { CreateClass } from '@/app/ui/teacher/buttons';
+import { CreateClass } from '@/app/ui/class/buttons';
 import { Suspense } from 'react';
 import { InvoicesTableSkeleton } from '@/app/ui/skeletons';
 import CardClass from '@/app/ui/class/card-class';

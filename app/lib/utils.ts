@@ -3,6 +3,16 @@ import { Revenue } from './definitions';
 import { SubjectOfGrade } from "@/app/lib/definitions";
 
 
+export const formatCpf = (
+  cpf: string,
+) => {
+  cpf = cpf.replace(/\D/g, '');
+
+  cpf = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');
+
+  return cpf;
+};
+
 export const formatDaysweek = (day:string)=>{
   let myNewStr = day.slice(0, 3);
   return(myNewStr)

@@ -45,7 +45,7 @@ export default async function ListDescription({ id }: {id:string}){
 					<div className="list-item flex-basis-50 border-b ">
 						<dt>Cpf:</dt>
 						<dd className="pl-2 text-sm">
-							{formatCpf(profileTeacher.cpf)}
+							{/* {formatCpf(profileTeacher.cpf)} */}
 						</dd>
 					</div>
 				</Grid>

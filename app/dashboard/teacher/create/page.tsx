@@ -1,6 +1,6 @@
 
 import Form from '@/app/ui/teacher/create-form';
-import Breadcrumbs from '@/app/ui/teacher/Breadcrumbs';
+import Breadcrumbs from '@/app/ui/teacher/breadcrumbs';
 import { fetchCustomers } from '@/app/lib/data';
  
 export default async function Page() {

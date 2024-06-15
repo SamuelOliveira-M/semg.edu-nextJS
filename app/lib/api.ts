@@ -71,6 +71,7 @@ export async function fetchFilteredClass() {
 }
 
 export async function fetchRegistrationById(id:string){
+  noStore()
   try{
     const res = await fetch(`${process.env.API_URL}/studantee/${id}`, {
       method: 'GET',
@@ -279,6 +280,21 @@ export async function fetchCreateClass(dataClass:CreateClassType, cod_inep:any) 
   
     const data = await res.json();
     console.log(data +' ss')
+    return data;
+  
+  }catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch invoices.');
+  }
+}
+
+export async function deleteClassFetch(id:string){
+  try{
+    const res = await fetch(`${process.env.API_URL}/remove/class/${id}`, {
+      method: 'DELETE',
+    });
+  
+    const data= await res.json();
     return data;
   
   }catch (error) {

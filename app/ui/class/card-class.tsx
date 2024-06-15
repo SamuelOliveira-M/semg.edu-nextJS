@@ -14,13 +14,13 @@ export default async function CardClass() {
     <div className="rounded-lg bg-gray-50 p-4 md:pt-0">
       <Grid numItemsSm={2} numItemsLg={30} className="gap-6">
         {classrooms?.map((schoolClass) => (
-          <Link 
+          <div
             key={schoolClass.id}
-            href={`/dashboard/class/${schoolClass.id}`}
+            className="mt-4 w-full rounded-md bg-white p-4 cursor-pointer transition-transform transform hover:shadow-md hover:bg-blue-100"
           >
-            <div
+            <Link 
               key={schoolClass.id}
-              className="mt-4 w-full rounded-md bg-white p-4 cursor-pointer transition-transform transform hover:shadow-md hover:bg-blue-100"
+              href={`/dashboard/class/${schoolClass.id}`}
             >
               <div className="flex items-center justify-between border-b border-black pb-4">
                 <div>
@@ -31,17 +31,22 @@ export default async function CardClass() {
                 </div>
                 <InvoiceStatus status={schoolClass.status} />
               </div>
-              <div className="flex w-full items-center justify-between pt-4">
+            </Link>
+            <div className="flex w-full items-center justify-between pt-4">
+              <Link 
+                key={schoolClass.id}
+                href={`/dashboard/class/${schoolClass.id}`}
+              >
                 <div>
                   <p>{formatDateToLocal(schoolClass.ano_letivo.data_inicio)}</p>
                 </div>
-                <div className="flex justify-end gap-2">
-                  <UpdateClass id={schoolClass.id} />
-                  <DeleteClass id={schoolClass.id} />
-                </div>
+              </Link>
+              <div className="flex justify-end gap-2">
+                <UpdateClass id={schoolClass.id} />
+                <DeleteClass id={schoolClass.id} />
               </div>
             </div>
-          </Link>  
+          </div>
         ))}
       </Grid>
     </div>

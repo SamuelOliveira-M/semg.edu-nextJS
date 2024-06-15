@@ -8,9 +8,12 @@ import { signIn } from '@/auth';
 import { AuthError } from 'next-auth';
 import { Teacher } from './definitions';
 import { CreateTeacherType,CreateClassType } from './definitions';
-import { fetchCreateTeacher } from './api';
-import { deleteTeacherFetch } from './api';
-import { fetchCreateClass } from './api';
+import {
+  fetchCreateTeacher,
+  deleteTeacherFetch,
+  deleteClassFetch,
+  fetchCreateClass,
+} from './api';
 
 const FormSchema = z.object({
   id: z.string(),
@@ -164,8 +167,7 @@ export async function createTeacher(prevState: State, formData: FormData) {
 //   redirect('/dashboard/invoices');
 // }
 
-export async function deleteInvoice(id: string) {
-  console.log(id)
+export async function deleteTeahcer(id: string) {
   try {
     const teacherRemove  = await deleteTeacherFetch(id)
     console.log(teacherRemove)
@@ -227,4 +229,14 @@ console.log(status)
   // // Revalidate the cache for the invoices page and redirect the user.
   revalidatePath('/dashboard/class');
   redirect('/dashboard/class');
+}
+
+export async function deleteClass(id: string) {
+  try {
+    const teacherRemove  = await deleteClassFetch(id)
+    revalidatePath('/dashboard/class');
+    return { message: 'Turma removido.' };
+  } catch (error) {
+    return { message: 'Database Error: Failed to Delete teacher.' };
+  }
 }

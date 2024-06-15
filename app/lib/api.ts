@@ -9,7 +9,8 @@ import {
   IDataStatistics,
   ICalendar,
   StudantPerformanceSheet,
-  CreateTeacherType
+  CreateTeacherType,
+  CreateClassType,
 } from './definitions';
 
 
@@ -257,6 +258,27 @@ export async function getCalendar(id:string) {
     });
   
     const data:ICalendar[]= await res.json();
+    return data;
+  
+  }catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch invoices.');
+  }
+}
+
+export async function fetchCreateClass(dataClass:CreateClassType, cod_inep:any) {
+  noStore()
+  try{
+    const res = await fetch(`${process.env.API_URL}/create/turma/${cod_inep}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(dataClass),
+    });
+  
+    const data = await res.json();
+    console.log(data +' ss')
     return data;
   
   }catch (error) {

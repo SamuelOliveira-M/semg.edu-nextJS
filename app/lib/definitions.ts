@@ -10,6 +10,12 @@ export type SchollClass = {
   ano_letivo: SchollClassYear;
 }
 
+export type CreateClassType = {
+  serie: number
+  nome: string 
+  turno: string
+  status: string
+}
 
 export type SchollClassTable = {
   id: string;
@@ -145,7 +151,6 @@ export type CreateTeacherType = {
   data_nascimento: string
   // file: object
 }
-
 
 export type SubjectOfTeacher = {
   professor:{

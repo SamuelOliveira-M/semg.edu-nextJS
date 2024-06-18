@@ -13,6 +13,7 @@ import {
   deleteTeacherFetch,
   deleteClassFetch,
   fetchCreateClass,
+  fetchCreateRegistration,
 } from './api';
 
 const FormSchema = z.object({
@@ -37,6 +38,12 @@ const FormSchemaClass = z.object({
   status: z.string(),
 });
 
+const FormSchemaRegistration = z.object({
+  classId:z.string(),
+  alunoId: z.string(),
+  status: z.string(),
+});
+
 export type State = {
   errors?: {
     name?: string[];
@@ -55,6 +62,14 @@ export type StateClass = {
     turno?: string[];
     status?:string[]
     
+  };
+  message?: string | null;
+};
+
+export type StateRegistration = {
+  errors?: {
+    status?: string[];
+    alunoId?: string[];
   };
   message?: string | null;
 };
@@ -239,4 +254,47 @@ export async function deleteClass(id: string) {
   } catch (error) {
     return { message: 'Database Error: Failed to Delete teacher.' };
   }
+}
+
+
+
+export async function createRegistration(prevState: StateRegistration, formData: FormData) {
+  const validatedFields = FormSchemaRegistration.safeParse({
+    classId: formData.get('classId'),
+    alunoId: formData.get('alunoId'),
+    status: formData.get('status'),
+  });
+  // If form validation fails, return errors early. Otherwise, continue.
+  if (!validatedFields.success) {
+    return {
+      errors: validatedFields.error.flatten().fieldErrors,
+      message: 'Missing Fields. Failed to Create Invoice.',
+    };
+  }
+
+  const {alunoId,status,classId} = validatedFields.data;
+  const codigoInep = '22110666' 
+  console.log(status)
+  const dataRegistration =  { 
+    
+    "status": status,
+    "escola":codigoInep,
+    "idTurma":classId,
+    "alunoId":alunoId
+  }
+
+ 
+  // // Insert data into the database
+  try {
+    await fetchCreateRegistration(dataRegistration)
+  } catch (error) {
+    // If a database error occurs, return a more specific error.
+    return {
+      message: 'Database Error: Failed to Create Invoice.',
+    };
+  }
+ 
+  // // Revalidate the cache for the invoices page and redirect the user.
+  revalidatePath(`/dashboard/class/${classId}`);
+  redirect(`/dashboard/class/${classId}`);
 }

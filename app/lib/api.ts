@@ -11,6 +11,8 @@ import {
   StudantPerformanceSheet,
   CreateTeacherType,
   CreateClassType,
+  Studant,
+  SchollClass,
 } from './definitions';
 
 
@@ -295,6 +297,63 @@ export async function deleteClassFetch(id:string){
     });
   
     const data= await res.json();
+    return data;
+  
+  }catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch invoices.');
+  }
+}
+
+export async function readClassUniqueFetch(id:string){
+  noStore()
+  try{
+    const res = await fetch(`${process.env.API_URL}/class/${id}`, {
+      method: 'GET',
+    });
+  
+    const data:SchollClass = await res.json();
+    console.log(data+'55')
+    return data;
+  
+  }catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch invoices.');
+  }
+}
+
+
+export async function readNoRegistration(){
+  noStore()
+  try{
+    const res = await fetch(`${process.env.API_URL}/studant/noClasses`, {
+      method: 'GET',
+    });
+  
+    const data:Studant[]= await res.json();
+    return data;
+  
+  }catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch invoices.');
+  }
+}
+
+
+export async function fetchCreateRegistration(dataRegistration:any) {
+
+  try{
+    const res = await fetch(`${process.env.API_URL}/matricular`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(dataRegistration),
+    });
+
+  
+    const data = await res.json();
+    console.log(data)
     return data;
   
   }catch (error) {

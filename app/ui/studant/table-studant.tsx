@@ -5,6 +5,7 @@ import clsx from 'clsx';
 import { ArrowPathIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { formatDateToBirth, formatText } from '@/app/lib/utils';
+import { CreateMatricula } from './buttons';
 
 export default async function StudantTable({
   id,
@@ -62,9 +63,14 @@ export default async function StudantTable({
             );
           })}
         </div>
-        <div className="flex items-center pb-2 pt-6">
-          <ArrowPathIcon className="h-5 w-5 text-gray-500" />
-          <h3 className="ml-2 text-sm text-gray-500 ">Updated just now</h3>
+        <div className='flex justify-between'>
+          <div className="flex items-center pb-2 pt-6">
+            <ArrowPathIcon className="h-5 w-5 text-gray-500" />
+            <h3 className="ml-2 text-sm text-gray-500 ">Updated just now</h3>
+          </div>
+          <div className='flex items-center pb-2 pt-6'>
+            <CreateMatricula turmaId={id}/>
+          </div>
         </div>
       </div>
     </div>

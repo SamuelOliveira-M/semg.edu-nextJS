@@ -14,6 +14,7 @@ import {
   deleteClassFetch,
   fetchCreateClass,
   fetchCreateRegistration,
+  AllocationTeacher,
 } from './api';
 
 const FormSchema = z.object({
@@ -143,45 +144,6 @@ export async function createTeacher(prevState: State, formData: FormData) {
   redirect('/dashboard/teacher');
 }
 
-// const UpdateInvoice = FormSchema.omit({ id: true, date: true });
- 
-// // ...
-
-// export async function updateInvoice(
-//   id: string,
-//   prevState: State,
-//   formData: FormData,
-// ) {
-//   const validatedFields = UpdateInvoice.safeParse({
-//     customerId: formData.get('customerId'),
-//     amount: formData.get('amount'),
-//     status: formData.get('status'),
-//   });
- 
-//   if (!validatedFields.success) {
-//     return {
-//       errors: validatedFields.error.flatten().fieldErrors,
-//       message: 'Missing Fields. Failed to Update Invoice.',
-//     };
-//   }
- 
-//   const { customerId, amount, status } = validatedFields.data;
-//   const amountInCents = amount * 100;
- 
-//   try {
-//     await sql`
-//       UPDATE invoices
-//       SET customer_id = ${customerId}, amount = ${amountInCents}, status = ${status}
-//       WHERE id = ${id}
-//     `;
-//   } catch (error) {
-//     return { message: 'Database Error: Failed to Update Invoice.' };
-//   }
- 
-//   revalidatePath('/dashboard/invoices');
-//   redirect('/dashboard/invoices');
-// }
-
 export async function deleteTeahcer(id: string) {
   try {
     const teacherRemove  = await deleteTeacherFetch(id)
@@ -297,4 +259,36 @@ export async function createRegistration(prevState: StateRegistration, formData:
   // // Revalidate the cache for the invoices page and redirect the user.
   revalidatePath(`/dashboard/class/${classId}`);
   redirect(`/dashboard/class/${classId}`);
+}
+
+
+export async function allocationTeacher(prevState: StateClass, formData: FormData) {
+  
+  const validatedFields = {
+    classId: formData.get('classId'),
+    professorId: formData.get('professorId'),
+    subjectId: formData.get('subjectId'),
+  };
+  
+  const { classId, professorId, subjectId} = validatedFields;
+  
+  const dataAllocation =  { 
+  'classId':classId,
+  'teacherId':professorId,
+  'subjectId':subjectId,
+  }
+  console.log(dataAllocation)
+  // // Insert data into the database
+  try {
+    await AllocationTeacher(dataAllocation)
+  } catch (error) {
+    // If a database error occurs, return a more specific error.
+    return {
+      message: 'Database Error: Failed to Create Invoice.',
+    };
+  }
+ 
+  // // Revalidate the cache for the invoices page and redirect the user.
+  revalidatePath('/dashboard/class');
+  redirect('/dashboard/class');
 }

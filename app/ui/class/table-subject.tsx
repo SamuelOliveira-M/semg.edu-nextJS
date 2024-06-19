@@ -4,6 +4,7 @@ import { reqSubjectAndTeacher } from '@/app/lib/api';
 import clsx from 'clsx';
 import { ArrowPathIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
+import { AllocateTeacher } from '../teacher/buttons';
 
 export default async function TableSubject({
   id,
@@ -70,9 +71,14 @@ export default async function TableSubject({
             );
           })}
         </div>
-        <div className="flex items-center pb-2 pt-6">
-          <ArrowPathIcon className="h-5 w-5 text-gray-500" />
-          <h3 className="ml-2 text-sm text-gray-500 ">Updated just now</h3>
+        <div className='flex justify-between'>
+          <div className="flex items-center pb-2 pt-6">
+            <ArrowPathIcon className="h-5 w-5 text-gray-500" />
+            <h3 className="ml-2 text-sm text-gray-500 ">Updated just now</h3>
+          </div>
+          <div className='flex items-center pb-2 pt-6'>
+            <AllocateTeacher id={id}/>
+          </div>
         </div>
       </div>
     </div>

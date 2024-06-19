@@ -1,8 +1,7 @@
 import RevenueChart from '@/app/ui/dashboard/revenue-chart';
-import LatestInvoices from '@/app/ui/dashboard/latest-teacher';
-import { lusitana } from '@/app/ui/fonts';
 import { Suspense } from 'react';
 import CardWrapper from '@/app/ui/dashboard/cards';
+import AllTeacher from '@/app/ui/teacher/all-teachers';
 
 import { 
   RevenueChartSkeleton,
@@ -23,7 +22,7 @@ export default async function Page() {
           <RevenueChart />
         </Suspense>
         <Suspense fallback={<LatestInvoicesSkeleton />}>
-          <LatestInvoices />
+          <AllTeacher />
         </Suspense>
       </div>
     </main>

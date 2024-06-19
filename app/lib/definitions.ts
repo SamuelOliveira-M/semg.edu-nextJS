@@ -167,6 +167,12 @@ export type SubjectOfTeacher = {
   },
 }
 
+export type Subject = {
+  id: string
+  nome: string
+  carga_horaria: number
+}
+
 export type TeacherClasses = {
   turma: SchollClass
 }

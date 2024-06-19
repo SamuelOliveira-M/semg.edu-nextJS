@@ -13,6 +13,7 @@ import {
   CreateClassType,
   Studant,
   SchollClass,
+  Subject,
 } from './definitions';
 
 
@@ -167,6 +168,23 @@ export async function reqTeacher(id:string){
   }
 }
 
+export async function readSubjects(){
+  try{
+    const res = await fetch(`${process.env.API_URL}/subjects`, {
+      method: 'GET',
+    });
+  
+    const data:Subject[] = await res.json();
+    return data;
+    
+  
+  }catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch invoices.');
+  }
+}
+
+
 export async function reqSubjectAndTeacher(id:string){
   try{
     const res = await fetch(`${process.env.API_URL}/teachers-subjects/${id}`, {
@@ -216,6 +234,7 @@ export async function getStatistics() {
 }
 
 export async function fetchCreateTeacher(formDataToSend:CreateTeacherType, profileImage:any) {
+  noStore()
   var formData = new FormData();
 
   formData.append('file', profileImage);
@@ -313,7 +332,6 @@ export async function readClassUniqueFetch(id:string){
     });
   
     const data:SchollClass = await res.json();
-    console.log(data+'55')
     return data;
   
   }catch (error) {
@@ -354,6 +372,26 @@ export async function fetchCreateRegistration(dataRegistration:any) {
   
     const data = await res.json();
     console.log(data)
+    return data;
+  
+  }catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch invoices.');
+  }
+}
+
+export async function AllocationTeacher(dataRegistration:any) {
+  noStore()
+  try{
+    const res = await fetch(`${process.env.API_URL}/allocation/teacher`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(dataRegistration),
+    });
+  
+    const data = await res.json();
     return data;
   
   }catch (error) {

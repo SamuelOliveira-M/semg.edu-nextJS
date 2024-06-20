@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { formatDateToBirth, formatText } from '@/app/lib/utils';
 import { CreateMatricula } from './buttons';
 
-export default async function StudantTable({
+export default async function TableRegistration({
   id,
 }: {
   id: string; 

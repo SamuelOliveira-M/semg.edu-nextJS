@@ -15,8 +15,8 @@ import clsx from 'clsx';
 const links = [
   { name: 'Home', href: '/dashboard', icon: HomeIcon },
   {
-    name: 'Professores',
-    href: '/dashboard/teacher',
+    name: 'Alunos',
+    href: '/dashboard/studant',
     icon: UserGroupIcon,
   },
   { name: 'Turmas', href: '/dashboard/class', icon: PresentationChartBarIcon },

@@ -316,4 +316,24 @@ export type InvoiceForm = {
 };
 
 
-
+export type CreateStudantType = {
+  dataStudent: {
+      nome: string,
+      data_nascimento: string,
+      municipio_nascimento: string,
+      uf_nascimento: string,
+      cpf: string
+    },
+    dataAddress: {
+      rua: string,
+      cidade: string,
+      estado: string,
+      cep: string
+    },
+    dataResponsibile: {
+      nome_pai: string,
+      nome_mae: string,
+      telefone_secundario: string,
+      telefone:string
+    }
+}

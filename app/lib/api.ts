@@ -14,6 +14,7 @@ import {
   Studant,
   SchollClass,
   Subject,
+  CreateStudantType,
 } from './definitions';
 
 
@@ -113,6 +114,22 @@ export async function studantProfile(id:string){
     });
   
     const data:RegistrationTable = await res.json();
+    return data;
+  
+  }catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch invoices.');
+  }
+}
+
+export async function allStudants(){
+  noStore()
+  try{
+    const res = await fetch(`${process.env.API_URL}/studants`, {
+      method: 'GET',
+    });
+  
+    const data:Studant[] = await res.json();
     return data;
   
   }catch (error) {
@@ -273,6 +290,22 @@ export async function deleteTeacherFetch(id:string){
   }
 }
 
+export async function deleteStudantFetch(id:string){
+  try{
+    const res = await fetch(`${process.env.API_URL}/remove/studant/${id}`, {
+      method: 'DELETE',
+    });
+  
+    const data= await res.json();
+    return data;
+  
+  }catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch invoices.');
+  }
+}
+
+
 export async function getCalendar(id:string) {
   try{
     const res = await fetch(`${process.env.API_URL}/calendar/${id}`, {
@@ -392,6 +425,29 @@ export async function AllocationTeacher(dataRegistration:any) {
     });
   
     const data = await res.json();
+    return data;
+  
+  }catch (error) {
+    console.error('Database Error:', error);
+    throw new Error('Failed to fetch invoices.');
+  }
+}
+
+export async function fetchCreateStudant(formDataToSend:CreateStudantType, profileImage:any) {
+  noStore()
+  var formData = new FormData();
+
+  formData.append('file', profileImage);
+  formData.append('data', JSON.stringify(formDataToSend));
+  
+  try{
+    const res = await fetch(`${process.env.API_URL}/aluno/create`, {
+      method: 'POST',
+      body: formData
+    });
+  
+    const data:Studant = await res.json();
+    console.log(data)
     return data;
   
   }catch (error) {

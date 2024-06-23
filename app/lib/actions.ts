@@ -6,7 +6,7 @@ import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { signIn } from '@/auth';
 import { AuthError } from 'next-auth';
-import { Teacher } from './definitions';
+import { Teacher, CreateStudantType } from './definitions';
 import { CreateTeacherType,CreateClassType } from './definitions';
 import {
   fetchCreateTeacher,
@@ -15,6 +15,8 @@ import {
   fetchCreateClass,
   fetchCreateRegistration,
   AllocationTeacher,
+  deleteStudantFetch,
+  fetchCreateStudant,
 } from './api';
 
 const FormSchema = z.object({
@@ -45,6 +47,28 @@ const FormSchemaRegistration = z.object({
   status: z.string(),
 });
 
+const FormSchemaStudant = z.object({
+  id: z.string(),
+  studantName: z.string().min(3).max(100),
+  dateOfBirth: z.string(),
+  cityOfBirth: z.string(),
+  ufBirth: z.string(),
+  cpf: z.string(),
+  locality: z.string(),
+	city: z.string(),
+  uf: z.string(),
+  cep: z.string(),
+  fatherName: z.string(),
+  motherName: z.string(),
+  firstPhone: z.string(),
+  secondPhone:z.string(),
+  profileImage:z.any()
+});
+
+
+
+
+  
 export type State = {
   errors?: {
     name?: string[];
@@ -71,6 +95,22 @@ export type StateRegistration = {
   errors?: {
     status?: string[];
     alunoId?: string[];
+  };
+  message?: string | null;
+};
+
+export type StateStudant = {
+  errors?: {
+    studantName?: string[];
+    dateOfBirth?: string[];
+    cityOfBirth?: string[]; 
+  	ufBirth?: string[];
+  	cpf?: string[];
+  	locality?: string[];
+		fatherName?: string[];
+  	motherName?: string[];
+  	firstPhone?: string[];
+  	secondPhone?:string[];
   };
   message?: string | null;
 };
@@ -161,14 +201,12 @@ const dataClassValidate = FormSchemaClass.omit({ id: true});
 
 export async function createClass(prevState: StateClass, formData: FormData) {
   // Validate form using Zod
-  console.log(typeof(formData.get('serie')))
   const validatedFields = dataClassValidate.safeParse({
     serie: formData.get('serie'),
     nome: formData.get('nome'),
     turno: formData.get('turno'),
     status: formData.get('status'),
   });
-  console.log(validatedFields.error)
  
   // If form validation fails, return errors early. Otherwise, continue.
   if (!validatedFields.success) {
@@ -177,12 +215,10 @@ export async function createClass(prevState: StateClass, formData: FormData) {
       message: 'Missing Fields. Failed to Create Invoice.',
     };
   }
- console.log('oi')
+
   let { serie, nome, turno,status} = validatedFields.data;
   nome = nome.toUpperCase()
   const serie1 = Number(serie)
-console.log(serie1)
-console.log(status)
 
   const dataClass:CreateClassType =  { 
   serie:serie1,
@@ -291,4 +327,98 @@ export async function allocationTeacher(prevState: StateClass, formData: FormDat
   // // Revalidate the cache for the invoices page and redirect the user.
   revalidatePath('/dashboard/class');
   redirect('/dashboard/class');
+}
+
+export async function deleteStudant(id: string) {
+  try {
+    const teacherRemove  = await deleteStudantFetch(id)
+    revalidatePath('/dashboard/studant');
+    return { message: 'Professor removido.' };
+  } catch (error) {
+    return { message: 'Database Error: Failed to Delete teacher.' };
+  }
+}
+
+const newSchemaStudant = FormSchemaStudant.omit({ id: true});
+ 
+export async function createStudant(prevState: StateStudant, formData: FormData) {
+  // Validate form using Zod
+  const validatedFields = newSchemaStudant.safeParse({
+    studantName: formData.get('studantName'),
+    dateOfBirth: formData.get('dateOfBirth'),
+    cityOfBirth:formData.get('cityOfBirth'),  
+  	ufBirth: formData.get('ufBirth'),
+  	cpf: formData.get('cpf'),
+  	locality: formData.get('locality'),
+		city: formData.get('city'),
+    uf: formData.get('uf'),
+    cep: formData.get('cep'),
+    fatherName: formData.get('fatherName'),
+    motherName: formData.get('motherName'),
+    firstPhone: formData.get('firstPhone'),
+    secondPhone: formData.get('secondPhone'),
+    profileImage: formData.get('profileImage')
+  });
+ 
+  // If form validation fails, return errors early. Otherwise, continue.
+  if (!validatedFields.success) {
+    return {
+      errors: validatedFields.error.flatten().fieldErrors,
+      message: 'Missing Fields. Failed to Create Invoice.',
+    };
+  }
+ 
+  const { 
+		studantName,
+		dateOfBirth,
+		cityOfBirth,
+		ufBirth,
+		cpf,
+		locality,
+		city,
+		uf,
+		cep,
+		fatherName,
+		motherName,
+		firstPhone,
+		secondPhone,
+		profileImage,
+	
+	} = validatedFields.data;
+  
+	const dataStudant:CreateStudantType = {
+    dataStudent: {
+      nome: studantName,
+      data_nascimento: dateOfBirth,
+      municipio_nascimento: cityOfBirth,
+      uf_nascimento: ufBirth,
+      cpf: cpf
+    },
+    dataAddress: {
+      rua: locality,
+      cidade: city,
+      estado: uf,
+      cep: cep
+    },
+    dataResponsibile: {
+      nome_pai: fatherName,
+      nome_mae: motherName,
+      telefone_secundario:secondPhone,
+      telefone: firstPhone
+    }
+  }
+
+  // // Insert data into the database
+  try {
+    await fetchCreateStudant(dataStudant,profileImage)
+  } catch (error) {
+    // If a database error occurs, return a more specific error.
+    return {
+      message: 'Database Error: Failed to Create Invoice.',
+    };
+  }
+ 
+  // // Revalidate the cache for the invoices page and redirect the user.
+  revalidatePath('/dashboard/studant');
+  redirect('/dashboard/studant');
 }

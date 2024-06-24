@@ -446,7 +446,7 @@ export async function fetchCreateStudant(formDataToSend:CreateStudantType, profi
       body: formData
     });
   
-    const data:Studant = await res.json();
+    const data = await res.json();
     console.log(data)
     return data;
   

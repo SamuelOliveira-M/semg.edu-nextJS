@@ -1,12 +1,11 @@
 'use server';
 
 import { z } from 'zod';
-import { sql } from '@vercel/postgres'; 
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { signIn } from '@/auth';
 import { AuthError } from 'next-auth';
-import { Teacher, CreateStudantType } from './definitions';
+import { CreateStudantType } from './definitions';
 import { CreateTeacherType,CreateClassType } from './definitions';
 import {
   fetchCreateTeacher,
@@ -49,7 +48,7 @@ const FormSchemaRegistration = z.object({
 
 const FormSchemaStudant = z.object({
   id: z.string(),
-  studantName: z.string().min(3).max(100),
+  studantName: z.string().min(3).max(80),
   dateOfBirth: z.string(),
   cityOfBirth: z.string(),
   ufBirth: z.string(),
@@ -112,7 +111,7 @@ export type StateStudant = {
   	firstPhone?: string[];
   	secondPhone?:string[];
   };
-  message?: string | null;
+  message?: string | null ;
 };
 
 
@@ -407,10 +406,33 @@ export async function createStudant(prevState: StateStudant, formData: FormData)
       telefone: firstPhone
     }
   }
-
   // // Insert data into the database
   try {
-    await fetchCreateStudant(dataStudant,profileImage)
+    const studants = await fetchCreateStudant(dataStudant,profileImage)
+    
+    if(typeof studants === 'object' ){
+      return { message: `${studants.message}`,}
+    }
+
+    if(!studants.data){
+
+      
+      let errorMessageString = "";
+
+      for (const student of studants) {
+        if (student.error) {
+          errorMessageString += `${student.message},\n`;
+        }
+      } 
+
+      return {
+        message: `${errorMessageString}`,
+      }
+    }
+
+      // // Revalidate the cache for the invoices page and redirect the user.
+    revalidatePath('/dashboard/studant');
+    redirect('/dashboard/studant');
   } catch (error) {
     // If a database error occurs, return a more specific error.
     return {
@@ -418,7 +440,5 @@ export async function createStudant(prevState: StateStudant, formData: FormData)
     };
   }
  
-  // // Revalidate the cache for the invoices page and redirect the user.
-  revalidatePath('/dashboard/studant');
-  redirect('/dashboard/studant');
+
 }

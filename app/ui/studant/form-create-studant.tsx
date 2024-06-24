@@ -3,15 +3,13 @@
 import { CustomerField } from '@/app/lib/definitions';
 import Link from 'next/link';
 import {
-  CheckIcon,
-  ClockIcon,
-  CurrencyDollarIcon,
   UserCircleIcon,
-	AtSymbolIcon,
-	KeyIcon,
 	CalendarDaysIcon,
 	PhotoIcon,
-  IdentificationIcon
+  IdentificationIcon,
+  MapPinIcon,
+  GlobeAmericasIcon,
+  PhoneIcon,
 } from '@heroicons/react/24/outline';
 import { Button } from '@/app/ui/button';
 import { createStudant } from '@/app/lib/actions';
@@ -31,7 +29,7 @@ export default function FormCreateStudant({ customers }: { customers: CustomerFi
         <div className='grid grid-cols-2 gap-4 mb-4 '>        
           <div className="mb-4">
             <label htmlFor="studantName" className="mb-2 block text-sm font-medium">
-              Nome do aluno
+              Nome do aluno <span className="text-red-500">*</span>
             </label>
 
             <div className="relative">
@@ -49,6 +47,7 @@ export default function FormCreateStudant({ customers }: { customers: CustomerFi
               <UserCircleIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500" />
             </div> 
           </div>
+
           <div className="mb-4">
             <label htmlFor="cpf" className="mb-2 block text-sm font-medium">
               Cpf
@@ -66,12 +65,19 @@ export default function FormCreateStudant({ customers }: { customers: CustomerFi
                 />
                 <IdentificationIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
               </div>
+              <div id="customer-error" aria-live="polite" aria-atomic="true">
+					      {state.errors?.cpf &&
+						    state.errors.cpf.map((error: string) => (
+							    <p className="mt-2 text-sm text-red-500" key={error}>
+								    {error}
+							    </p>
+						    ))}
+      	      </div>
             </div>
           </div>
-
           <div className="mb-4">
             <label htmlFor="dateOfBirth" className="mb-2 block text-sm font-medium">
-              Data de Nascimento
+              Data de Nascimento <span className="text-red-500">*</span>
             </label>
             <div className="relative mt-2 rounded-md">
               <div className="relative">
@@ -85,12 +91,20 @@ export default function FormCreateStudant({ customers }: { customers: CustomerFi
                 />
                 <CalendarDaysIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
               </div>
+              <div id="customer-error" aria-live="polite" aria-atomic="true">
+					      {state.errors?.dateOfBirth &&
+						    state.errors.dateOfBirth.map((error: string) => (
+							    <p className="mt-2 text-sm text-red-500" key={error}>
+								    {error}
+							    </p>
+						    ))}
+      	      </div>
             </div>
           </div>
 
           <div className="mb-4">
             <label htmlFor="ufBirth" className="mb-2 block text-sm font-medium">
-              Estado De Nascimento - UF
+              Estado De Nascimento - UF <span className="text-red-500">*</span>
             </label>
             <div className="relative mt-2 rounded-md">
               <div className="relative">
@@ -104,7 +118,7 @@ export default function FormCreateStudant({ customers }: { customers: CustomerFi
                   minLength={2}
                   maxLength={2}
                 />
-                <IdentificationIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
+                <GlobeAmericasIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
               </div>
             </div>
           </div>
@@ -120,11 +134,10 @@ export default function FormCreateStudant({ customers }: { customers: CustomerFi
                   type='text'
                   placeholder="Informe sua senha "
                   className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
-                  required
                   minLength={6	}
                   maxLength={60}
                 />
-                <KeyIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
+                <GlobeAmericasIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
               </div>
             </div>
           </div>				
@@ -165,14 +178,14 @@ export default function FormCreateStudant({ customers }: { customers: CustomerFi
                   minLength={6}
                   maxLength={60}
                 />
-                <IdentificationIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
+                <MapPinIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
               </div>
             </div>
           </div>
 
           <div className="mb-4">
             <label htmlFor="locality" className="mb-2 block text-sm font-medium">
-              localidade
+              localidade <span className="text-red-500">*</span>
             </label>
 
             <div className="relative">
@@ -186,17 +199,18 @@ export default function FormCreateStudant({ customers }: { customers: CustomerFi
                   placeholder="Adicione o nome do professor"
                   minLength={3}
                   maxLength={100}
+                  
                 ></input>
-              <UserCircleIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500" />
+              <MapPinIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500" />
             </div> 
           </div>
 
           <div className="mb-4">
             <label htmlFor="city" className="mb-2 block text-sm font-medium">
-              Cidade
+              Cidade <span className="text-red-500">*</span>
             </label>
             <div className="relative mt-2 rounded-md">
-              <div className="relative">
+              <div className="relative"> 
                 <input
                   id="city"
                   name="city"
@@ -207,14 +221,14 @@ export default function FormCreateStudant({ customers }: { customers: CustomerFi
                   minLength={3}
                   maxLength={100}
                 />
-                <IdentificationIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
+                <MapPinIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
               </div>
             </div>
         </div>
 
         <div className="mb-4">
           <label htmlFor="uf" className="mb-2 block text-sm font-medium">
-            Estado
+            Estado <span className="text-red-500">*</span>
           </label>
           <div className="relative mt-2 rounded-md">
             <div className="relative">
@@ -226,7 +240,7 @@ export default function FormCreateStudant({ customers }: { customers: CustomerFi
                 className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
                 required
               />
-              <CalendarDaysIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
+              <MapPinIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
             </div>
           </div>
         </div>
@@ -236,7 +250,7 @@ export default function FormCreateStudant({ customers }: { customers: CustomerFi
         <div className="grid grid-cols-2 gap-4 mb-4" >
           <div className="mb-4">
             <label htmlFor="fatherName" className="mb-2 block text-sm font-medium">
-              Nome do Pai
+              Nome do Pai <span className="text-red-500">*</span>
             </label>
 
             <div className="relative">
@@ -249,13 +263,14 @@ export default function FormCreateStudant({ customers }: { customers: CustomerFi
                   placeholder="Adicione o nome do professor"
                   minLength={3}
                   maxLength={100}
+                  required
                 ></input>
               <UserCircleIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500" />
             </div> 
           </div>
           <div className="mb-4">
             <label htmlFor="motherName" className="mb-2 block text-sm font-medium">
-              Nome do Mãe
+              Nome do Mãe <span className="text-red-500">*</span>
             </label>
 
             <div className="relative">
@@ -289,8 +304,16 @@ export default function FormCreateStudant({ customers }: { customers: CustomerFi
                   minLength={3}
                   maxLength={100}
                 ></input>
-              <UserCircleIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500" />
+              <PhoneIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500" />
             </div> 
+            <div id="customer-error" aria-live="polite" aria-atomic="true">
+					      {state.errors?.firstPhone &&
+						    state.errors.firstPhone.map((error: string) => (
+							    <p className="mt-2 text-sm text-red-500" key={error}>
+								    {error}
+							    </p>
+						    ))}
+      	      </div>
           </div>
           <div className="mb-4">
             <label htmlFor="secondPhone" className="mb-2 block text-sm font-medium">
@@ -308,19 +331,35 @@ export default function FormCreateStudant({ customers }: { customers: CustomerFi
                   minLength={3}
                   maxLength={100}
                 ></input>
-              <UserCircleIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500" />
-            </div> 
+              <PhoneIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500" />
+            </div>
+            <div id="customer-error" aria-live="polite" aria-atomic="true">
+					      {state.errors?.secondPhone &&
+						    state.errors.secondPhone.map((error: string) => (
+							    <p className="mt-2 text-sm text-red-500" key={error}>
+								    {error}
+							    </p>
+						    ))}
+      	      </div> 
           </div> 
         </div>
 			</div>
+
+      <div className={`fixed top-4 right-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded shadow-lg transition-opacity duration-300 ${state.message ? 'opacity-100' : 'opacity-0 hidden'}`} role="alert">
+        <strong className="font-bold">Erros:</strong>
+        <ul className="mt-2">
+          <li className="text-sm">{state.message}</li>
+        </ul>
+      </div>
+
       <div className="mt-6 flex justify-end gap-4">
         <Link
           href="/dashboard/studant"
           className="flex h-10 items-center rounded-lg bg-gray-100 px-4 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-200"
         >
-          Cancel
+          Cancelar
         </Link>
-        <Button type="submit">Create Aluno</Button>
+        <Button type="submit">Criar Aluno</Button>
       </div>
     </form>
   );

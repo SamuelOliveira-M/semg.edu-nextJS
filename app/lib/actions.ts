@@ -52,15 +52,15 @@ const FormSchemaStudant = z.object({
   dateOfBirth: z.string(),
   cityOfBirth: z.string(),
   ufBirth: z.string(),
-  cpf: z.string(),
+  cpf: z.string().optional(),
   locality: z.string(),
 	city: z.string(),
   uf: z.string(),
   cep: z.string(),
   fatherName: z.string(),
   motherName: z.string(),
-  firstPhone: z.string(),
-  secondPhone:z.string(),
+  firstPhone: z.string().optional(),
+  secondPhone:z.string().optional(),
   profileImage:z.any()
 });
 
@@ -366,7 +366,7 @@ export async function createStudant(prevState: StateStudant, formData: FormData)
       message: 'Missing Fields. Failed to Create Invoice.',
     };
   }
- 
+
   const { 
 		studantName,
 		dateOfBirth,
@@ -391,7 +391,7 @@ export async function createStudant(prevState: StateStudant, formData: FormData)
       data_nascimento: dateOfBirth,
       municipio_nascimento: cityOfBirth,
       uf_nascimento: ufBirth,
-      cpf: cpf
+      cpf: cpf=== '' ? undefined : cpf
     },
     dataAddress: {
       rua: locality,
@@ -402,43 +402,33 @@ export async function createStudant(prevState: StateStudant, formData: FormData)
     dataResponsibile: {
       nome_pai: fatherName,
       nome_mae: motherName,
-      telefone_secundario:secondPhone,
-      telefone: firstPhone
+      telefone_secundario : secondPhone=== '' ? undefined : firstPhone,
+      telefone: firstPhone=== '' ? undefined : firstPhone
     }
   }
+
   // // Insert data into the database
   try {
     const studants = await fetchCreateStudant(dataStudant,profileImage)
-    
-    if(typeof studants === 'object' ){
-      return { message: `${studants.message}`,}
+
+    if(studants.data){
+      revalidatePath('/dashboard/studant');
+      redirect('/dashboard/studant');
     }
-
-    if(!studants.data){
-
       
-      let errorMessageString = "";
+    let errorMessageString = "";
 
-      for (const student of studants) {
-        if (student.error) {
-          errorMessageString += `${student.message},\n`;
-        }
-      } 
+    for (const student of studants) {
+      errorMessageString += `${student.message},\n`;
+    } 
 
-      return {
-        message: `${errorMessageString}`,
-      }
+    return {
+      message: `${errorMessageString}`,
     }
-
-      // // Revalidate the cache for the invoices page and redirect the user.
-    revalidatePath('/dashboard/studant');
-    redirect('/dashboard/studant');
   } catch (error) {
     // If a database error occurs, return a more specific error.
     return {
       message: 'Database Error: Failed to Create Invoice.',
     };
   }
- 
-
 }

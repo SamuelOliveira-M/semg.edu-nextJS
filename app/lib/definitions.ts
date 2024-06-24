@@ -322,8 +322,8 @@ export type CreateStudantType = {
       data_nascimento: string,
       municipio_nascimento: string,
       uf_nascimento: string,
-      cpf: string
-    },
+      cpf: string | undefined
+    }, 
     dataAddress: {
       rua: string,
       cidade: string,
@@ -333,7 +333,7 @@ export type CreateStudantType = {
     dataResponsibile: {
       nome_pai: string,
       nome_mae: string,
-      telefone_secundario: string,
-      telefone:string
+      telefone_secundario: string | undefined,
+      telefone:string | undefined 
     }
 }

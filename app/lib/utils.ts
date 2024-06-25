@@ -4,8 +4,13 @@ import { SubjectOfGrade } from "@/app/lib/definitions";
 
 
 export const formatCpf = (
-  cpf: string,
+  cpf: string|undefined,
 ) => {
+
+  if(!cpf){
+    return 'CPF - Não Informado'
+  }
+
   cpf = cpf.replace(/\D/g, '');
 
   cpf = cpf.replace(/(\d{3})(\d{3})(\d{3})(\d{2})/, '$1.$2.$3-$4');

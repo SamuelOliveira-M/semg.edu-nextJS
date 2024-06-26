@@ -88,6 +88,13 @@ export default function FormAllocationTeacher({ teachers,dataClass,subjects }: {
             <BookOpenIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500" />
 					</div> 
         </div>
+        
+        <div className={`fixed top-4 right-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded shadow-lg transition-opacity duration-300 ${state.message ? 'opacity-100' : 'opacity-0 hidden'}`} role="alert">
+          <strong className="font-bold">Erros:</strong>
+          <ul className="mt-2">
+            <li className="text-sm">{state.message}</li>
+          </ul>
+        </div>
 
       </div>
       <div className="mt-6 flex justify-end gap-4">

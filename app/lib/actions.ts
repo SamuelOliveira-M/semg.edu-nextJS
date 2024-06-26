@@ -315,7 +315,12 @@ export async function allocationTeacher(prevState: StateClass, formData: FormDat
   console.log(dataAllocation)
   // // Insert data into the database
   try {
-    await AllocationTeacher(dataAllocation)
+    const teacher =  await AllocationTeacher(dataAllocation)
+    if(teacher.error){
+      return{
+        message:teacher.message
+      }
+    }
   } catch (error) {
     // If a database error occurs, return a more specific error.
     return {

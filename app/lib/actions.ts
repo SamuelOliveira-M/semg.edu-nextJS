@@ -179,8 +179,8 @@ export async function createTeacher(prevState: State, formData: FormData) {
   }
  
   // // Revalidate the cache for the invoices page and redirect the user.
-  revalidatePath('/dashboard/teacher');
-  redirect('/dashboard/teacher');
+  revalidatePath('/dashboard');
+  redirect('/dashboard');
 }
 
 export async function deleteTeahcer(id: string) {

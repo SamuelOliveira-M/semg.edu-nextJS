@@ -306,9 +306,9 @@ export async function deleteStudantFetch(id:string){
 }
 
 
-export async function getCalendar(id:string) {
+export async function getCalendar(classId:string) {
   try{
-    const res = await fetch(`${process.env.API_URL}/calendar/${id}`, {
+    const res = await fetch(`${process.env.API_URL}/calendar/${classId}`, {
       method: 'GET',
     });
   

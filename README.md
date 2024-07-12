@@ -35,7 +35,7 @@ URL:[https://semg-edu-next.vercel.app/login](https://semg-edu-next.vercel.app/lo
 Você pode acessar como usuário de test !
 
 ```
-Email: test@gmail.com
+Email: samuel098tr@gmail.com
 Senha:123456
 ```
 

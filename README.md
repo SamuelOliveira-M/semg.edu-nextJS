@@ -35,10 +35,11 @@ URL:[https://semg-edu-next.vercel.app/login](https://semg-edu-next.vercel.app/lo
 Você pode acessar como usuário de test !
 
 ```
-Email: test@gmail.com
+Email: samuel098tr@gmail.com
 Senha:123456
 ```
-
+OBS: Ao clicar no botão de login averar uma demorar de 5 para fazer login, devido a aplicação
+da api está em uma hospedagem gratuita. Após cinco minutos realize o login novamente.   
   
 ## ✒️ Autores
 

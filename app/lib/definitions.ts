@@ -186,25 +186,23 @@ export type IDataStatistics = {
 
 
 export type ICalendar = { 
-  calendario: {
-    diaSemana: string,
-    aulas: [
-      {
-        lotacao: {
-          professor: {
-            nome: string
-          },
-          disciplina: {
-            nome: string
-          }
+  diaSemana: string,
+  aulas: [
+    {
+      lotacao: {
+        professor: {
+          nome: string
         },
-        horario: {
-          horarioInicio: string,
-          horarioFim: string
+        disciplina: {
+          nome: string
         }
+      },
+      horario: {
+        horarioInicio: string,
+        horarioFim: string
       }
-    ]
-  }
+    }
+  ]
 }
 
 export type StudantPerformanceSheet = {

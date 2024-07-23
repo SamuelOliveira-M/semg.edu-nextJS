@@ -12,8 +12,11 @@ export async function Calendar({ id }: { id: string }){
 				<thead className="text-white">
 					<tr>
 						{dados.map((dia, i) => (
-							<th scope="col" key={i} className="w-32"> {/* Define a largura específica aqui */}
-								<p>{dia.diaSemana.substring(0, 3)}<span className="hidden sm:inline">{dia.diaSemana.substring(3)}</span></p>
+							<th scope="col" key={i} className="w-32">
+								<p>
+									{dia.diaSemana.substring(0, 3)}
+									<span className="hidden sm:inline">{dia.diaSemana.substring(3)}</span>
+								</p>
 							</th>
 						))}
 					</tr>
@@ -22,9 +25,9 @@ export async function Calendar({ id }: { id: string }){
 					{Array.from({ length: Math.max(...dados.map(d => d.aulas.length)) }).map((_, rowIndex) => (
 						<tr key={rowIndex}>
 							{dados.map((dia, colIndex) => (
-								<td key={colIndex} className="w-32"> {/* Define a largura específica aqui */}
+								<td key={colIndex}>
 									{dia.aulas[rowIndex] ? (
-										<div className="flex flex-col">
+										<div className="grid grid-cols-1 lg:grid-cols-auto">
 											<Card
 												materia={dia.aulas[rowIndex].lotacao.disciplina.nome}
 												professor={dia.aulas[rowIndex].lotacao.professor.nome}
@@ -43,6 +46,4 @@ export async function Calendar({ id }: { id: string }){
 			</table>
 		</div>
 	);
-	
-	
 }

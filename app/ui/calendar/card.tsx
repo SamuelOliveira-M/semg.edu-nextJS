@@ -7,17 +7,12 @@ export function Card({ materia, professor,horarioInicio, horarioFim }: {
 
 	return(
 		<div
-			className="border rounded-lg p-1 text-center bg-white"
+			className=" flex flex-col justify-center border rounded-lg p-1 text-center bg-white"
 		>
-			<p className="text-xs sm:text-base">
-				{materia.substring(0, 10)}
-				
-				<span className='text-xs hidden sm:inline sm:text-base'>
-					{materia.substring(10, 15)}
-				</span>
-			</p>
+			<p className="truncate text-xs sm:text-base">{materia}</p>
 			
-			<p className="text-xs sm:text-base">{professor.substring(0, 10)}<span className='text-xs hidden sm:inline sm:text-base'>{professor.substring(10, 15)}</span></p>
+			
+			<p className="truncate text-xs sm:text-base">{professor}</p>
 			
 			<div className="flex justify-around sm:flex flex-col">
 				<p className="text-xs sm:text-base">{horarioInicio}</p>	

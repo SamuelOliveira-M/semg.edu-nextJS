@@ -31,13 +31,13 @@ export default async function TableTeachersSubjects({
                 <div
                   key={data.professor.id}
                   className={clsx(
-                    'flex flex-row items-center justify-between p-4 hover:shadow-md',
+                    'grid grid-cols-[2fr_1fr] lg:grid-cols-auto',
                     {
                       'border-t': i !== 0,
                     },
                   )}
                 >
-                  <div className="flex items-center">
+                  <div className="flex items-center m-1">
                     <Image
                       src={data.professor.url_image}
                       alt={`${data.professor.nome}'s profile picture`}
@@ -47,14 +47,18 @@ export default async function TableTeachersSubjects({
                     />
                     <div className="min-w-0">
                       <p className="truncate text-sm font-semibold md:text-base">
-                        {data.professor.nome}
+                        {data.professor.nome.substring(0, 20)}
+                        <span className='text-xs hidden sm:inline sm:text-base'>
+                          {data.professor.nome.substring(18, 60)}
+                        </span>
                       </p>
-                      <p className="hidden text-sm text-gray-500 sm:block">
+
+                      <p className="truncate hidden text-sm text-gray-500 sm:block">
                         {data.professor.email}
                       </p>
                     </div>
                   </div>
-                  <div className='overflow-auto'>
+                  <div className='p-2 text-start sm:text-right overflow-auto'>
                     {data.professor.disciplinasTurmas.map((disciplina) => {
                       return (
                         <p

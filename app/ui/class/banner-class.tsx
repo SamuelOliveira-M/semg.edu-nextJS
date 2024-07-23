@@ -15,8 +15,8 @@ export default async function BannerClass() {
     <div className="class-card bg-blue-700 p-8 rounded-lg shadow-lg max-w mx-auto flex">
       <div className=" flex items-center flex-1 mt-2 ">
         <div>
-        <h1 className="text-2xl mb-4 text-white font-semibold"><strong>8º ano B - Manhã - 2024</strong></h1>
-        <h3 className="text-lg mb-2 text-white">Joaquim Antônio de Araújo</h3>      
+          <h1 className="text-2xl mb-4 text-center sm:text-start  text-white font-semibold"><strong>8º ano B - Manhã - 2024</strong></h1>
+          <h3 className="text-lg mb-2 text-center sm:text-start text-white">Joaquim Antônio de Araújo</h3>      
         </div>
       </div>
       <div className="hidden lg:block flex-shrink-0 ml-4 ">

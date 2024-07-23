@@ -1,5 +1,5 @@
 import TableRegistration from '@/app/ui/studant/table-registration';
-import TableSubject from'@/app/ui/class/table-subject'
+import TableTeachersSubjects from '@/app/ui/class/table-teachers-subjects';
 import { Suspense } from 'react';
 import { fetchRegistrationById } from '@/app/lib/api';
 import { notFound } from 'next/navigation';
@@ -32,7 +32,7 @@ export default async function Page({ params }: { params: { id: string } }) {
         </Suspense>
 
         <Suspense fallback={<LatestInvoicesSkeleton />}>
-          <TableSubject id={id} />
+          <TableTeachersSubjects id={id} />
         </Suspense>
       </div>
     </div>

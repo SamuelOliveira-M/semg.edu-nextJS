@@ -45,9 +45,13 @@ export default async function AllTeacher() {
                     />
                     <div className="min-w-0">
                       <p className="truncate text-sm font-semibold md:text-base">
-                        {teacher.nome}
+                        {teacher.nome.substring(0, 22)}
+                        <span className='text-xs hidden sm:inline sm:text-base'>
+                          {teacher.nome.substring(22, 60)}
+                        </span>
                       </p>
-                      <p className="hidden text-sm text-gray-500 sm:block">
+                      
+                      <p className="truncate hidden text-sm text-gray-500 sm:block">
                         {teacher.email}
                       </p>
                     </div>

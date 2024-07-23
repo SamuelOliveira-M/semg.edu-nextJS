@@ -6,7 +6,7 @@ import { ArrowPathIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { AllocateTeacher } from '../teacher/buttons';
 
-export default async function TableSubject({
+export default async function TableTeachersSubjects({
   id,
 }: {
   id: string; 

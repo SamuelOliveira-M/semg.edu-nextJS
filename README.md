@@ -25,8 +25,8 @@ Mencione as ferramentas que você usou para criar seu projeto
 
 * TypeScript
 * Next.js
-
-
+* React
+* Tailwind
 
 ## 📋 Acesso De Teste
 

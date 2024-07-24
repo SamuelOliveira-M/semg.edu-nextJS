@@ -18,7 +18,8 @@ export default async function AllTeacher() {
         Professores
       </h2>
       <div className="flex grow flex-col justify-between rounded-xl bg-gray-50 p-4">
-        <div className="bg-white px-6">
+        <div className="bg-white px-6 overflow-y-scroll">
+          
           {teachers.map((teacher, i) => {
             return (
               <div
@@ -51,9 +52,9 @@ export default async function AllTeacher() {
                     </p>
                   </div>
                 </Link>
-                <div className="flex justify-end p-2">
-                  <DeleteTeacher id={teacher.id} />
-                </div>
+                
+                <DeleteTeacher id={teacher.id} />
+              
               </div>
             );
           })}

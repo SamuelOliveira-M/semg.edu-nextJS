@@ -30,8 +30,7 @@ export function DeleteTeacher({ id }: { id: string }) {
   return (
     <form action={deleteInvoiceWithId}>
       <button className="rounded-md border p-2 hover:bg-gray-50">
-        <span className="sr-only">Delete</span>
-        <TrashIcon className="w-5" />
+        <TrashIcon className="w-4" />
       </button>
     </form>
   );

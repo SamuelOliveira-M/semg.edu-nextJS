@@ -108,6 +108,7 @@ export async function uniqueFetchRegistrationById(id:string){
 }
 
 export async function studantProfile(id:string){
+  noStore();
   try{
     const res = await fetch(`${process.env.API_URL}/profile/${id}`, {
       method: 'GET',

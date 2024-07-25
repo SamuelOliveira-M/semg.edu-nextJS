@@ -28,7 +28,7 @@ export default async function LinhaGrade({ id }: {id:string}) {
         <tbody className="bg-white text-center">
           {dataGrade.redimento.map((disciplina, index) => (
             <tr key={index} className="w-full border-b py-3 text-sm last-of-type:border-none">
-              <td className="whitespace-nowrap p-1 border sticky left-0 z-10 bg-gray-50">
+              <td className="whitespace-nowrap p-1 border sticky left-0 z-10 bg-gray-50 text-start">
                 {formatText(disciplina.nome ? disciplina.nome : '')}
               </td>
 

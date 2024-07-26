@@ -17,7 +17,7 @@ import { useFormState } from 'react-dom';
 import { lusitana } from '@/app/ui/fonts';
 
 export default function FormCreateStudant({ customers }: { customers: CustomerField[] }) {
-  const initialState = { message: null, errors: {} };
+  const initialState = { message: null, errors: {},successMessage:null };
 
   const [state, dispatch] = useFormState(createStudant, initialState);
   return (
@@ -134,7 +134,7 @@ export default function FormCreateStudant({ customers }: { customers: CustomerFi
                   type='text'
                   placeholder="Informe sua senha "
                   className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
-                  minLength={6	}
+                  minLength={2}
                   maxLength={60}
                 />
                 <GlobeAmericasIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500 peer-focus:text-gray-900" />
@@ -344,13 +344,23 @@ export default function FormCreateStudant({ customers }: { customers: CustomerFi
           </div> 
         </div>
 			</div>
-
-      <div className={`fixed top-4 right-4 bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded shadow-lg transition-opacity duration-300 ${state.message ? 'opacity-100' : 'opacity-0 hidden'}`} role="alert">
-        <strong className="font-bold">Erros:</strong>
-        <ul className="mt-2">
-          <li className="text-sm">{state.message}</li>
-        </ul>
-      </div>
+      {state.message && (
+        <div className={`top-4 right-4 fixed  border bg-red-100 border-red-400 text-red-700 px-4 py-3 rounded shadow-lg transition-opacity duration-300 ${state.message ? 'opacity-100' : 'opacity-0 hidden'}`} role="alert">
+          <strong className="font-bold">Erros:</strong>
+          <ul className="mt-2">
+            <li className="text-sm">{state.message}</li>
+          </ul>
+        </div>
+      )}
+      
+      {state.successMessage && (
+        <div className={`fixed top-4 right-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded shadow-lg transition-opacity duration-300 ${state.message ? 'opacity-100' : 'opacity-0 hidden'}`} role="alert">
+          <strong className="font-bold">Sucesso:</strong>
+          <ul className="mt-2">
+            <li className="text-sm">{state.successMessage}</li>
+          </ul> 
+        </div>
+      )}
 
       <div className="mt-6 flex justify-end gap-4">
         <Link

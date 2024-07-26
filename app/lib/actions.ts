@@ -112,6 +112,7 @@ export type StateStudant = {
   	secondPhone?:string[];
   };
   message?: string | null ;
+  successMessage?:string | null
 };
 
 
@@ -417,8 +418,11 @@ export async function createStudant(prevState: StateStudant, formData: FormData)
     const studants = await fetchCreateStudant(dataStudant,profileImage)
 
     if(studants.data){
-      revalidatePath('/dashboard/studant');
-      redirect('/dashboard/studant');
+      return{
+        successMessage:'Estudante Criado'
+      }
+      // revalidatePath('/dashboard/studant');
+      // redirect('/dashboard/studant');
     }
       
     let errorMessageString = "";

@@ -60,7 +60,7 @@ export default async function TableStudant() {
                   Nome
                 </th>
                 <th scope="col" className="px-3 py-5 font-medium">
-                  Email
+                  Cpf
                 </th>
                 <th scope="col" className="px-3 py-5 font-medium">
                   Nome da Mãe
@@ -92,7 +92,7 @@ export default async function TableStudant() {
                     </div>
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
-                    {studant.cpf}
+                    {studant.cpf ? studant.cpf : 'Não informado'}
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
                     { studant.responsavel.nome_mae }                    

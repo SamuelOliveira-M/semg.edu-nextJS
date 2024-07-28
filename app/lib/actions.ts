@@ -417,23 +417,16 @@ export async function createStudant(prevState: StateStudant, formData: FormData)
   try {
     const studants = await fetchCreateStudant(dataStudant,profileImage)
 
-    if(studants.data){
-      return{
-        successMessage:'Estudante Criado'
+    if(studants.error){
+      return {
+        message: `${studants.message}`,
       }
-      // revalidatePath('/dashboard/studant');
-      // redirect('/dashboard/studant');
     }
-      
-    let errorMessageString = "";
-
-    for (const student of studants) {
-      errorMessageString += `${student.message},\n`;
-    } 
-
-    return {
-      message: `${errorMessageString}`,
+    
+    return{
+      successMessage:'Estudante Criado'
     }
+
   } catch (error) {
     // If a database error occurs, return a more specific error.
     return {

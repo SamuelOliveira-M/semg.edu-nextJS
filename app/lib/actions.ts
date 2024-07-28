@@ -186,10 +186,9 @@ export async function createTeacher(prevState: State, formData: FormData) {
 
 export async function deleteTeahcer(id: string) {
   try {
-    const teacherRemove  = await deleteTeacherFetch(id)
-    console.log(teacherRemove)
+    await deleteTeacherFetch(id)
     revalidatePath('/dashboard/teacher');
-    return { message: 'Professor removido.' };
+    
   } catch (error) {
     return { message: 'Database Error: Failed to Delete teacher.' };
   }

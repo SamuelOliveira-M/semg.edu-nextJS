@@ -279,12 +279,14 @@ export async function fetchCreateTeacher(formDataToSend:CreateTeacherType, profi
 }
 
 export async function deleteTeacherFetch(id:string){
+  noStore();
   try{
     const res = await fetch(`${process.env.API_URL}/remove/teacher/${id}`, {
       method: 'DELETE',
     });
-  
+    
     const data= await res.json();
+    console.log(data)
     return data;
   
   }catch (error) {

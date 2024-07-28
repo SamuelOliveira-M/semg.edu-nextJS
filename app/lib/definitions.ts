@@ -335,3 +335,9 @@ export type CreateStudantType = {
       telefone:string | undefined 
     }
 }
+
+export type ResponseApi={
+  error: boolean;
+  message: string;
+  data?: any;
+}

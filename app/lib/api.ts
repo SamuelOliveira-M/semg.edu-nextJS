@@ -15,6 +15,7 @@ import {
   SchollClass,
   Subject,
   CreateStudantType,
+  ResponseApi,
 } from './definitions';
 
 
@@ -131,11 +132,12 @@ export async function allStudants(){
     });
   
     const data:Studant[] = await res.json();
+    console.log(data)
     return data;
   
   }catch (error) {
     console.error('Database Error:', error);
-    throw new Error('Failed to fetch invoices.');
+    throw new Error('Erro desconhecido, tente mais tarde !');
   }
 }
 
@@ -434,7 +436,7 @@ export async function AllocationTeacher(dataRegistration:any) {
   }
 }
 
-export async function fetchCreateStudant(formDataToSend:CreateStudantType, profileImage:any) {
+export async function fetchCreateStudant(formDataToSend:CreateStudantType, profileImage:any):Promise<ResponseApi> {
   noStore()
   var formData = new FormData();
 

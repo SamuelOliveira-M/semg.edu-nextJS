@@ -124,7 +124,7 @@ export default function FormCreateStudant({ customers }: { customers: CustomerFi
           </div>
           <div className="mb-4">
             <label htmlFor="cityOfBirth" className="mb-2 block text-sm font-medium">
-              Municipio de Nascimento
+              Municipio de Nascimento <span className="text-red-500">*</span>
             </label>
             <div className="relative mt-2 rounded-md">
               <div className="relative">
@@ -247,28 +247,8 @@ export default function FormCreateStudant({ customers }: { customers: CustomerFi
       </div>
 
       <h1 className={`${lusitana.className} text-xl mb-4`}>Informações dos Responsáveis:</h1>
-        <div className="grid grid-cols-2 gap-4 mb-4" >
-          <div className="mb-4">
-            <label htmlFor="fatherName" className="mb-2 block text-sm font-medium">
-              Nome do Pai <span className="text-red-500">*</span>
-            </label>
-
-            <div className="relative">
-              <input
-                  id="fatherName"
-                  name="fatherName"
-                  className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
-                  defaultValue=""
-                  aria-describedby="customer-error"
-                  placeholder="Adicione o nome do professor"
-                  minLength={3}
-                  maxLength={100}
-                  required
-                ></input>
-              <UserCircleIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500" />
-            </div> 
-          </div>
-          <div className="mb-4">
+        <div className="grid grid-cols-2 gap-4 mb-4" >          
+        <div className="mb-4">
             <label htmlFor="motherName" className="mb-2 block text-sm font-medium">
               Nome do Mãe <span className="text-red-500">*</span>
             </label>
@@ -288,6 +268,26 @@ export default function FormCreateStudant({ customers }: { customers: CustomerFi
               <UserCircleIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500" />
             </div> 
           </div>
+          <div className="mb-4">
+            <label htmlFor="fatherName" className="mb-2 block text-sm font-medium">
+              Nome do Pai
+            </label>
+
+            <div className="relative">
+              <input
+                  id="fatherName"
+                  name="fatherName"
+                  className="peer block w-full rounded-md border border-gray-200 py-2 pl-10 text-sm outline-2 placeholder:text-gray-500"
+                  defaultValue=""
+                  aria-describedby="customer-error"
+                  placeholder="Adicione o nome do professor"
+                  minLength={3}
+                  maxLength={100}
+                ></input>
+              <UserCircleIcon className="pointer-events-none absolute left-3 top-1/2 h-[18px] w-[18px] -translate-y-1/2 text-gray-500" />
+            </div> 
+          </div>
+          
           <div className="mb-4">
             <label htmlFor="firstPhone" className="mb-2 block text-sm font-medium">
               Telefone 1
@@ -344,24 +344,25 @@ export default function FormCreateStudant({ customers }: { customers: CustomerFi
           </div> 
         </div>
 			</div>
+      {state.successMessage && (
+        <div className={`top-4 right-4 fixed border bg-green-100 border-green-400 text-green-700 px-4 py-3 rounded shadow-lg transition-opacity duration-100 ${state.successMessage ? 'opacity-100' : 'opacity-0 hidden'}`} role="alert">
+          <strong className="font-bold">Sucesso:</strong>
+          <ul className="mt-2">
+            <li className="text-sm">{state.successMessage}</li>
+          </ul>
+        </div>
+      )}
       {state.message && (
-        <div className={`top-4 right-4 fixed  border bg-red-100 border-red-400 text-red-700 px-4 py-3 rounded shadow-lg transition-opacity duration-300 ${state.message ? 'opacity-100' : 'opacity-0 hidden'}`} role="alert">
+        <div className={`top-4 right-4 fixed  border bg-red-100 border-red-400 text-red-700 px-4 py-3 rounded shadow-lg transition-opacity duration-100 ${state.message ? 'opacity-100' : 'opacity-0 hidden'}`} role="alert">
           <strong className="font-bold">Erros:</strong>
           <ul className="mt-2">
             <li className="text-sm">{state.message}</li>
           </ul>
         </div>
       )}
-      
-      {state.successMessage && (
-        <div className={`fixed top-4 right-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded shadow-lg transition-opacity duration-300 ${state.message ? 'opacity-100' : 'opacity-0 hidden'}`} role="alert">
-          <strong className="font-bold">Sucesso:</strong>
-          <ul className="mt-2">
-            <li className="text-sm">{state.successMessage}</li>
-          </ul> 
-        </div>
-      )}
 
+      
+      
       <div className="mt-6 flex justify-end gap-4">
         <Link
           href="/dashboard/studant"

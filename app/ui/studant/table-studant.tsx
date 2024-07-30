@@ -6,11 +6,11 @@ import { ArrowPathIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { formatDateToBirth, formatText } from '@/app/lib/utils';
 import { CreateMatricula, DeleteStudant, ToViewStudant } from './buttons';
+import ProfilePlaceholder from '../ProfilePlaceholder';
+import { Studant } from '@/app/lib/definitions';
 
-export default async function TableStudant() {
+export default async function TableStudant({studants}:{studants:Studant[]}) {
   
-  const studants = await allStudants();
-
   return (
     <div className="mt-6 flow-root">
       <div className="inline-block min-w-full align-middle">
@@ -29,13 +29,17 @@ export default async function TableStudant() {
                     <p className="text-sm text-gray-500">{studant.cpf}</p>
                   </div>
                   <div>
-                  <Image
+                  {studant.url_image ? (
+                      <Image
                         src={studant.url_image}
-                        className="mr-2 rounded-full"
-                        width={60}
-                        height={60}
+                        className="rounded-full"
+                        width={28}
+                        height={28}
                         alt={`${studant.nome}'s profile picture`}
                       />
+                    ) : (
+                      <ProfilePlaceholder />
+                    )}
                   </div>
                 </div>
                 <div className="flex w-full items-center justify-between pt-4">
@@ -81,6 +85,7 @@ export default async function TableStudant() {
                 >
                   <td className="whitespace-nowrap py-3 pl-6 pr-3">
                     <div className="flex items-center gap-3">
+                    {studant.url_image ? (
                       <Image
                         src={studant.url_image}
                         className="rounded-full"
@@ -88,6 +93,9 @@ export default async function TableStudant() {
                         height={28}
                         alt={`${studant.nome}'s profile picture`}
                       />
+                    ) : (
+                      <ProfilePlaceholder />
+                    )}
                       <p>{studant.nome}</p>
                     </div>
                   </td>

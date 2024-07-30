@@ -124,10 +124,10 @@ export async function studantProfile(id:string){
   }
 }
 
-export async function allStudants(){
+export async function allStudants(query:string|undefined){
   noStore()
   try{
-    const res = await fetch(`${process.env.API_URL}/studants`, {
+    const res = await fetch(`${process.env.API_URL}/studantss/${query}`, {
       method: 'GET',
     });
   

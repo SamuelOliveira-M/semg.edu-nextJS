@@ -18,9 +18,9 @@ export default async function AllTeacher() {
         Professores
       </h2>
       <div className="flex grow flex-col justify-between rounded-xl bg-gray-50 p-4">
-        <div className="bg-white px-6 overflow-y-scroll">
-          
-          {teachers.map((teacher, i) => {
+        <div className="bg-white px-6 overflow-y-scroll">          
+        {Array.isArray(teachers) ? (
+          teachers.map((teacher, i) => {
             return (
               <div
                 key={teacher.id}
@@ -45,19 +45,19 @@ export default async function AllTeacher() {
                   <div className="min-w-0">
                     <p className="truncate text-sm font-semibold md:text-base">
                       {teacher.nome}
-                      
                     </p>
                     <p className="truncate hidden text-sm text-gray-500 sm:block">
                       {teacher.email}
                     </p>
                   </div>
                 </Link>
-                
                 <DeleteTeacher id={teacher.id} />
-              
               </div>
             );
-          })}
+          })
+        ) : (
+          <p className="text-center text-gray-500 py-4">No teachers found.</p>
+        )}
         </div>
         <div className="flex justify-between">
           <div className="flex items-center pb-2 pt-6">

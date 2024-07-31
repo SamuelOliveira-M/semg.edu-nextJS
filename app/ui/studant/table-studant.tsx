@@ -8,6 +8,7 @@ import { formatDateToBirth, formatText } from '@/app/lib/utils';
 import { CreateMatricula, DeleteStudant, ToViewStudant } from './buttons';
 import { ProfilePlaceholder } from '../ProfilePlaceholder';
 import { Studant } from '@/app/lib/definitions';
+import { DeleteStudantModel } from './modal';
 
 export default async function TableStudant({studants}:{studants:Studant[]}) {
   
@@ -51,7 +52,7 @@ export default async function TableStudant({studants}:{studants:Studant[]}) {
 
                   <div className="flex justify-end gap-2">
                     <ToViewStudant id={studant.id} />
-                    <DeleteStudant id={studant.id} />
+                    <DeleteStudantModel id={studant.id} />
                   </div>
                 </div>
               </div>
@@ -108,7 +109,7 @@ export default async function TableStudant({studants}:{studants:Studant[]}) {
                   <td className="whitespace-nowrap py-3 pl-6 pr-3">
                     <div className="flex justify-end gap-3">
                       <ToViewStudant id={studant.id} />
-                      <DeleteStudant id={studant.id} />
+                      <DeleteStudantModel id={studant.id} />
                     </div>
                   </td>
                 </tr>

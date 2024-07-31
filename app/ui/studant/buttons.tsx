@@ -42,7 +42,7 @@ export function DeleteStudant({ id }: { id: string }) {
   return (
     <form action={deleteInvoiceWithId}>
       <button className="rounded-md border p-2 hover:bg-gray-50">
-        <span className="sr-only">Delete</span>
+        <span className="sr-only sm:hidden">Delete</span>
         <TrashIcon className="w-5" />
       </button>
     </form>

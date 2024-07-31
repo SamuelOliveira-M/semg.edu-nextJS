@@ -2,11 +2,11 @@ import Image from 'next/image';
 import { allStudants } from '@/app/lib/api';
 import { lusitana } from '../fonts';
 import clsx from 'clsx';
-import { ArrowPathIcon } from '@heroicons/react/24/outline';
+import { ArrowPathIcon, EyeIcon, TrashIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { formatDateToBirth, formatText } from '@/app/lib/utils';
 import { CreateMatricula, DeleteStudant, ToViewStudant } from './buttons';
-import ProfilePlaceholder from '../ProfilePlaceholder';
+import { ProfilePlaceholder } from '../ProfilePlaceholder';
 import { Studant } from '@/app/lib/definitions';
 
 export default async function TableStudant({studants}:{studants:Studant[]}) {
@@ -57,14 +57,12 @@ export default async function TableStudant({studants}:{studants:Studant[]}) {
               </div>
             ))}
           </div>
-          <table className="hidden min-w-full text-gray-900 md:table">
+         
+          <table className="w-hidden min-w-full text-gray-900 md:table">
             <thead className="rounded-lg text-left text-sm font-normal">
               <tr>
                 <th scope="col" className="px-4 py-5 font-medium sm:pl-6">
                   Nome
-                </th>
-                <th scope="col" className="px-3 py-5 font-medium">
-                  Cpf
                 </th>
                 <th scope="col" className="px-3 py-5 font-medium">
                   Nome da Mãe
@@ -94,13 +92,12 @@ export default async function TableStudant({studants}:{studants:Studant[]}) {
                         alt={`${studant.nome}'s profile picture`}
                       />
                     ) : (
-                      <ProfilePlaceholder />
+                      <div className='w-15 h-30'>
+                        <ProfilePlaceholder />
+                      </div>
                     )}
                       <p>{studant.nome}</p>
                     </div>
-                  </td>
-                  <td className="whitespace-nowrap px-3 py-3">
-                    {studant.cpf ? studant.cpf : 'Não informado'}
                   </td>
                   <td className="whitespace-nowrap px-3 py-3">
                     { studant.responsavel.nome_mae }                    

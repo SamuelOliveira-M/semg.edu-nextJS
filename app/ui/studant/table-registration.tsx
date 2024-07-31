@@ -6,6 +6,7 @@ import { ArrowPathIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { formatDateToBirth, formatText } from '@/app/lib/utils';
 import { CreateMatricula } from './buttons';
+import { ProfilePlaceholder } from '../ProfilePlaceholder';
 
 export default async function TableRegistration({
   id,
@@ -37,14 +38,20 @@ export default async function TableRegistration({
                   )}
                 >
                   <div className="flex items-center">
-                    <Image
-                      src={studant.aluno.url_image}
-                      alt={`${studant.aluno.nome}'s profile picture`}
-                      className="mr-4 rounded-full"
-                      width={32}
-                      height={32}
-                    />
-                    <div className="min-w-0">
+                    {studant.aluno.url_image ? (
+                      <Image
+                        src={studant.aluno.url_image}
+                        alt={`${studant.aluno.nome}'s profile picture`}
+                        className="mr-4 rounded-full"
+                        width={32}
+                        height={32}
+                      />
+                    ) : (
+                      <ProfilePlaceholder />
+                    )}
+                    
+                   
+                    <div className="min-w-0 ml-2">
                       <p className="truncate text-sm font-semibold md:text-base">
                         {formatText(studant.aluno.nome)}
                       </p>

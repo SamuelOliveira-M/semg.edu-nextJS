@@ -5,6 +5,7 @@ import clsx from 'clsx';
 import { ArrowPathIcon } from '@heroicons/react/24/outline';
 import Link from 'next/link';
 import { AllocateTeacher } from '../teacher/buttons';
+import { ProfilePlaceholder } from '../ProfilePlaceholder';
 
 export default async function TableTeachersSubjects({
   id,
@@ -13,7 +14,7 @@ export default async function TableTeachersSubjects({
 }) { 
   
   const SubjectAndTeacher = await reqSubjectAndTeacher(id);
-  console.log(SubjectAndTeacher)
+  
   return (
 
     <div className="flex w-full flex-col md:col-span-4">
@@ -38,13 +39,18 @@ export default async function TableTeachersSubjects({
                   )}
                 >
                   <div className="flex items-center m-1">
-                    <Image
-                      src={data.professor.url_image}
-                      alt={`${data.professor.nome}'s profile picture`}
-                      className="mr-4 rounded-full"
-                      width={32}
-                      height={32}
-                    />
+                    
+                    {data.professor.url_image ? (
+                      <Image
+                        src={data.professor.url_image}
+                        alt={`${data.professor.nome}'s profile picture`}
+                        className="mr-4 rounded-full"
+                        width={32}
+                        height={32}
+                      />
+                    ) : (
+                      <ProfilePlaceholder />
+                    )}
                     <div className="min-w-0">
                       <p className="truncate text-sm font-semibold md:text-base">
                         {data.professor.nome.substring(0, 20)}

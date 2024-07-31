@@ -206,13 +206,14 @@ export async function readSubjects(){
 
 
 export async function reqSubjectAndTeacher(id:string){
+  noStore();
   try{
     const res = await fetch(`${process.env.API_URL}/teachers-subjects/${id}`, {
       method: 'GET',
     });
   
     const data:SubjectOfTeacher[] = await res.json();
-    console.log(data)
+    
     return data;
     
   

@@ -1,14 +1,13 @@
 import {
 	formatDateToBirth,
 	formatlocality,
-	formatCpf,
 	formatText,
 	formatDateToLocal
 } from "@/app/lib/utils"
 
-import { RegistrationTable } from "@/app/lib/definitions"
+import { StudantTable } from "@/app/lib/definitions"
 
-export default async function ListDescription({ personalData }: {personalData:RegistrationTable}){
+export default async function ListDescription({ personalData }: {personalData:StudantTable}){
 
 	return(
 		<>

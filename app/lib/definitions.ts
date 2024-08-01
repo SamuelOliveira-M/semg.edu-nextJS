@@ -34,6 +34,18 @@ export type SchollClassYear = {
 }
 
 export type RegistrationTable = {
+  id: string;
+  numero_matricula: string;
+  status: string;
+  escolaId:string;
+  turmaId: string;
+  alunoId: string;
+  aluno:Studant
+  turma: SchollClass
+
+};
+
+export type StudantTable = {
   id:string, 
 	nome:string,
 	data_nascimento: Date ,
@@ -48,6 +60,8 @@ export type RegistrationTable = {
   responsavel:Responsible
 
 };
+
+
 
 export type Studant = {
   id:string

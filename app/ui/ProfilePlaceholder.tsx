@@ -7,7 +7,7 @@ export function ProfilePlaceholder() {
   );
 }
 
-export function LongProfilePlaceholder({width, height}:{width:Number, height:Number}) {
+export function LongProfilePlaceholder() {
   return (
     <div className="rounded-full bg-gray-200 w-36 h-36 flex items-center justify-center">
        <p className='text-xs'> foto</p> 

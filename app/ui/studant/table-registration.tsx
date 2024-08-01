@@ -26,7 +26,7 @@ export default async function TableRegistration({
             return (
               <Link 
               key={studant.id}
-              href={`/dashboard/studant/registration/${studant.id}`}
+              href={`/dashboard/studant/registration/${studant.aluno.id}`}
               >
                 <div
                   key={studant.id}

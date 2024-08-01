@@ -17,52 +17,53 @@ export default async function ListDescription({ personalData }: {personalData:Re
 					<div className="list-item flex-basis-50 ">
 						<dt className="font-bold">Data Nascimento:</dt>
 						<dd className="text-sm">
-						{formatDateToBirth(personalData.aluno.data_nascimento)}
+						{formatDateToBirth(personalData.data_nascimento)}
 						</dd>
 					</div>
 					<div className="list-item flex-basis-50 ">
 						<dt className="font-bold">Naturalidade:</dt>
 						<dd className="text-sm">
 							{formatlocality(
-								personalData.aluno.municipio_nascimento,
-								personalData.aluno.uf_nascimento
+								personalData.municipio_nascimento,
+								personalData.uf_nascimento
 							)}
 						</dd>
 					</div>
-					<div className="list-item flex-basis-50 ">
-						<dt className="font-bold">Matrícula:</dt>
-						<dd className="text-sm">
-							{personalData.numero_matricula}
-						</dd>
-					</div>
+					
 					<div className="list-item flex-basis-50 ">
 						<dt className="font-bold">Localidade:</dt>
 						<dd className="text-sm">
-							{formatText(personalData.aluno.address.rua)} 
+							{formatText(personalData.address.rua)} 
 						</dd>
 					</div>
 					<div className="list-item flex-basis-50 ">
 						<dt className="font-bold">Nome do pai:</dt>
 						<dd className="text-sm">
-							{formatText(personalData.aluno.responsavel.nome_pai)}
+							{formatText(personalData.responsavel.nome_pai)}
 						</dd>
 					</div>
 					<div className="list-item flex-basis-50 ">
 						<dt className="font-bold">Nome da mãe:</dt>
 						<dd className="text-sm">
-							{formatText(personalData.aluno.responsavel.nome_mae)} 
+							{formatText(personalData.responsavel.nome_mae)} 
+						</dd>
+					</div>
+					<div className="list-item flex-basis-50 ">
+						<dt className="font-bold">Matrícula:</dt>
+						<dd className="text-sm">
+							{personalData.matricula.numero_matricula ?  (personalData.matricula.numero_matricula):('Sem matricula')}
 						</dd>
 					</div>
 					<div className="list-item flex-basis-50 ">
 						<dt className="font-bold">Turma:</dt>
 						<dd className="text-sm">
-							{personalData.turma.nome}
+							{personalData.matricula.turma.nome}
 						</dd>
 					</div>
 					<div className="list-item flex-basis-50 ">
 						<dt className="font-bold">Ano Letivo:</dt>
 						<dd className="text-sm">
-							{formatDateToLocal(personalData.turma.ano_letivo.data_inicio)}
+							{formatDateToLocal(personalData.matricula.turma.ano_letivo.data_inicio)}
 						</dd>
 					</div>
 				</div>

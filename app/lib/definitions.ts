@@ -34,14 +34,19 @@ export type SchollClassYear = {
 }
 
 export type RegistrationTable = {
-  id: string;
-  numero_matricula: string;
-  status: string;
-  escolaId:string;
-  turmaId: string;
-  alunoId: string;
-  aluno:Studant
-  turma: SchollClass
+  id:string, 
+	nome:string,
+	data_nascimento: Date ,
+	municipio_nascimento: string,
+	uf_nascimento: string,
+	cpf: string,
+	url_image: string,
+	responsavelId: string,
+	addressId: string,
+  matricula:RegistrationAndTurma
+  address:Address
+  responsavel:Responsible
+
 };
 
 export type Studant = {
@@ -57,6 +62,7 @@ export type Studant = {
   responsavel:Responsible
   address:Address
   
+  
 }
 
 export type RegistrationList = {
@@ -67,6 +73,15 @@ export type RegistrationList = {
   turmaId: string;
   alunoId: string;
   aluno:Studant
+}
+export type RegistrationAndTurma = {
+  id: string;
+  numero_matricula: string;
+  status: string;
+  escolaId:string;
+  turmaId: string;
+  alunoId: string;
+  turma:SchollClass
 }
 
 export type Responsible = {

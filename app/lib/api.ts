@@ -16,6 +16,7 @@ import {
   Subject,
   CreateStudantType,
   ResponseApi,
+  StudantTable,
 } from './definitions';
 
 
@@ -115,7 +116,7 @@ export async function studantProfile(id:string){
       method: 'GET',
     });
   
-    const data:RegistrationTable = await res.json();
+    const data:StudantTable = await res.json();
     return data;
   
   }catch (error) {
@@ -398,7 +399,7 @@ export async function readNoRegistration(){
 
 
 export async function fetchCreateRegistration(dataRegistration:any) {
-
+  noStore();
   try{
     const res = await fetch(`${process.env.API_URL}/matricular`, {
       method: 'POST',

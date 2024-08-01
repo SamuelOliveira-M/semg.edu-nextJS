@@ -61,6 +61,9 @@ export type Studant = {
   addressId:string
   responsavel:Responsible
   address:Address
+  matricula:{
+    id:string
+  }  
   
   
 }

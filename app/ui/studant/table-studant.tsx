@@ -49,11 +49,17 @@ export default async function TableStudant({studants}:{studants:Studant[]}) {
                     {formatDateToBirth(studant.data_nascimento)}
                     </p>
                   </div>
-
-                  <div className="flex justify-end gap-2">
-                    <ToViewStudant id={studant.id} />
-                    <DeleteStudantModel id={studant.id} />
-                  </div>
+                    {studant.matricula? (
+                      <div className="flex justify-end gap-2">
+                        <ToViewStudant id={studant.id} matricula={true}/>
+                        <DeleteStudantModel id={studant.id}/>
+                      </div>
+                    ):(
+                      <div className="flex justify-end gap-2">
+                        <ToViewStudant id={studant.id} matricula={false}/>
+                        <DeleteStudantModel id={studant.id}/>
+                    </div>
+                    )}
                 </div>
               </div>
             ))}
@@ -107,10 +113,17 @@ export default async function TableStudant({studants}:{studants:Studant[]}) {
                     {formatDateToBirth(studant.data_nascimento)}
                   </td>
                   <td className="whitespace-nowrap py-3 pl-6 pr-3">
-                    <div className="flex justify-end gap-3">
-                      <ToViewStudant id={studant.id} />
-                      <DeleteStudantModel id={studant.id} />
-                    </div>
+                    {studant.matricula ? (
+                      <div className="flex justify-end gap-3">
+                        <ToViewStudant id={studant.id} matricula={true}/>
+                        <DeleteStudantModel id={studant.id} />
+                      </div>
+                    ):(
+                      <div className="flex justify-end gap-3">
+                        <ToViewStudant id={studant.id} matricula={false} />
+                        <DeleteStudantModel id={studant.id} />
+                      </div>
+                    )}
                   </td>
                 </tr>
               ))}

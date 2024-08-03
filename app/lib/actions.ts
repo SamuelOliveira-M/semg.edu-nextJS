@@ -329,8 +329,8 @@ export async function allocationTeacher(prevState: StateClass, formData: FormDat
   }
  
   // // Revalidate the cache for the invoices page and redirect the user.
-  revalidatePath('/dashboard/class');
-  redirect('/dashboard/class');
+  revalidatePath(`/dashboard/class/${classId}`);
+  redirect(`/dashboard/class/${classId}`);
 }
 
 export async function deleteStudant(id: string) {

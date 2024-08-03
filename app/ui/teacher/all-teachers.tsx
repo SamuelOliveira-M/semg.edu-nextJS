@@ -18,7 +18,7 @@ export default async function AllTeacher() {
         Professores
       </h2>
       <div className="flex grow flex-col justify-between rounded-xl bg-gray-50 p-4">
-        <div className="bg-white px-6 overflow-y-scroll">          
+        <div className="bg-white px-6 overflow-y-scroll max-h-96">          
         {Array.isArray(teachers) ? (
           teachers.map((teacher, i) => {
             return (

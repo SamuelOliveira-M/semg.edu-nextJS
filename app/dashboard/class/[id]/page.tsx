@@ -12,15 +12,10 @@ export default async function Page({ params }: { params: { id: string } }) {
   
   const id = params.id; 
 
-  const schoolClass = await fetchRegistrationById(id)
-
-  if (!schoolClass) {
-    notFound();
-  }
 
   return (
     <div>	
-      <BannerClass/>
+      <BannerClass id={id}/>
       
       <div className='pt-8'>
         <Calendar id={id}/>

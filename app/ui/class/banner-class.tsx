@@ -7,15 +7,19 @@ import {
 import { lusitana } from '@/app/ui/fonts';
 
 import Image from 'next/image';
+import { SchollClass } from '@/app/lib/definitions';
+import { readClassUniqueFetch } from '@/app/lib/api';
 
-export default async function BannerClass() {
+export default async function BannerClass({id}:{id:string}) {
+
+  const turma = await readClassUniqueFetch(id)
 
   return (
 
     <div className="class-card bg-blue-700 p-8 rounded-lg shadow-lg max-w mx-auto flex">
       <div className=" flex items-center flex-1 mt-2 ">
         <div>
-          <h1 className="text-2xl mb-4 text-center sm:text-start  text-white font-semibold"><strong>8º ano B - Manhã - 2024</strong></h1>
+          <h1 className="text-2xl mb-4 text-center sm:text-start  text-white font-semibold"><strong>{turma.nome}</strong></h1>
           <h3 className="text-lg mb-2 text-center sm:text-start text-white">Joaquim Antônio de Araújo</h3>      
         </div>
       </div>

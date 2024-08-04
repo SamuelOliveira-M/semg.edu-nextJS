@@ -8,7 +8,7 @@ export default async function Page({ params }: { params: { id: string } }) {
 
   const allTeachers = await reqTeachers();
   const dataClass = await readClassUniqueFetch(classId)
-  const allSubjects = await readSubjects()
+  const allSubjects = await readSubjects(classId)
 
   return (
     <main>

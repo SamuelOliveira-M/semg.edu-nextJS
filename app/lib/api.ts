@@ -189,9 +189,9 @@ export async function reqTeacher(id:string){
   }
 }
 
-export async function readSubjects(){
+export async function readSubjects(classId:string){
   try{
-    const res = await fetch(`${process.env.API_URL}/subjects`, {
+    const res = await fetch(`${process.env.API_URL}/subjects/${classId}`, {
       method: 'GET',
     });
   

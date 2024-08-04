@@ -1,14 +1,11 @@
 import { UpdateClass, DeleteClass } from '@/app/ui/class/buttons';
 import InvoiceStatus from '@/app/ui/teacher/status';
 import { formatDateToLocal } from '@/app/lib/utils';
-import {fetchFilteredClass} from '@/app/lib/api'
-
 import { Grid } from '@tremor/react';
 import Link from 'next/link';
+import { SchollClassTable } from '@/app/lib/definitions';
 
-export default async function CardClass() {
-  
-  const classrooms = await fetchFilteredClass()
+export default async function CardClass({classrooms}:{classrooms:SchollClassTable[]}) {
   
   return (
     <div className="rounded-lg bg-gray-50 p-4 md:pt-0">

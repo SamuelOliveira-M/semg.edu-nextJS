@@ -59,12 +59,10 @@ export async function POST(email:string,senha:string) {
 }
 
 
-export async function fetchFilteredClass() {
-  
+export async function fetchFilteredClass(query:string|undefined) {
   noStore();
-  
   try {
-    const schoolClass = await fetch(`${process.env.API_URL}/class`, {
+    const schoolClass = await fetch(`${process.env.API_URL}/class/${query}`, {
       method: 'GET',
     });
     

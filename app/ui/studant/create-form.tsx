@@ -13,7 +13,7 @@ import {
 } from '@heroicons/react/24/outline';
 
 export default function Form({ studants,dataClass }: { studants: Studant[], dataClass:SchollClass }) {
-  const initialState = { message: null, errors: {} };
+  const initialState = { message: null, errors: {}, successMessage:null}
   const [state, dispatch] = useFormState(createRegistration, initialState);
   return (
     <form action={dispatch}>
@@ -105,6 +105,22 @@ export default function Form({ studants,dataClass }: { studants: Studant[], data
           </div>
         </fieldset>
       </div>
+      {state.successMessage && (
+        <div className={`top-4 right-4 fixed border bg-green-100 border-green-400 text-green-700 px-4 py-3 rounded shadow-lg transition-opacity duration-100 ${state.successMessage ? 'opacity-100' : 'opacity-0 hidden'}`} role="alert">
+          <strong className="font-bold">Sucesso:</strong>
+          <ul className="mt-2">
+            <li className="text-sm">{state.successMessage}</li>
+          </ul>
+        </div>
+      )}
+      {state.message && (
+        <div className={`top-4 right-4 fixed  border bg-red-100 border-red-400 text-red-700 px-4 py-3 rounded shadow-lg transition-opacity duration-100 ${state.message ? 'opacity-100' : 'opacity-0 hidden'}`} role="alert">
+          <strong className="font-bold">Erros:</strong>
+          <ul className="mt-2">
+            <li className="text-sm">{state.message}</li>
+          </ul>
+        </div>
+      )}
       <div className="mt-6 flex justify-end gap-4">
         <Link
           href={`/dashboard/class/${dataClass.id}`}

@@ -96,6 +96,7 @@ export type StateRegistration = {
     alunoId?: string[];
   };
   message?: string | null;
+  successMessage?:string | null
 };
 
 export type StateStudant = {
@@ -271,7 +272,6 @@ export async function createRegistration(prevState: StateRegistration, formData:
 
   const {alunoId,status,classId} = validatedFields.data;
   const codigoInep = '22110666' 
-  console.log(status)
   const dataRegistration =  { 
     
     "status": status,
@@ -290,10 +290,12 @@ export async function createRegistration(prevState: StateRegistration, formData:
       message: 'Database Error: Failed to Create Invoice.',
     };
   }
- 
-  // // Revalidate the cache for the invoices page and redirect the user.
-  revalidatePath(`/dashboard/class/${classId}`);
-  redirect(`/dashboard/class/${classId}`);
+ return{
+  successMessage: 'Aluno matriculado na turma com sucesso'
+ }
+  // // // Revalidate the cache for the invoices page and redirect the user.
+  // revalidatePath(`/dashboard/class/${classId}/matricula/create`);
+  // redirect(`/dashboard/class/${classId}/matricula/create`);
 }
 
 

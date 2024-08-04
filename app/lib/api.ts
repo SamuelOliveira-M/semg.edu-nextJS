@@ -363,9 +363,9 @@ export async function deleteClassFetch(id:string){
 }
 
 export async function readClassUniqueFetch(id:string){
-  noStore()
+  noStore();
   try{
-    const res = await fetch(`${process.env.API_URL}/class/${id}`, {
+    const res = await fetch(`${process.env.API_URL}/classroom/${id}`, {
       method: 'GET',
     });
   

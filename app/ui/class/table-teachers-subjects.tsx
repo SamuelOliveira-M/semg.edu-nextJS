@@ -21,8 +21,8 @@ export default async function TableTeachersSubjects({
       <h2 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
         Professores
       </h2>
-      <div className="flex grow flex-col justify-between rounded-xl bg-gray-50 p-4">
-        <div className="bg-white py-1">
+      <div className="flex grow flex-col justify-between rounded-xl bg-gray-50 p-4 max-h-96">
+        <div className="bg-white py-1 max-h-full overflow-auto">
           {SubjectAndTeacher.map((data,i) => {
             return (
               <Link 
@@ -32,13 +32,13 @@ export default async function TableTeachersSubjects({
                 <div
                   key={data.professor.id}
                   className={clsx(
-                    'grid grid-cols-[2fr_1fr] lg:grid-cols-auto',
+                    'grid grid-cols-[2fr_1fr] lg:grid-cols-auto p-2',
                     {
                       'border-t': i !== 0,
                     },
                   )}
                 >
-                  <div className="flex items-center m-1">
+                  <div className="flex items-center">
                     
                     {data.professor.url_image ? (
                       <Image

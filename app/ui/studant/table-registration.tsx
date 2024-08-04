@@ -20,8 +20,8 @@ export default async function TableRegistration({
       <h2 className={`${lusitana.className} mb-4 text-xl md:text-2xl`}>
         Alunos
       </h2>
-      <div className="flex grow flex-col justify-between rounded-xl bg-gray-50 p-4">
-        <div className="bg-white py-1 ">
+      <div className="flex grow flex-col justify-between rounded-xl bg-gray-50 p-4 max-h-96 overflow-auto">
+        <div className="bg-white py-1 max-h-80 overflow-auto">
           {matriculas.map((studant,i) => {
             return (
               <Link 

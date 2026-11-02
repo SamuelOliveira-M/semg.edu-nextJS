@@ -263,7 +263,6 @@ export type StudantPerformanceSheet = {
 export type User = {
   id:string
 	nome: string,
-	senha: string
 	isAdmin:boolean
 	accessToken : string
 	idRefreshToken: string,

@@ -2,7 +2,6 @@ import NextAuth from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 import { authConfig } from './auth.config';
 import { z } from 'zod';
-import bcrypt from 'bcrypt';
 import { POST } from '@/app/lib/api';
 import { User } from './app/lib/definitions';
 
@@ -30,9 +29,8 @@ export const { auth, signIn, signOut } = NextAuth({
         if (parsedCredentials.success) {
           const { email, password } = parsedCredentials.data;
           const user = await getUser(email,password);
-          if (!user) return null;
-          const passwordsMatch = await bcrypt.compare(password, user.senha);
-          if (passwordsMatch)return user;
+          // A API valida as credenciais; em caso de falha devolve { error }.
+          if (user && typeof user.id === 'string') return user;
         }
 
         console.log('Invalid credentials');

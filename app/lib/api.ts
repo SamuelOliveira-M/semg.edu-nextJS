@@ -162,13 +162,18 @@ export async function reqTeachers(){
       method: 'GET',
     });
   
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
     const data:Teacher[] = await res.json();
-    
+
+    // A API pode responder 200 com um objeto de erro (ex.: banco fora do ar)
+    if (!Array.isArray(data)) throw new Error('Resposta inválida da API');
+
     return data;
-  
+
   }catch (error) {
-    console.error('Database Error:', error);
-    throw new Error('Failed to fetch invoices.');
+    console.error('API Error:', error);
+    throw new Error('Falha ao buscar professores.');
   }
 }
 
